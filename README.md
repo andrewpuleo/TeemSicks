@@ -2,6 +2,7 @@
 # Teem Sicks
 
 ### About Us
+Motto: Pro Bono 
 Pizza Topping: Bacon and Eggs  
 
 ### Team Roles
