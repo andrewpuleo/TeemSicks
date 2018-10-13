@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="Welcome to new home"/>
+  <div class="contact">
+    <HelloWorld msg="Welcome to Your contact page"/>
     <index/>
     <div class="container">
     </div>
@@ -17,5 +17,5 @@ import index from '@/components/index.vue'; // @ is an alias to /src
   HelloWorld, index,
   },
   })
-export default class Home extends Vue {}
+export default class Contact extends Vue {}
 </script>

@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="Welcome to new home"/>
+  <div class="login">
+    <HelloWorld msg="Welcome to Login"/>
     <index/>
     <div class="container">
     </div>
