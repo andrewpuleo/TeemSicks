@@ -1,10 +1,11 @@
+
 <template>
   <div id="app">
     <div id="logo">
       <router-link to="/"><img align="left" src="./assets/foxycle.png"></router-link>
    </div>
-   <nav class="navbar navbar-inverse navbar-expand-sm navbar-light bg-light">
-      <div class="container">
+   <nav class="navbar navbar-inverse navbar-expand-sm navcontainer">
+      <div class="container navcontainer">
          <button class="navbar-toggler navbar-toggle btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
          </button>
@@ -13,13 +14,24 @@
             <!-- Left items: Home, Store, Contact -->
             <ul class="navbar-nav mr-auto" id="navleft">
                <li class="nav-item active">
-                  <router-link to="/">Home</router-link> |
+                  <div class="navlink" id="navleft">
+                     <button class="navbtn"><router-link to="/">Home</router-link></button>
+                  </div>
                </li>
                <li class="nav-item active">
-                  <router-link to="/store">Store</router-link> |
+                  <div class="dropdown" id="navleft">
+                     <button class="dropbtn"><router-link to="/store">Store</router-link></button>
+                     <div class="dropdown-content">
+                        <router-link to="/store">Store1</router-link>
+                        <router-link to="/store">Store2</router-link>
+                        <router-link to="/store">Store3</router-link>
+                     </div>
+                  </div>
                </li>
                <li class="nav-item active">
-                  <router-link to="/contact">Contact</router-link>
+                  <div class="navlink" id="navleft">
+                     <button class="navbtn"><router-link to="/contact">Contact</router-link></button>
+                  </div>
                </li>
             </ul>
 
@@ -63,11 +75,10 @@ export default class Home extends Vue {}
   color: #2c3e50;
 }
 #navleft {
-  padding: 4px;
   a {
     padding-left: 10px;
     padding-right: 10px;
-    padding-top: 1rem;
+    font-size: 16px;
     font-weight: bold;
     color: #2c3e50;
     &.router-link-exact-active {
@@ -76,11 +87,11 @@ export default class Home extends Vue {}
   }
 }
 #navright {
-  padding: 0px;
   a {
     padding-left: 0px;
     padding-right: 0px;
     padding-top: 1rem;
+    font-size: 16px;
     font-weight: bold;
     color: #2c3e50;
     &.router-link-exact-active {
@@ -102,5 +113,47 @@ export default class Home extends Vue {}
       text-align: left;
    }
 }
+.navcontainer{
+   background-color: #f1f1f1;
+}
+.navbtn {
+    background-color: #f1f1f1;
+    color: #2c3e50;
+    padding: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+}
+.dropbtn {
+    background-color: #f1f1f1;
+    color: #2c3e50;
+    padding: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+}
 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+   background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #f1f1f1;}
+.navlink:hover .navbtn {background-color: #f1f1f1;}
 </style>

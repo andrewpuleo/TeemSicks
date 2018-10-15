@@ -1,5 +1,21 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <HelloWorld msg="This is an about page"/>
+    <index/>
+    <div class="container">
+    </div>
   </div>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import HelloWorld from '@/components/HelloWorld.vue';
+import index from '@/components/index.vue'; // @ is an alias to /src
+
+@Component({
+  components: {
+  HelloWorld, index,
+  },
+  })
+export default class About extends Vue {}
+</script>
