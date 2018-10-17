@@ -1,16 +1,13 @@
+'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const order = sequelize.define('order', {
-    id: DataTypes.STRING,
-    date: DataTypes.NUMBER,
-    num_items: DataTypes.NUMBER,
-    price: DataTypes.NUMBER,
+  const Order = sequelize.define('Order', {
+    orderId: DataTypes.STRING,
+    date: DataTypes.INTEGER,
+    numItems: DataTypes.INTEGER,
+    totalPrice: DataTypes.INTEGER
   }, {});
-  ToDo.associate = function (models) {
+  Order.associate = function(models) {
     // associations can be defined here
   };
-
-  order.hasMany(item, {as: 'order item'});
-  order.hasOne(user, {as: "ordered by"});
-
-  return ToDo;
+  return Order;
 };
