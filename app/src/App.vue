@@ -57,11 +57,10 @@ import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue';
 import index from '@/components/index.vue'; // @ is an alias to /src
 //import Navbar from '@/components/Navbar.vue';
-import indexSlider from '@/components/indexSlider.vue';
 
 @Component({
   components: {
-  HelloWorld, index, indexSlider,
+  HelloWorld, index,
   },
   })
 export default class Home extends Vue {}
