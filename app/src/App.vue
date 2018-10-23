@@ -1,12 +1,79 @@
+
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <div id="logo">
+      <router-link to="/"><img align="left" src="./assets/foxycle.png"></router-link>
+   </div>
+   <nav class="navbar navbar-inverse navbar-expand-sm navcontainer">
+      <div class="container navcontainer">
+         <button class="navbar-toggler navbar-toggle btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <!-- Left items: Home, Store, Contact -->
+            <ul class="navbar-nav mr-auto" id="navleft">
+               <li class="nav-item active">
+                  <div class="navlink" id="navleft">
+                     <button class="navbtn"><router-link to="/">Home</router-link></button>
+                  </div>
+               </li>
+               <li class="nav-item active">
+                  <div class="dropdown" id="navleft">
+                     <button class="dropbtn"><router-link to="/store">Store</router-link></button>
+                     <div class="dropdown-content">
+                        <table>
+                           <tr>
+                              <td><router-link to="/store">Road</router-link></td>
+                              <td><router-link to="/store">Mountain</router-link></td>
+                              <td><router-link to="/store">Accessories</router-link></td>
+                           </tr>
+                           <tr>
+                              <td><img src="./assets/bike.jpg" height="200"></td>
+                              <td><img src="./assets/bike.jpg" height="200"></td>
+                              <td><img src="./assets/bike.jpg" height="200"></td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+               </li>
+               <li class="nav-item active">
+                  <div class="navlink" id="navleft">
+                     <button class="navbtn"><router-link to="/contact">Contact</router-link></button>
+                  </div>
+               </li>
+            </ul>
+
+            <!-- Right items: Login and cart -->
+            <ul class="navbar-nav navbar-right" id="navright">
+               <li class="nav-item active">
+                  <router-link to="/login"><img src="./assets/user.png"> Login</router-link>
+               </li>
+               <li class="nav-item active">
+                  <router-link to="/cart"><img src="./assets/cart.png">Cart</router-link>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </nav>
     <router-view/>
-  </div>
+</div>
+
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import HelloWorld from '@/components/HelloWorld.vue';
+import index from '@/components/index.vue'; // @ is an alias to /src
+//import Navbar from '@/components/Navbar.vue';
+
+@Component({
+  components: {
+  HelloWorld, index,
+  },
+  })
+export default class Home extends Vue {}
+</script>
 
 <style lang="scss">
 #app {
@@ -16,14 +83,86 @@
   text-align: center;
   color: #2c3e50;
 }
-#nav {
-  padding: 30px;
+#navleft {
   a {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
     font-weight: bold;
     color: #2c3e50;
     &.router-link-exact-active {
-      color: #42b983;
+      color: #ff6600;
     }
   }
 }
+#navright {
+  a {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 1rem;
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c3e50;
+    &.router-link-exact-active {
+      color: #ff6600;
+    }
+  }
+  img{
+     height: 1rem;
+     padding-left: 2rem;
+     height: 1.5rem;
+     text-align: right;
+ }
+}
+#logo {
+   height: 6rem;
+   padding-left: 2rem;
+    img{
+      height: 6rem;
+      text-align: left;
+   }
+}
+.navcontainer{
+   background-color: #f1f1f1;
+}
+.navbtn {
+    background-color: #f1f1f1;
+    color: #2c3e50;
+    padding: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+}
+.dropbtn {
+    background-color: #f1f1f1;
+    color: #2c3e50;
+    padding: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+   background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #f1f1f1;}
+.navlink:hover .navbtn {background-color: #f1f1f1;}
 </style>
