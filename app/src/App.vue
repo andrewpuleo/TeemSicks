@@ -66,7 +66,7 @@ import index from '@/components/index.vue'; // @ is an alias to /src
 export default class Home extends Vue {}
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -156,4 +156,5 @@ export default class Home extends Vue {}
 
 .dropdown:hover .dropbtn {background-color: #f1f1f1;}
 .navlink:hover .navbtn {background-color: #f1f1f1;}
+
 </style>
