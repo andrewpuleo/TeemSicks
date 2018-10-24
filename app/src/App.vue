@@ -48,6 +48,7 @@
       </div>
    </nav>
     <router-view/>
+
 </div>
 
 </template>
@@ -67,6 +68,11 @@ export default class Home extends Vue {}
 </script>
 
 <style scoped lang="scss">
+
+body{
+   background-color: #FFFDF4 !important;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -156,5 +162,13 @@ export default class Home extends Vue {}
 
 .dropdown:hover .dropbtn {background-color: #f1f1f1;}
 .navlink:hover .navbtn {background-color: #f1f1f1;}
+
+.page-footer{
+   position:absolute;
+   padding-top: 10rem;
+    width:100%;
+    bottom:0px;
+}
+
 
 </style>

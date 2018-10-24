@@ -9,13 +9,12 @@
     </div>
     <HomeSlider/>
     <div class="header">
-     <h2>About Foxycle</h2>
-   </div>
+    </div>
 
    <div class="row">
-     <div id="newcolumn" style="background-color:#FFFDF4;">Who We Are</div>
-     <div id="newcolumn" style="background-color:#FFFDF4;">Why We Are</div>
-     <div id="newcolumn" style="background-color:#FFFDF4">How We Are</div>
+     <div class="col-sm-4" id="newcolumn" style="background-color:#FFFDF4;">Who We Are</div>
+     <div class="col-sm-4" id="newcolumn" style="background-color:#FFFDF4;">Why We Are</div>
+     <div class="col-sm-4" id="newcolumn" style="background-color:#FFFDF4">How We Are</div>
    </div>
 
 </div>
@@ -53,7 +52,7 @@ body{
     height: 400px;
 }
 
-#newcolumn{
+.newcolumn{
     border: 30px;
     font: inherit;
     color: rgb(241, 63, 9);
