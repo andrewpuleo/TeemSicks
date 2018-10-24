@@ -10,6 +10,8 @@ import './../node_modules/bootstrap/js/dist/button.js';
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 
+Vue.use(require('vue-moment'));
+
 new Vue({
   router,
   store,
