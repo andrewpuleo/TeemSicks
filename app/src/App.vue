@@ -22,18 +22,9 @@
                   <div class="dropdown" id="navleft">
                      <button class="dropbtn"><router-link to="/store">Store</router-link></button>
                      <div class="dropdown-content">
-                        <table>
-                           <tr>
-                              <td><router-link to="/store">Road</router-link></td>
-                              <td><router-link to="/store">Mountain</router-link></td>
-                              <td><router-link to="/store">Accessories</router-link></td>
-                           </tr>
-                           <tr>
-                              <td><img src="./assets/bike.jpg" height="200"></td>
-                              <td><img src="./assets/bike.jpg" height="200"></td>
-                              <td><img src="./assets/bike.jpg" height="200"></td>
-                           </tr>
-                        </table>
+                        <router-link to="/store">Store1</router-link>
+                        <router-link to="/store">Store2</router-link>
+                        <router-link to="/store">Store3</router-link>
                      </div>
                   </div>
                </li>
@@ -75,7 +66,7 @@ import index from '@/components/index.vue'; // @ is an alias to /src
 export default class Home extends Vue {}
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -165,4 +156,5 @@ export default class Home extends Vue {}
 
 .dropdown:hover .dropbtn {background-color: #f1f1f1;}
 .navlink:hover .navbtn {background-color: #f1f1f1;}
+
 </style>
