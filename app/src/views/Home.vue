@@ -1,18 +1,15 @@
 <template>
    <div>
    <div class="header">
-     <h2>About Us</h2>
+     <h2>About Foxycle</h2>
    </div>
 
    <div class="row">
-     <div id="newcolumn" style="background-color:white;">Who We Are</div>
-     <div id="newcolumn" style="background-color:white;">Why We Are</div>
-     <div id="newcolumn" style="background-color:white">How We Are</div>
+     <div id="newcolumn" style="background-color:#FFFDF4;">Who We Are</div>
+     <div id="newcolumn" style="background-color:#FFFDF4;">Why We Are</div>
+     <div id="newcolumn" style="background-color:#FFFDF4">How We Are</div>
    </div>
 
-   <div class="footer">
-     <p>Footer</p>
-   </div>
 </div>
 </template>
 
@@ -21,8 +18,11 @@
     box-sizing: border-box;
 }
 
+body{
+   background-color: #FFFDF4 !important;
+}
+
 .header {
-    background-image: url(https://s3.insidehook.com/header_bestbike_1460062106.jpg);
     background-color: #ddd;
     font-weight: bold;
     background-size: cover;
@@ -44,6 +44,7 @@
     padding: 110px;
     text-align: center;
     height: 500px;
+    padding-bottom: 10rem;
 }
 
 .row:after {
@@ -51,12 +52,6 @@
     display: table;
     clear: both;
 
-}
-
-.footer {
-    background-color: burlywood;
-    padding: 20px;
-    text-align: center;
 }
 
 @media (max-width: 600px) {
