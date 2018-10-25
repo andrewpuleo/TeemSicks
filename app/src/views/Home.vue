@@ -1,11 +1,11 @@
 
-  
+
 
 <template>
-  
+
   <div class="container-fluid">
     <div class="home">
-      <h1>Welcome to your new home</h1>
+      <h1>Welcome to Foxycle</h1>
     </div>
     <HomeSlider/>
     <div class="header">
@@ -18,8 +18,8 @@
    </div>
 
 </div>
-    
-    
+
+
 
 </template>
 
@@ -33,10 +33,6 @@ export default {
 <style lang="scss">
 * {
     box-sizing: border-box;
-}
-
-body{
-   background-color: #FFFDF4 !important;
 }
 
 .header {
