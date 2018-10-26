@@ -19,21 +19,30 @@
                   </div>
                </li>
                <li class="nav-item active">
-                  <div class="dropdown" id="navleft">
-                     <button class="dropbtn"><router-link to="/store">Store</router-link></button>
-                     <div class="dropdown-content">
-                        <router-link to="/store">Store1</router-link>
-                        <router-link to="/store">Store2</router-link>
-                        <router-link to="/store">Store3</router-link>
-                     </div>
-                  </div>
-               </li>
-               <li class="nav-item active">
-                  <div class="navlink" id="navleft">
-                     <button class="navbtn"><router-link to="/contact">Contact</router-link></button>
-                  </div>
-               </li>
-            </ul>
+                   <div class="dropdown" id="navleft">
+                      <button class="dropbtn"><router-link to="/store">Store</router-link></button>
+                      <div class="dropdown-content">
+                         <table>
+                            <tr>
+                               <td><router-link to="/store">Road</router-link></td>
+                               <td><router-link to="/store">Mountain</router-link></td>
+                               <td><router-link to="/store">Accessories</router-link></td>
+                            </tr>
+                            <tr>
+                               <td><img src="./assets/bike.jpg" height="200"></td>
+                               <td><img src="./assets/bike.jpg" height="200"></td>
+                               <td><img src="./assets/bike.jpg" height="200"></td>
+                            </tr>
+                         </table>
+                      </div>
+                   </div>
+                </li>
+                <li class="nav-item active">
+                   <div class="navlink" id="navleft">
+                      <button class="navbtn"><router-link to="/contact">Contact</router-link></button>
+                   </div>
+                </li>
+             </ul>
 
             <!-- Right items: Login and cart -->
             <ul class="navbar-nav navbar-right" id="navright">
