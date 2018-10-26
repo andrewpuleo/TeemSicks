@@ -2,7 +2,7 @@
 # Teem Sicks
 
 ### About Us
-Motto: Pro Bono   
+Motto: SHOTS SHOTS SHOTS SHOTS SHOTS SHOTSSSSS EVERYOBOYDY :beer:
 Pizza Topping: Bacon and Eggs  
 
 ### Team Roles
