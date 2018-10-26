@@ -63,7 +63,6 @@
 <style lang="scss">
 .contact{
     color: rgb(241, 63, 9);
-    padding: 150px;
     text-align: center;
     font-size: 20pt;
 }

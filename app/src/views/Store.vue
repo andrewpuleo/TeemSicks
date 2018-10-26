@@ -1,5 +1,5 @@
 <template>
-  <div class="store container">
+  <div class="store container" style="background-color: inherit">
     <h1>Welcome to the Store</h1>
     <div class="row">
       <div class="col-sm-2 toolbar">
