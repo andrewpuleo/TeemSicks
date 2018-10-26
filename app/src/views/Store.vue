@@ -50,10 +50,11 @@ export default {
   }
 
   .toolbar{
-    background-color: #fff;
+    background-color: inherit;
     border-color: #ff6600;
     border-width: 1px;
     border-radius: 20px;
     border-style: solid;
+    max-height: 285px;
   }
 </style>
