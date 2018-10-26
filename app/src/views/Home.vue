@@ -5,16 +5,32 @@
   
   <div class="container-fluid">
     <div class="home">
-      <h1>Welcome to your new home</h1>
+      <h1>Welcome to Your New Favorite Bike Shop</h1>
     </div>
     <HomeSlider/>
     <div class="header">
     </div>
 
    <div class="row">
-     <div class="col-sm-4" id="newcolumn" style="background-color:#FFFDF4;">Who We Are</div>
-     <div class="col-sm-4" id="newcolumn" style="background-color:#FFFDF4;">Why We Are</div>
-     <div class="col-sm-4" id="newcolumn" style="background-color:#FFFDF4">How We Are</div>
+     <!-- <div class="col-sm-4" id="newcolumn" style="background-color:#FFFDF4;"> -->
+     <div class="col-sm-4" id="newcolumn" >Who We Are
+     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat ullamcorper leo id venenatis. 
+       Fusce interdum nisi a felis tincidunt convallis. In tristique magna sit amet sem ornare venenatis. 
+       Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+       Pellentesque in rutrum nunc. Nam sodales dolor sed auctor elementum. Suspendisse potenti.</div>
+     </div>
+     <div class="col-sm-4" id="newcolumn" >Why We Are
+       <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat ullamcorper leo id venenatis. 
+       Fusce interdum nisi a felis tincidunt convallis. In tristique magna sit amet sem ornare venenatis. 
+       Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+       Pellentesque in rutrum nunc. Nam sodales dolor sed auctor elementum. Suspendisse potenti.</div>
+     </div>
+     <div class="col-sm-4" id="newcolumn" >How We Are
+       <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat ullamcorper leo id venenatis. 
+       Fusce interdum nisi a felis tincidunt convallis. In tristique magna sit amet sem ornare venenatis. 
+       Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+       Pellentesque in rutrum nunc. Nam sodales dolor sed auctor elementum. Suspendisse potenti.</div>
+     </div>
    </div>
 
 </div>
