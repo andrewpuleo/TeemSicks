@@ -84,7 +84,7 @@
         border: 2px solid #CCCCCC;
         background-color: rgb(255, 255, 255);
         margin: auto;
-        margin-top: 50px;
+        margin-top: 30px;
         padding: 20px;
     }
      .register *{
