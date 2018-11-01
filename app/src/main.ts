@@ -4,11 +4,11 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import './../node_modules/bootstrap/dist/css/bootstrap.css';
-import './../node_modules/jquery/dist/jquery.min.js';
-import './../node_modules/bootstrap/js/dist/button.js';
+import VModal from 'vue-js-modal';
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
+Vue.use(VModal);
 
 Vue.use(require('vue-moment'));
 
