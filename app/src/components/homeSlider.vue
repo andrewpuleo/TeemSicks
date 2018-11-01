@@ -13,26 +13,22 @@
                     @sliding-end="onSlideEnd"
         >
 
-        <!-- Text slides with image -->
-        <b-carousel-slide caption="First slide"
-                            text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-                            img-src="https://picsum.photos/1024/480/?image=52"
-        ></b-carousel-slide>
-
-        <!-- Slides with custom text -->
-        <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
-            <h1>Hello world!</h1>
-        </b-carousel-slide>
-
-        <!-- Slides with image only -->
-        <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58">
-        </b-carousel-slide>
-
         <!-- Slides with img slot -->
         <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
-        <b-carousel-slide>
+        <b-carousel-slide caption="First slide"
+                            text="Nulla vitae elit libero, a pharetra augue mollis interdum.">
             <img slot="img" class="d-block img-fluid w-100" width="1024" height="480"
-                src="https://picsum.photos/1024/480/?image=55" alt="image slot">
+                src="../assets/slider1.jpg" alt="image slot">
+        </b-carousel-slide>
+        <b-carousel-slide caption="First slide"
+                            text="Nulla vitae elit libero, a pharetra augue mollis interdum.">
+            <img slot="img" class="d-block img-fluid w-100" width="1024" height="480"
+                src="../assets/slider2.jpg" alt="image slot">
+        </b-carousel-slide>
+        <b-carousel-slide caption="First slide"
+                            text="Nulla vitae elit libero, a pharetra augue mollis interdum.">
+            <img slot="img" class="d-block img-fluid w-100" width="1024" height="480"
+                src="../assets/slider3.jpg" alt="image slot">
         </b-carousel-slide>
 
         <!-- Slide with blank fluid image to maintain slide aspect ratio -->
@@ -43,13 +39,8 @@
             ut lacus vel interdum.
             </p>
         </b-carousel-slide>
-        
+
         </b-carousel>
-        
-        <p class="mt-4">
-        Slide #: {{ slide }}<br>
-        Sliding: {{ sliding }}
-        </p>
 
     </div>
 
@@ -59,10 +50,10 @@
 import { Component, Vue} from 'vue-property-decorator';
 
 @Component
-export default class HomeSlider extends Vue {   
+export default class HomeSlider extends Vue {
     slide: Number = 0;
     sliding: boolean = false;
-    
+
     onSlideStart () {
       this.sliding = true;
     }
@@ -75,4 +66,3 @@ export default class HomeSlider extends Vue {
     
     
 </script>
-
