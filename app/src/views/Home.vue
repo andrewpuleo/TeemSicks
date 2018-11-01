@@ -1,20 +1,47 @@
+
+
+
 <template>
-   <div>
-   <div class="header">
-     <h2>About Us</h2>
-   </div>
+
+  <div class="container-fluid">
+    <HomeSlider/>
+    <div class="header">
+    </div>
 
    <div class="row">
-     <div id="newcolumn" style="background-color:white;">Who We Are</div>
-     <div id="newcolumn" style="background-color:white;">Why We Are</div>
-     <div id="newcolumn" style="background-color:white">How We Are</div>
+     <!-- <div class="col-sm-4" id="newcolumn" style="background-color:#FFFDF4;"> -->
+     <div class="col-sm-4" id="newcolumn" >Who We Are
+     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat ullamcorper leo id venenatis.
+       Fusce interdum nisi a felis tincidunt convallis. In tristique magna sit amet sem ornare venenatis.
+       Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+       Pellentesque in rutrum nunc. Nam sodales dolor sed auctor elementum. Suspendisse potenti.</div>
+     </div>
+     <div class="col-sm-4" id="newcolumn" >Why We Are
+       <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat ullamcorper leo id venenatis.
+       Fusce interdum nisi a felis tincidunt convallis. In tristique magna sit amet sem ornare venenatis.
+       Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+       Pellentesque in rutrum nunc. Nam sodales dolor sed auctor elementum. Suspendisse potenti.</div>
+     </div>
+     <div class="col-sm-4" id="newcolumn" >How We Are
+       <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat ullamcorper leo id venenatis.
+       Fusce interdum nisi a felis tincidunt convallis. In tristique magna sit amet sem ornare venenatis.
+       Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+       Pellentesque in rutrum nunc. Nam sodales dolor sed auctor elementum. Suspendisse potenti.</div>
+     </div>
    </div>
 
-   <div class="footer">
-     <p>Footer</p>
-   </div>
 </div>
+
+
+
 </template>
+
+<script>
+import  HomeSlider  from "@/components/homeSlider";
+export default {
+  components: {HomeSlider},
+  }
+</script>
 
 <style lang="scss">
 * {
@@ -22,7 +49,6 @@
 }
 
 .header {
-    background-image: url(https://s3.insidehook.com/header_bestbike_1460062106.jpg);
     background-color: #ddd;
     font-weight: bold;
     background-size: cover;
@@ -35,15 +61,16 @@
     height: 400px;
 }
 
-#newcolumn{
+.newcolumn{
     border: 30px;
-    ont: inherit;
+    font: inherit;
     color: rgb(241, 63, 9);
     float:left;
     width: 33.33%;
     padding: 110px;
     text-align: center;
     height: 500px;
+    padding-bottom: 10rem;
 }
 
 .row:after {
@@ -53,15 +80,8 @@
 
 }
 
-.footer {
-    background-color: burlywood;
-    padding: 20px;
-    text-align: center;
-}
-
 @media (max-width: 600px) {
     .column {
         width: 100%;
     }
 }
-</style>

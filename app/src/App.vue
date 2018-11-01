@@ -19,30 +19,30 @@
                   </div>
                </li>
                <li class="nav-item active">
-                  <div class="dropdown" id="navleft">
-                     <button class="dropbtn"><router-link to="/store">Store</router-link></button>
-                     <div class="dropdown-content">
-                        <table>
-                           <tr>
-                              <td><router-link to="/store">Road</router-link></td>
-                              <td><router-link to="/store">Mountain</router-link></td>
-                              <td><router-link to="/store">Accessories</router-link></td>
-                           </tr>
-                           <tr>
-                              <td><img src="./assets/bike.jpg" height="200"></td>
-                              <td><img src="./assets/bike.jpg" height="200"></td>
-                              <td><img src="./assets/bike.jpg" height="200"></td>
-                           </tr>
-                        </table>
-                     </div>
-                  </div>
-               </li>
-               <li class="nav-item active">
-                  <div class="navlink" id="navleft">
-                     <button class="navbtn"><router-link to="/contact">Contact</router-link></button>
-                  </div>
-               </li>
-            </ul>
+                   <div class="dropdown" id="navleft">
+                      <button class="dropbtn"><router-link to="/store">Store</router-link></button>
+                      <div class="dropdown-content">
+                         <table>
+                            <tr>
+                               <td><router-link to="/store">Road</router-link></td>
+                               <td><router-link to="/store">Mountain</router-link></td>
+                               <td><router-link to="/store">Accessories</router-link></td>
+                            </tr>
+                            <tr>
+                               <td><img src="./assets/bike.jpg" height="200"></td>
+                               <td><img src="./assets/bike.jpg" height="200"></td>
+                               <td><img src="./assets/bike.jpg" height="200"></td>
+                            </tr>
+                         </table>
+                      </div>
+                   </div>
+                </li>
+                <li class="nav-item active">
+                   <div class="navlink" id="navleft">
+                      <button class="navbtn"><router-link to="/contact">Contact</router-link></button>
+                   </div>
+                </li>
+             </ul>
 
             <!-- Right items: Login and cart -->
             <ul class="navbar-nav navbar-right" id="navright">
@@ -57,6 +57,7 @@
       </div>
    </nav>
     <router-view/>
+
 </div>
 
 </template>
@@ -75,7 +76,12 @@ import index from '@/components/index.vue'; // @ is an alias to /src
 export default class Home extends Vue {}
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+
+body{
+   background-color: #FFFDF4 !important;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -165,4 +171,13 @@ export default class Home extends Vue {}
 
 .dropdown:hover .dropbtn {background-color: #f1f1f1;}
 .navlink:hover .navbtn {background-color: #f1f1f1;}
+
+.page-footer{
+   position:absolute;
+   padding-top: 10rem;
+    width:100%;
+    bottom:0px;
+}
+
+
 </style>
