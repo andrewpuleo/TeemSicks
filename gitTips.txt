@@ -1,0 +1,175 @@
+
+
+UNDO LAST COMMIT
+
+git reset HEAD^
+
+
+Reverting Working Copy to an Older Commit
+
+To revert to a commit that's older than the most recent commit:
+NOTE: This leaved added files on filesystem
+# Resets index to former commit; replace '56e05fced' with your commit code
+git reset 56e05fced
+
+# Moves pointer back to previous HEAD
+git reset --soft HEAD@{1}
+
+git commit -m "Revert to 56e05fced"
+
+# Updates working copy to reflect the new commit
+git reset --hard
+
+
+MERGE AND DEAL WITH CONFLICTS
+git merge -s ours merge_branch
+
+
+
+COPY A FILE FROM ANOTHER BRANCH
+git checkout otherbranch myfile.suf
+
+
+
+
+TEST MERGE WITHOUT COMMITING:
+
+
+to avoid a fast-forward commit, also pass in --no-ff:
+git merge --no-commit --no-ff BRANCH
+Don't like it?:
+git merge --abort
+
+
+
+
+git and apache permissions:
+
+http://ryansechrest.com/2013/08/managing-file-and-folder-permissions-when-deploying-with-git/
+
+
+add, update all files in branch:
+git add -A .
+
+
+force single file to match remote
+git checkout remote/branch -- a/file b/another/file
+
+
+GET OLDER VERSION OF FILE:
+git show REVISION:path/to/file > filename
+
+
+
+
+DELTE REMOTE BRANCH
+git push origin --delete BRANCHNAME
+
+
+LIST BRANCHES AND SORT BY MOD DATE
+Local Branches:
+for branch in `git branch | grep -v HEAD`;do echo -e `git show
+--format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r
+Remote Branches:
+for branch in `git branch -r | grep -v HEAD`;do echo -e `git show
+--format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r
+
+
+CREATE GLOBAL ALIAS
+git config --global alias.d "diff --name-status master origin/master"
+
+MAKE LOCAL BRANCH MATCH REMOTE BRANCH
+git fetch origin
+git reset --hard origin/master
+
+
+
+FORCE MERGE:
+git reset --hard HEAD
+git merge ...
+
+VIEW FILE HISTORY
+gitk class/class.school_section.php
+
+UNDO CHANGES
+git reset --hard [sha]
+SETUP FOR MULTIPLE GITHUB ACCOUNTS
+
+https://help.github.com/articles/generating-ssh-keys
+http://www.springloops.com/blog/git-config-for-mutiply-ssh-keys/
+
+1 - CREATE FIRST KEY:
+ssh-keygen -t rsa
+
+2 - CREATE  ANOTHER KEY:
+ssh-keygen -t rsa -f ~/.ssh/mathtvgitid
+
+3 - CREATE CONFIG FILE (~/.ssh/config)
+# mathtv git account
+Host mathtv.github
+User git
+HostName github.com
+PreferredAuthentications publickey
+IdentityFile /root/.ssh/mathtvgitid
+
+# xyzhomework git account
+Host xyzhomew.github
+User git
+HostName github.com
+PreferredAuthentications publickey
+IdentityFile /root/.ssh/id_rsa1
+
+4 - SET REMOTE
+git remote set-url origin git@mathtv.github:MathTV/MathTV-Website-2.0.git
+git remote set-url origin
+git@mathtv.github:MathTV/MathTV-MathTV-Website-2.0-Schools.git
+git remote set-url origin git@mathtv.github:MathTV/MathTV---Admin-1.0.git
+git remote set-url origin git@mathtv.github:MathTV/MathTV-Website-2.0-Mobile.git
+git remote set-url origin git@mathtv.github:MathTV/MathTV-Website-2.0-QR.git
+git remote set-url origin git@mathtv.github:MathTV/Schools-Site.git
+
+
+
+REPLACE MASTER BRANCH ON REMOTE:
+
+1 - Backup Folders
+mkdir ~/temp_bu
+cp -dpR www.mathtv.com ~/temp_bu/
+
+2 - Compare directoires recursively
+diff -rq www.mathtv.com  ~/temp_bu/www.mathtv.com/
+
+
+3 - Do the Local Merge
+git checkout singlehop
+git merge --strategy=ours master    # keep the content of this branch,
+but record a merge
+git checkout master
+git merge singlehop             # fast-forward master up to the merge
+
+
+git diff --name-status singlehop origin/singlehop
+git diff --name-status singlehop origin/master
+
+4 - rebuild remote master branch
+git branch -d -r origin/master
+git push --force origin master
+
+
+5 - fast commands on second server
+git checkout master
+git merge origin/master
+other notes
+# do the merge the other way around
+git checkout experimental
+git merge -s ours master
+git checkout master
+git merge experimental
+
+# do the merge the right way
+git checkout master
+git merge --no-commit experimental  # merge, but stop before committing
+git checkout experimental .         # check out content, but don't switch branch
+git commit                          # commit the merge
+
+

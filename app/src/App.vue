@@ -58,6 +58,26 @@
    </nav>
     <router-view/>
 
+  <div class="footer">
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-4">
+        <h3>Hours:</h3>
+          <p>M-F: 8am - 5pm</p>
+          <p>Sat: 10am - 4pm</p>
+      </div>
+      <div class="col-sm-4">
+        <h3>Contact</h3>
+          <p>1400 Ramada Drive | Paso Robles, Ca, 93446 | (805)-225-5911</p>
+      </div>
+      <div class="col-sm-2">
+      </div>
+      
+    </div>
+    
+  </div>
+
 </div>
 
 </template>
@@ -77,9 +97,21 @@ export default class Home extends Vue {}
 </script>
 
 <style scoped lang="scss">
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: orange;
+    color: white;
+    text-align: center;
+    z-index: 500;
+    height:100%;
+    margin-top: 20px;
+}
 
 body{
    background-color: #FFFDF4 !important;
+   padding-bottom: 100px;
 }
 
 #app {

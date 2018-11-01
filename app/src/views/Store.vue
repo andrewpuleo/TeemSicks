@@ -7,40 +7,28 @@
       <StoreToolbar/>
       </div>
       <div class="col-sm-10 store_container">
-        
           <StoreItem/>
-        
           <StoreItem/>
-        
           <StoreItem/>
-
           <StoreItem/>
-
           <StoreItem/>
-
           <StoreItem/>
-
           <StoreItem/>
-        
-       
-      
-      
       </div>
     </div>
   </div>
-  
 </template>
 
 <script>
-import  StoreItem  from "@/components/storeItem.vue";
-import  StoreToolbar  from "@/components/storeToolbar.vue";
+
+import StoreItem from '@/components/storeItem.vue';
+import StoreToolbar from '@/components/storeToolbar.vue';
+
 
 export default {
-  components: {StoreItem, StoreToolbar},
-  
-}
+  components: { StoreItem, StoreToolbar },
+};
 </script>
-
 
 <style scoped>
   .store_container {
