@@ -61,4 +61,8 @@ export default class HomeSlider extends Vue {
     onSlideEnd () {
       this.sliding = false;
     }}
+
+
+    
+    
 </script>
