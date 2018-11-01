@@ -1,44 +1,29 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Products', {
+    return queryInterface.createTable('Addresses', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      productId: {
-        type: Sequelize.STRING
-      },
-      productName: {
-        type: Sequelize.STRING
-      },
-      Brand: {
-        type: Sequelize.STRING
-      },
-      Type: {
-        type: Sequelize.STRING
-      },
-      Price: {
-        type: Sequelize.FLOAT
-      },
-      onSale: {
-        type: Sequelize.BOOLEAN
-      },
-      salePrice: {
-        type: Sequelize.FLOAT
-      },
-      productDescription: {
-        type: Sequelize.STRING
-      },
-      inStock: {
-        type: Sequelize.BOOLEAN
-      },
-      amountInStock: {
+      addressId: {
         type: Sequelize.INTEGER
       },
-      color: {
+      street1: {
+        type: Sequelize.STRING
+      },
+      street2: {
+        type: Sequelize.STRING
+      },
+      city: {
+        type: Sequelize.STRING
+      },
+      zip: {
+        type: Sequelize.INTEGER
+      },
+      country: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -52,6 +37,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Products');
+    return queryInterface.dropTable('Addresses');
   }
 };
