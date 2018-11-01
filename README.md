@@ -2,8 +2,7 @@
 # Teem Sicks
 
 ### About Us
-Motto: SHOTS SHOTS SHOTS SHOTS SHOTS SHOTSSSSS EVERYOBOYDY :beer:
-
+Motto: Pro Bono
 Pizza Topping: Bacon and Eggs  
 
 ### Team Roles
@@ -12,3 +11,6 @@ Database: Andrew
 Architect: Sean  
 UI: James  
 QA: Mario  
+
+# Database UML Diagram
+![Database UML](/foxycle_database.png)

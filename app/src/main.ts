@@ -10,6 +10,8 @@ Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(VModal);
 
+Vue.use(require('vue-moment'));
+
 new Vue({
   router,
   store,
