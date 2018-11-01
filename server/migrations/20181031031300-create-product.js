@@ -27,7 +27,7 @@ module.exports = {
         type: Sequelize.DOUBLE
       },
       productDescription: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       inStock: {
         type: Sequelize.BOOLEAN
