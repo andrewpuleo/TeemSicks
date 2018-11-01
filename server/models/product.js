@@ -1,20 +1,21 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Product = sequelize.define('Product', {
-    productId: DataTypes.STRING,
+    productId: DataTypes.INTEGER,
     productName: DataTypes.STRING,
     Brand: DataTypes.STRING,
-    Type: DataTypes.STRING,
-    Price: DataTypes.FLOAT,
+    Price: DataTypes.DOUBLE,
     onSale: DataTypes.BOOLEAN,
-    salePrice: DataTypes.FLOAT,
-    productDescription: DataTypes.STRING,
+    salePrice: DataTypes.DOUBLE,
+    productDescription: DataTypes.TEXT,
     inStock: DataTypes.BOOLEAN,
     amountInStock: DataTypes.INTEGER,
-    color: DataTypes.STRING
+    color: DataTypes.STRING,
+    photoUrl: DataTypes.STRING
   }, {});
   Product.associate = function(models) {
     // associations can be defined here
+    Product.belongsToMany(models.OrderItem);
   };
   return Product;
 };

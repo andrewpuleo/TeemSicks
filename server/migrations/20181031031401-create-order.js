@@ -11,13 +11,10 @@ module.exports = {
       orderId: {
         type: Sequelize.STRING
       },
-      date: {
-        type: Sequelize.INTEGER
+      userId: {
+        type: Sequelize.STRING
       },
-      numItems: {
-        type: Sequelize.INTEGER
-      },
-      totalPrice: {
+      addressId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

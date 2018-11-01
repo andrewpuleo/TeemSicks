@@ -1,0 +1,13 @@
+node_modules/.bin/sequelize model:generate --name ProductCategory --attributes productId:integer,categoryId:integer
+
+node_modules/.bin/sequelize model:generate --name OrderItem --attributes productId:integer,quantity:integer,price:double
+
+node_modules/.bin/sequelize model:generate --name Product --attributes productId:integer,productName:string,Brand:string,Price:double,onSale:boolean,salePrice:double,productDescription:string,inStock:boolean,amountInStock:integer,color:string,photoUrl:string
+
+node_modules/.bin/sequelize model:generate --name Category --attributes type:string
+
+node_modules/.bin/sequelize model:generate --name User --attributes userId:integer,firstName:string,lastName:string,phone:integer,email:string,username:string,password:string
+
+node_modules/.bin/sequelize model:generate --name Address --attributes addressId:integer,street1:string,street2:string,city:string,zip:integer,country:string
+
+node_modules/.bin/sequelize model:generate --name Order --attributes orderId:string,userId:string,addressId:integer

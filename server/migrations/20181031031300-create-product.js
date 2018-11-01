@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       productId: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       productName: {
         type: Sequelize.STRING
@@ -17,20 +17,17 @@ module.exports = {
       Brand: {
         type: Sequelize.STRING
       },
-      Type: {
-        type: Sequelize.STRING
-      },
       Price: {
-        type: Sequelize.FLOAT
+        type: Sequelize.DOUBLE
       },
       onSale: {
         type: Sequelize.BOOLEAN
       },
       salePrice: {
-        type: Sequelize.FLOAT
+        type: Sequelize.DOUBLE
       },
       productDescription: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       inStock: {
         type: Sequelize.BOOLEAN
@@ -39,6 +36,9 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       color: {
+        type: Sequelize.STRING
+      },
+      photoUrl: {
         type: Sequelize.STRING
       },
       createdAt: {
