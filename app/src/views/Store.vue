@@ -31,15 +31,32 @@
   
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import axios from 'axios';
+import ToDo from '@/components/ToDo.vue';
+import { product } from '@/models';
 import  StoreItem  from "@/components/storeItem.vue";
 import  StoreToolbar  from "@/components/storeToolbar.vue";
 
-export default {
-  components: {StoreItem, StoreToolbar},
+@Component({ components: { StoreItem, StoreToolbar } })
+export default class Store extends Vue {
+  items: product[] = [];
+
+
+  mounted() {
+    axios.get('/api/products')
+      .then((response) => {
+        this.items = response.data.product;
+      });
+  }
   
+  
+
 }
+console.log("hi");
 </script>
+
 
 
 <style scoped>
