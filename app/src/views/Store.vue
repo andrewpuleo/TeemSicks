@@ -43,9 +43,9 @@ import  StoreToolbar  from "@/components/storeToolbar.vue";
 export default class Store extends Vue {
   items: product[] = [];
 
-
   mounted() {
-    axios.get('/api/products')
+    debugger;
+    axios.get('/api/Products')
       .then((response) => {
         this.items = response.data.product;
       });

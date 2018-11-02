@@ -1,6 +1,5 @@
 const express = require('express');
 const { Product } = require('../models');
-
 const router = express.Router();
 
 router.route('/')
@@ -9,7 +8,7 @@ router.route('/')
     console.log("here");
     Product.findAll().then((products) => {
       res.json({
-        product,
+        products,
       });
     });
   })
