@@ -1,33 +1,48 @@
 
 
 <template>
-  <div class="item" v-bind:style="{ 'background-image': 'url(' + item.photoUrl + ')' }">
+  <div class="item" id="item" v-bind:style="{'background-image': 'url(' + item.photoUrl + ')', 'background-size': '100%', 'background-repeat': 'no-repeat', 'background-position':'center' } ">
       <div class="item-name">
         <h3 v-bind:for="item.id">{{item.productName}}</h3>
       </div>
-      <div class="item-pic">
+      <div class="row item-pic">
           <!--
               <img src="../assets/rockhopper_image.jpeg">
         -->
 
-        <img v-bind:for="item.id" v-bind:src="this.item.photoUrl">
+        <!--img v-bind:for="item.id" v-bind:src="this.item.photoUrl" -->
 
       </div>
-      <div>
-          <h5  v-bind:for="item.id">${{item.salePrice}}</h5>
+      <div class="row bottom-info">
+         <div class="col">
+            <h5  v-bind:for="item.id">${{item.salePrice}}</h5>
+         </div>
+         <div class="col">
+            <button type="button" class="btn btn-primary">Add To Cart</button>
+         </div>
       </div>
-      <button type="button" class="btn btn-primary">Add To Cart</button>
   </div>
 </template>
 
 <style scoped>
+
+//#item:hover {opacity: 0.7;}
+
 .item {
-  background-color: grey;
-  border-radius: 10%;
+   position: relative;
+  background-color: white;
   width: 200px;
   height: 200px;
   padding: 0 1rem;
   margin: 1rem 1rem;
+  border:1px solid rgba(252, 92, 0, 0.801);
+}
+
+.bottom-info{
+   background-color: rgba(252, 92, 0, 0.801);
+   position: absolute;
+    bottom: 0px;
+    width: 100%;
 }
 
 .item-pic > img{
@@ -36,6 +51,21 @@
 }
 .item-pic{
     height:40%;
+}
+
+button{
+  margin-top: 20px;
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  border:2px solid rgba(252, 92, 0, 0.801);
+}
+button:hover{
+cursor: pointer;
+color: black;
+border: 2px solid rgba(252, 92, 0, 0.801);
+background-color: rgba(252, 92, 0, 0.801);
 }
 
 @media(max-width: 992px){

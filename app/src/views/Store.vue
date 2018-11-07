@@ -1,19 +1,18 @@
 <template>
   <div class="store container" style="background-color: inherit">
-    <h1>Welcome to the Store</h1>
     <div class="row">
       <div class="col-sm-2 toolbar">
       Narrow Down Your Search
       <StoreToolbar/>
       </div>
-      <div class="col-sm-10 store_container">
-      
+      <div class="col store_container">
+
         <StoreItem v-for="item in items" v-bind:key="item.id" v-bind:item="item"></StoreItem>
-      
+
       </div>
     </div>
   </div>
-  
+
 </template>
 
 <script lang="ts">
@@ -36,8 +35,8 @@ export default class Store extends Vue {
         console.log(this.items);
       });
   }
-  
-  
+
+
 
 }
 </script>
@@ -47,7 +46,7 @@ export default class Store extends Vue {
 <style scoped>
   .store_container {
     display: flex;
-    justify-content: space-between;
+    display: -webkit-flex;
     flex-wrap: wrap;
   }
 
