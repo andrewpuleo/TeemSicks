@@ -9,7 +9,7 @@
           <!--
               <img src="../assets/rockhopper_image.jpeg">
         -->
-        <img src="../assets/rockhopper_image.jpeg">
+        
         <img v-bind:for="item.id" v-bind:src="this.item.photoUrl">
         
       </div>
