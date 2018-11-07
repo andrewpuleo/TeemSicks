@@ -1,7 +1,7 @@
 
 
 <template>
-  <div class="item">
+  <div class="item" v-bind:style="{ 'background-image': 'url(' + item.photoUrl + ')' }">
       <div class="item-name">
         <h3 v-bind:for="item.id">{{item.productName}}</h3>
       </div>
@@ -9,9 +9,9 @@
           <!--
               <img src="../assets/rockhopper_image.jpeg">
         -->
-        
+
         <img v-bind:for="item.id" v-bind:src="this.item.photoUrl">
-        
+
       </div>
       <div>
           <h5  v-bind:for="item.id">${{item.salePrice}}</h5>
@@ -70,8 +70,8 @@ export default class StoreItem extends Vue {
     @Prop({ default: null })
     item!: product;
     URL = this.item.photoUrl;
-    
 
-}   
-    
+
+}
+
 </script>
