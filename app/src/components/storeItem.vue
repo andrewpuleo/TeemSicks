@@ -2,6 +2,7 @@
 
 <template>
   <div class="item" id="item">
+     <a class="lightbox" href="#zoomed">
       <div class="row item-pic" v-bind:style="{'background-image': 'url(' + item.photoUrl + ')', 'background-size': '100%', 'background-repeat': 'no-repeat', 'background-position':'center' } ">
           <!--
               <img src="../assets/rockhopper_image.jpeg">
@@ -10,6 +11,8 @@
         <!--img v-bind:for="item.id" v-bind:src="this.item.photoUrl" -->
 
       </div>
+      </a>
+
       <div class="row bottom-info">
          <div class="price">
             <h5 style="color:white; font-size: 25px; border-bottom: 2px solid white;}" v-bind:for="item.id">${{item.salePrice}}</h5>
@@ -94,6 +97,7 @@ background-color: rgba(252, 92, 0, 0.801);
         height:270px;
     }
 }
+
 </style>
 
 

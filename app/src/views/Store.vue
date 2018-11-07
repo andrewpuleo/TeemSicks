@@ -8,6 +8,7 @@
       <div class="col store_container">
 
         <StoreItem v-for="item in items" v-bind:key="item.id" v-bind:item="item"></StoreItem>
+        <StoreItemLightbox v-for="item in items" v-bind:key="item.id" v-bind:item="item"></StoreItemLightbox>
 
       </div>
     </div>
@@ -21,6 +22,7 @@ import axios from 'axios';
 import ToDo from '@/components/ToDo.vue';
 import { product } from '@/models';
 import  StoreItem  from "@/components/storeItem.vue";
+import  StoreItemLightbox  from "@/components/storeItemLightbox.vue";
 import  StoreToolbar  from "@/components/storeToolbar.vue";
 
 @Component({ components: { StoreItem, StoreToolbar } })
