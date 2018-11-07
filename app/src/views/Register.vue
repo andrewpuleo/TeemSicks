@@ -7,23 +7,23 @@
         </div>
         <div class = "container1">
           <div class = "FirstName">
-            <input type="text" name="FirstName" v-model="FirstName" placeholder="First Name"/>
+            <input type="text" name="FirstName" v-model="newFirstName" placeholder="First Name"/>
           </div>
            <div class = "LastName">
-            <input type="text" name="LastName" v-model="LastName" placeholder="Last Name"/>
+            <input type="text" name="LastName" v-model="newLastName" placeholder="Last Name"/>
           </div>
         </div>
         <div class = "UserName">
-          <input type="text" name="UserName" v-model="UserName" placeholder="Username"/>
+          <input type="text" name="UserName" v-model="newUsername" placeholder="Username"/>
         </div>
          <div class = "EmailAddress">
-          <input type="email" name="EmailAddress" 
-            v-model="EmailAddress" placeholder="Email Address"/>
+          <input type="email" name="EmailAddress"
+            v-model="newEmailAddress" placeholder="Email Address"/>
         </div>
          <div class = "PassWord">
-          <input type="password" name="PassWord" v-model="PassWord" placeholder="Password"/>
+          <input type="password" name="PassWord" v-model="newPassword" placeholder="Password"/>
         </div>
-         <div class = "container2"> 
+         <div class = "container2">
           <div>
             <label><input type="checkbox" style = "
                 width: 13px;
@@ -34,7 +34,7 @@
                 *overflow: hidden"> I agree to the <a href ="#" class = "link" id="termsLink" style="color:rgba(252, 92, 0, 0.801)"  v-on:click="show()">terms of use </a></label>
           </div>
         </div>
-        
+
         <button type="button" v-on:click="signUp()">Join Now</button>
     </div>
     <modal id = "termsPage" name = "hello">
@@ -48,35 +48,35 @@
           </modal>
   </div>
 </template>
- <script>
-    export default {
-        name: 'Register',
-        data() {
-            return {
-              FirstName: "",
-              LastName: "",
-              UserName: "",
-              EmailAddress: "",
-              PassWord: "",
-              website: {
-                termsOfUse: "https://github.com/CSC307Fall2018/TeemSicks"
-              },
-            }
-        },
-        methods: {
-            signUp() {
-                   
-            },
-            show(){
-              this.$modal.show('hello');
-            },
-            hide(){
-              this.$modal.hide('hello');
-            },
-            check(){
-             }
-  },
-};
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import axios from 'axios';
+import { User } from '@/models';
+
+export default class Register extends Vue {
+  newFirstName: string = '';
+  newLastName: string = '';
+  newUsername: string = '';
+  newEmailAddress: string = '';
+  newPassword: string = '';
+
+  signUp() {
+    console.log(this.newFirstName);
+    axios.post('/api/users', {
+      firstName: this.newFirstName,
+      lastName: this.newLastName,
+      username: this.newUsername,
+      email: this.newEmailAddress,
+      password: this.newPassword,
+    }).then((res) => {
+      this.newFirstName = '';
+      this.newLastName = '';
+      this.newUsername = '';
+      this.newEmailAddress = '';
+      this.newPassword = '';
+    })
+  }
+}
 </script>
  <style scoped>
     .register {

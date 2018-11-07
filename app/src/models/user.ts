@@ -1,4 +1,4 @@
-export class item {
+export class User {
   userId!: number,
   firstName!: number,
   lastName!: string,

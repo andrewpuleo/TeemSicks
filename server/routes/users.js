@@ -1,19 +1,9 @@
 const express = require('express');
-const { user } = require('../models');
-
+const { User } = require('../models');
 const router = express.Router();
 
 router.route('/')
-  // get all todos
-  .get((req, res) => {
-    user.findAll().then((users) => {
-      res.json({
-        users,
-      });
-    });
-  })
-
-  // create  todo
+   // create user
   .post((req, res) => {
     const {
       userId,
@@ -24,8 +14,9 @@ router.route('/')
       username,
       password,
     } = req.body;
+    console.log("user", req.body);
     // validate potentially here
-    ToDo.create({
+    User.create({
       userId,
       firstName,
       lastName,
@@ -33,8 +24,8 @@ router.route('/')
       email,
       username,
       password,
-    }).then((todo) => {
-      res.json(todo);
+    }).then((user) => {
+      res.json(user);
     });
   });
 
