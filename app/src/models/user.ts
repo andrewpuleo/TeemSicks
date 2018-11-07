@@ -1,5 +1,9 @@
 export class item {
-  user_id!: string,
-  last_name!: string,
-  first_name!: string,
+  userId!: number,
+  firstName!: number,
+  lastName!: string,
+  phone!: number,
+  email!: string,
+  username!: string,
+  password!: string,
 }
