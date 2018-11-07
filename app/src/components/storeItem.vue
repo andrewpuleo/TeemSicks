@@ -1,7 +1,23 @@
+
+
 <template>
-    <div class="item">
-        hello
-    </div>
+  <div class="item">
+      <div class="item-name">
+        <h3 v-bind:for="item.id">{{item.productName}}</h3>
+      </div>
+      <div class="item-pic">
+          <!--
+              <img src="../assets/rockhopper_image.jpeg">
+        -->
+        <img src="../assets/rockhopper_image.jpeg">
+        <img v-bind:for="item.id" v-bind:src="this.item.photoUrl">
+        
+      </div>
+      <div>
+          <h5  v-bind:for="item.id">${{item.salePrice}}</h5>
+      </div>
+      <button type="button" class="btn btn-primary">Add To Cart</button>
+  </div>
 </template>
 
 <style scoped>
@@ -12,6 +28,14 @@
   height: 200px;
   padding: 0 1rem;
   margin: 1rem 1rem;
+}
+
+.item-pic > img{
+    max-width: 75%;
+    max-height: 75%;
+}
+.item-pic{
+    height:40%;
 }
 
 @media(max-width: 992px){
@@ -39,11 +63,15 @@
 
 
 <script lang="ts">
-import { Component, Vue} from 'vue-property-decorator';
-
+import { Component, Vue, Prop} from 'vue-property-decorator';
+import { product } from '@/models';
 @Component
 export default class StoreItem extends Vue {
+    @Prop({ default: null })
+    item!: product;
+    URL = this.item.photoUrl;
     
+
 }   
     
 </script>

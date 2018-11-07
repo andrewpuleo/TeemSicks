@@ -5,7 +5,6 @@ const router = express.Router();
 router.route('/')
   // get all products
   .get((req, res) => {
-    console.log("here");
     Product.findAll().then((products) => {
       res.json({
         products,

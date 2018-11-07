@@ -7,23 +7,8 @@
       <StoreToolbar/>
       </div>
       <div class="col-sm-10 store_container">
-        
-          <StoreItem/>
-        
-          <StoreItem/>
-        
-          <StoreItem/>
-
-          <StoreItem/>
-
-          <StoreItem/>
-
-          <StoreItem/>
-
-          <StoreItem/>
-        
-       
       
+        <StoreItem v-for="item in items" v-bind:key="item.id" v-bind:item="item"></StoreItem>
       
       </div>
     </div>
@@ -44,17 +29,17 @@ export default class Store extends Vue {
   items: product[] = [];
 
   mounted() {
-    debugger;
+
     axios.get('/api/Products')
       .then((response) => {
-        this.items = response.data.product;
+        this.items = response.data.products;
+        console.log(this.items);
       });
   }
   
   
 
 }
-console.log("hi");
 </script>
 
 
