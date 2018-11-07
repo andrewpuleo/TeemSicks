@@ -1,11 +1,8 @@
 
 
 <template>
-  <div class="item" id="item" v-bind:style="{'background-image': 'url(' + item.photoUrl + ')', 'background-size': '100%', 'background-repeat': 'no-repeat', 'background-position':'center' } ">
-      <div class="item-name">
-        <h3 v-bind:for="item.id">{{item.productName}}</h3>
-      </div>
-      <div class="row item-pic">
+  <div class="item" id="item">
+      <div class="row item-pic" v-bind:style="{'background-image': 'url(' + item.photoUrl + ')', 'background-size': '100%', 'background-repeat': 'no-repeat', 'background-position':'center' } ">
           <!--
               <img src="../assets/rockhopper_image.jpeg">
         -->
@@ -14,19 +11,22 @@
 
       </div>
       <div class="row bottom-info">
-         <div class="col">
-            <h5  v-bind:for="item.id">${{item.salePrice}}</h5>
+         <div class="price">
+            <h5 style="color:white; font-size: 25px; border-bottom: 2px solid white;}" v-bind:for="item.id">${{item.salePrice}}</h5>
          </div>
-         <div class="col">
-            <button type="button" class="btn btn-primary">Add To Cart</button>
+         <div class="product-name">
+            <h3 v-bind:for="item.id">{{item.productName}}</h3>
          </div>
+         <!--div class="col">
+            <button type="button" class="btn btn-primary" style="font-size: 12px">Add To Cart</button>
+         </div -->
       </div>
   </div>
 </template>
 
 <style scoped>
 
-//#item:hover {opacity: 0.7;}
+#item:hover {opacity: 0.7;}
 
 .item {
    position: relative;
@@ -36,6 +36,11 @@
   padding: 0 1rem;
   margin: 1rem 1rem;
   border:1px solid rgba(252, 92, 0, 0.801);
+}
+
+.price{
+   width: 100%;
+   text-align: left;
 }
 
 .bottom-info{
@@ -50,11 +55,12 @@
     max-height: 75%;
 }
 .item-pic{
-    height:40%;
+   position: relative;
+    height:100%;
 }
 
 button{
-  margin-top: 20px;
+   width: 5rem;
   background-color: white;
   color: black;
   border-radius: 4px;
