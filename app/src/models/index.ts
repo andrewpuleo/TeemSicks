@@ -1,2 +1,1 @@
-export * from '@/models/todoItem';
-export * from '@/models/user';
+export * from '@/models/product';

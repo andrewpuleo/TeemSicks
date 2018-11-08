@@ -13,6 +13,12 @@ Vue.use(VModal);
 Vue.use(require('vue-moment'));
 
 new Vue({
+   el: '#app',
+ data () {
+   return {
+     toggle: true
+   }
+ },
   router,
   store,
   render: h => h(App),
