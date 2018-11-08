@@ -8,42 +8,12 @@
       <div class="col store_container">
 
         <StoreItem v-for="item in items" v-bind:key="item.id" v-bind:item="item"></StoreItem>
-        <StoreItemLightbox v-for="item in items" v-bind:key="item.id" v-bind:item="item"></StoreItemLightbox>
 
       </div>
     </div>
   </div>
 
 </template>
-
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import axios from 'axios';
-import ToDo from '@/components/ToDo.vue';
-import { product } from '@/models';
-import  StoreItem  from "@/components/storeItem.vue";
-import  StoreItemLightbox  from "@/components/storeItemLightbox.vue";
-import  StoreToolbar  from "@/components/storeToolbar.vue";
-
-@Component({ components: { StoreItem, StoreToolbar } })
-export default class Store extends Vue {
-  items: product[] = [];
-
-  mounted() {
-
-    axios.get('/api/Products')
-      .then((response) => {
-        this.items = response.data.products;
-        console.log(this.items);
-      });
-  }
-
-
-
-}
-</script>
-
-
 
 <style scoped>
   .store_container {
@@ -61,3 +31,25 @@ export default class Store extends Vue {
     max-height: 285px;
   }
 </style>
+
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import axios from 'axios';
+import ToDo from '@/components/ToDo.vue';
+import { product } from '@/models';
+import  StoreItem  from "@/components/storeItem.vue";
+import  StoreToolbar  from "@/components/storeToolbar.vue";
+
+@Component({ components: { StoreItem, StoreToolbar, } })
+export default class Store extends Vue {
+  items: product[] = [];
+  mounted() {
+
+    axios.get('/api/Products')
+      .then((response) => {
+        this.items = response.data.products;
+        console.log(this.items);
+      });
+  }
+}
+</script>

@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="item" id="item">
      <a class="lightbox" href="#zoomed">
@@ -110,8 +108,6 @@ export default class StoreItem extends Vue {
     @Prop({ default: null })
     item!: product;
     URL = this.item.photoUrl;
-
-
 }
 
 </script>
