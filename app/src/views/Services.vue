@@ -10,9 +10,10 @@
         <div class="col">
             <div class="text">
                 <br>
-                <b> Whether you need a quick tune up, repair for a flat or a complete overhaul
+                <b style="color:rgba(252, 92, 0, 0.801)"> Whether you need a quick tune up, repair
+                     for a flat or a complete overhaul
                     to make your bike run and look like new, our experts at Foxycle
-                    have you covered! <br> </b>
+                    have you covered!</b>
                     <br>
                 <small> We've prepared the chart below to provide a menu of our common bicycle
                     services
@@ -26,23 +27,23 @@
     <div class="row">
         <div class="col">
             <br>
-            <b> SERVICE PACKAGES </b>
-            <p> Minor tune-up <br>
+            <b class="service-title"> SERVICE PACKAGES </b>
+            <p class="service-text"> Minor tune-up <br>
                 Major tune-up <br>
                 Brake overhaul <br>
                 Bike overhaul <br>
                 Detail Bike<br><br><br> </p>
         </div>
         <div class="col">
-            <b> WHEELS </b>
-            <p> Flat tire repair <br>
+            <b class="service-title"> WHEELS </b>
+            <p class="service-text"> Flat tire repair <br>
             Replace tire(s) <br>
             Replace broken spoke(s) <br>
             Hub bearing overhaul<br> <br> <br></p>
         </div>
         <div class="col">
-            <b> BRAKES </b>
-            <p> Replace brake cable(s) <br>
+            <b class="service-title"> BRAKES </b>
+            <p class="service-text"> Replace brake cable(s) <br>
             Replace brake shoes <br>
             Minor brake adjustment <br>
             Major brake adjustment <br>
@@ -50,8 +51,8 @@
             </p>
         </div>
         <div class="col">
-            <b> OTHER SERVICES </b>
-            <p> Bike build (from box)<br>
+            <b class="service-title"> OTHER SERVICES </b>
+            <p class="service-text"> Bike build (from box)<br>
             Replace seat<br>
             Replace seatpost<br>
             Install accessories<br><br> <br>
@@ -61,23 +62,23 @@
     <div class="row">
         <div class="col">
             <br>
-            <b> FRONT END </b>
-            <p> Replace handlebars <br>
+            <b class="service-title"> FRONT END </b>
+            <p class="service-text"> Replace handlebars <br>
                 Replace stem <br>
                 Replace handlebar tape <br>
-                Replace handlebar grips<br><br><br>
+                Replace handlebar grips<br><br><br><br>
                 </p>
         </div>
         <div class="col">
-            <b> FRAME AND FORK </b>
-            <p> Replace fork <br>
+            <b class="service-title"> FRAME AND FORK </b>
+            <p class="service-text"> Replace fork <br>
             Rear shock air sleeve<br>
             Derailleaur hanger repair/replace<br>
             Frame prep for assembly<br><br><br> </p>
         </div>
         <div class="col">
-            <b> DRIVETRAIN </b>
-            <p> Clean and lube <br>
+            <b class="service-title"> DRIVETRAIN </b>
+            <p class="service-text"> Clean and lube <br>
             Complete drivetrain service<br>
             Replace chain <br>
             Adjust/repair derailleaur <br>
@@ -86,8 +87,8 @@
             </p>
         </div>
         <div class="col">
-            <b> BEARINGS </b>
-            <p> Overhaul headset<br>
+            <b class="service-title"> BEARINGS </b>
+            <p class="service-text"> Overhaul headset<br>
             Overhaul hub(s)<br>
             Overhaul pedals<br>
             Replace suspension pivots<br><br><br>
@@ -117,5 +118,12 @@
     .col{
         margin: auto;
         max-width: 1000px;
+    }
+    .service-title{
+        color:rgba(252, 92, 0, 0.801);
+    }
+
+    .service-text{
+        color: rgba(68, 67, 62, 0.877)
     }
 </style>
