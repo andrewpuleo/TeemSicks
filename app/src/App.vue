@@ -57,7 +57,23 @@
       </div>
    </nav>
     <router-view/>
-
+    <div class="pt-5">
+    <footer class="footer" id="customfooter">
+      <div class="container">
+        <div class="row">
+          Insert Social Media Links Here
+        </div>
+        <div class="row">
+          <div class="col">
+            Contact Us
+          </div>
+          <div class="col">
+            Our Mission
+          </div>
+        </div>
+      </div>
+    </footer>
+    </div>
 </div>
 
 </template>
@@ -89,6 +105,11 @@ body{
   text-align: center;
   color: #2c3e50;
 }
+
+#customfooter {
+  background-color: rgba(252, 92, 0, 0.801);
+}
+
 #navleft {
   a {
     padding-left: 10px;
