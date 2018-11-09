@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> lightbox2
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -35,9 +32,4 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
-<<<<<<< HEAD
 module.exports = db;
-=======
-module.exports = db;
->>>>>>> lightbox2
