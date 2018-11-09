@@ -115,14 +115,6 @@
   color: rgba(252, 92, 0, 0.801);
 }
 
-.container{
-
-  color: black;
-
-  font-size: 15pt;
-
-}
-
 label.form-descriptions{
 
   padding-right: 1rem;
