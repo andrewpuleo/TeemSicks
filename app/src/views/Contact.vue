@@ -115,8 +115,6 @@
   color: rgba(252, 92, 0, 0.801);
 }
 
-
-
 label.form-descriptions{
 
   padding-right: 1rem;
