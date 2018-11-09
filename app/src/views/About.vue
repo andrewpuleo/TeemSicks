@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <HelloWorld msg="This is an about page"/>
+    <HelloWorld msg="About Foxycle"/>
     <index/>
     <div class="container">
     </div>
@@ -17,5 +17,6 @@ import index from '@/components/index.vue'; // @ is an alias to /src
   HelloWorld, index,
   },
   })
+
 export default class About extends Vue {}
 </script>

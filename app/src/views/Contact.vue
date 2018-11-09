@@ -1,12 +1,15 @@
 <template>
   <div class="contact">
     <div class="storeinfo">
+        <div class="borderstore">
             <h1><span class="info"><br>Store Info</span></h1>
+            <p> <span class="pnum">Phone Number:</span> (805)FOXYCLE</p>
             <p>
-              <span class="hours">Hours:</span> 8 am - 5 pm Sunday - Saturday</p>
+              <span class="pnum">Address:</span> 1234 Foothill Dr, San Luis Obispo 93405</p>
             <p>
-              <span class="pnum">Phone Number:</span> (805)FOXYCLE</p>
+              <span class="pnum">Hours:</span> 8 am - 5 pm Sunday - Saturday</p>
             <br>
+        </div>
     </div>
     <h1> <br>Contacting Foxycle</h1>
       <div class="container text-center">
@@ -38,21 +41,30 @@
       <div class="container-fluid headshots">
       <div class="row">
         <div class="col">
-          <img src="http://www.pd4pic.com/images/people-boy-man-guy-profile-silhouette-head-black.png">
+          <img src="http://4.bp.blogspot.com/-OYbF-VMNom0/TeooKhWAU9I/AAAAAAAADNg/g7l3y-SGyyo/s1600/Sutton-38.jpg">
           <div class="empname">
-            <h1> staff 1 </h1>
+            <p> Freddy McFarmer </p>
+            <div class="job-title">
+              Store Manager
+            </div>
           </div>
         </div>
         <div class="col">
-          <img src="http://www.pd4pic.com/images/people-boy-man-guy-profile-silhouette-head-black.png">
+          <img src="../assets/foxy.png"/>
           <div class="empname">
-            <h1> staff 2 </h1>
+            <p> Kris Fox </p>
+            <div class="job-title">
+              <p> Store Owner </p>
+            </div>
           </div>
         </div>
         <div class="col">
-          <img src="http://www.pd4pic.com/images/people-boy-man-guy-profile-silhouette-head-black.png">
+          <img src="http://de.web.img2.acsta.net/pictures/15/03/16/13/33/012542.jpg">
           <div class="empname">
-            <h1> staff 3 </h1>
+            <p> Greg Gregory </p>
+            <div class="job-title">
+              <p> Sales Associate </p>
+            </div>
           </div>
         </div>
       </div>
@@ -72,8 +84,13 @@
   font-size: 15pt;
 }
 
+.job-title{
+  font-size: 8 pt;
+}
+
 .headshots img{
   width: 300px;
+  height: 400px;
 }
 
 label.form-descriptions{
@@ -81,6 +98,11 @@ label.form-descriptions{
   vertical-align: center;
 }
 
+.borderstore{
+  border-style:solid;
+  border-color: #DCDCDC;
+  border-width: 5px;
+}
 
 /* Style inputs with type="text", select elements and textareas */
 input[type=text], select, textarea {
