@@ -16,6 +16,9 @@
         <div class = "UserName">
           <input type="text" name="UserName" v-model="UserName" placeholder="Username"/>
         </div>
+        <div class = "phoneNumber">
+          <input type="text" name="phoneNumber" v-model="PhoneNumber" placeholder="Phone Number"/>
+        </div>
          <div class = "EmailAddress">
           <input type="email" name="EmailAddress" 
             v-model="EmailAddress" placeholder="Email Address"/>
@@ -58,6 +61,7 @@
               UserName: "",
               EmailAddress: "",
               PassWord: "",
+              PhoneNumber: "",
               website: {
                 termsOfUse: "https://github.com/CSC307Fall2018/TeemSicks"
               },

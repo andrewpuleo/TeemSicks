@@ -3,14 +3,23 @@
     <div class = "login">
         <img src = "../assets/foxycle.png" alt = "login"
           style = "width:200px; height:100px;padding:10px"/>
-         <div class = "UserName">
-          <input type="text" name="username" v-model="input.username" placeholder="Username"/>
-        </div>
-         <div class = "PassWord">
-          <input type="password" name="password" v-model="input.password" placeholder="Password"/>
-        </div>
-         <a :href = "website.forgotPass"> Forgot Your Password? </a>
-        <button type="button" v-on:click="login()">Login</button>
+        <form class = "needs-validation">
+          <div class = "form-row-1">
+            <div class = "form-col UserName">
+              <input type="text" class = "form-control" name="username" id="validationCustom01" v-model="input.username" placeholder="Username" required/>
+            </div>
+            <div class="invalid-feedback">
+              Please choose a username.
+            </div>
+          </div>
+          <div class = "form-row-1">
+            <div class = "form-col PassWord">
+              <input type="password" class = "form-control" name="password" id="validationCustom02" v-model="input.password" placeholder="Password" required/>
+            </div>
+          </div>
+          <a :href = "website.forgotPass"> Forgot Your Password? </a>
+          <button type="submit" class = "btn btn-primary" v-on:click="login()">Login</button>
+        </form>
       </div>
        <div class = "signUp">
           <p> Don't have an account? </p>
@@ -19,7 +28,9 @@
   </div>
   
 </template>
+
  <script>
+ import { required, minLength, between } from 'vuelidate/lib/validators'
     export default {
         name: 'Login',
         data() {
@@ -38,11 +49,19 @@
                 },
             };
         },
+        validations:{
+            username: {
+              required,
+            },
+            password:{
+              required,
+            }
+        },
         methods: {
             login() {
             },
-        },
-    };
+  },
+};
 </script>
  <style scoped>
     .login {

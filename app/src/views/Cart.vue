@@ -42,7 +42,11 @@
         <span class="cart-price cart-total">{{ getTotal.toFormat() }}</span>
       </h3>
 
-      <button class = "checkoutB" type="button" v-on:click="signUp()">Checkout!</button>
+      <a>
+        <router-link to="/checkOut">
+          <button class = "checkoutB" type="button">Checkout!</button>
+        </router-link>
+      </a>
     </div>
   </div>
 </template>
@@ -107,7 +111,7 @@ export default {
   margin: 0;
   text-transform: uppercase;
   font-size: 110%;
-  font-weight: normal;
+  font-weight: bold;
   color: rgba(252, 92, 0, 0.801);
 }
 .order-table>tr>:nth-child(3){
