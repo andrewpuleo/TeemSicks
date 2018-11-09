@@ -6,7 +6,10 @@
    </div>
    <nav class="navbar navbar-inverse navbar-expand-sm navcontainer">
       <div class="container navcontainer">
-         <button class="navbar-toggler navbar-toggle btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <button class="navbar-toggler navbar-toggle btn" type="button"
+         data-toggle="collapse" data-target="#navbarSupportedContent"
+         aria-controls="navbarSupportedContent"
+         aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
          </button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -39,7 +42,14 @@
                 </li>
                 <li class="nav-item active">
                    <div class="navlink" id="navleft">
-                      <button class="navbtn"><router-link to="/contact">Contact</router-link></button>
+                      <button class="navbtn">
+                        <router-link to="/services">Services</router-link></button>
+                   </div>
+                </li>
+                <li class="nav-item active">
+                   <div class="navlink" id="navleft">
+                      <button class="navbtn">
+                        <router-link to="/contact">Contact</router-link></button>
                    </div>
                 </li>
              </ul>
@@ -66,8 +76,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue';
 import index from '@/components/index.vue'; // @ is an alias to /src
-//import Navbar from '@/components/Navbar.vue';
-
+// import Navbar from '@/components/Navbar.vue';
 @Component({
   components: {
   HelloWorld, index,
