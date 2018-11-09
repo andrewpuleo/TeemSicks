@@ -5,32 +5,7 @@
       Narrow Down Your Search
       <StoreToolbar/>
       </div>
-<<<<<<< HEAD
-      <div class="col-sm-10 store_container">
-          <StoreItem/>
-          <StoreItem/>
-          <StoreItem/>
-          <StoreItem/>
-          <StoreItem/>
-          <StoreItem/>
-          <StoreItem/>
-      </div>
-    </div>
-  </div>
-</template>
 
-<script>
-
-import StoreItem from '@/components/storeItem.vue';
-import StoreToolbar from '@/components/storeToolbar.vue';
-
-
-export default {
-  components: { StoreItem, StoreToolbar },
-};
-</script>
-
-=======
       <div class="col store_container">
 
         <StoreItem v-for="item in items" v-bind:key="item.id" v-bind:item="item"></StoreItem>
@@ -41,7 +16,6 @@ export default {
 
 </template>
 
->>>>>>> demo
 <style scoped>
   .store_container {
     display: flex;

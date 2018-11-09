@@ -6,10 +6,7 @@
    </div>
    <nav class="navbar navbar-inverse navbar-expand-sm navcontainer">
       <div class="container navcontainer">
-         <button class="navbar-toggler navbar-toggle btn" type="button"
-         data-toggle="collapse" data-target="#navbarSupportedContent"
-         aria-controls="navbarSupportedContent"
-         aria-expanded="false" aria-label="Toggle navigation">
+         <button class="navbar-toggler navbar-toggle btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
          </button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -42,14 +39,7 @@
                 </li>
                 <li class="nav-item active">
                    <div class="navlink" id="navleft">
-                      <button class="navbtn">
-                        <router-link to="/services">Services</router-link></button>
-                   </div>
-                </li>
-                <li class="nav-item active">
-                   <div class="navlink" id="navleft">
-                      <button class="navbtn">
-                        <router-link to="/contact">Contact</router-link></button>
+                      <button class="navbtn"><router-link to="/contact">Contact</router-link></button>
                    </div>
                 </li>
              </ul>
@@ -67,7 +57,6 @@
       </div>
    </nav>
     <router-view/>
-<<<<<<< HEAD
 
   <div class="footer">
     <div class="row">
@@ -89,32 +78,6 @@
     
   </div>
 
-=======
-    <div class="pt-5">
-      <!-- Begin Footer Code -->
-    <footer class="footer" id="customfooter">
-      <div class="container">
-        <div class="row">
-          <div class="col-3">
-            <h1 class="text-left my-0">Contact Us</h1>
-            <p class="text-left my-0 font-italic">(805)FOXYCLE</p>
-            <p class="text-left my-0 font-italic">1234 Foothill Dr</p>
-            <p class="text-left my-0 font-italic">San Luis Obispo 93405</p>
-            <p class="text-left my-0 font-italic">8 am - 5 pm Sunday - Saturday</p>
-          </div>
-          <div class="col-9">
-            <div class="row py-5">
-              <h1 class="font-italic font-weight-bold">Foxycle makes the world go round © 2018</h1>
-            </div>
-          </div>
-          <div class="col">
-
-          </div>
-        </div>
-      </div>
-    </footer> <!-- End Footer Code -->
-    </div>
->>>>>>> demo
 </div>
 
 </template>
@@ -123,7 +86,8 @@
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue';
 import index from '@/components/index.vue'; // @ is an alias to /src
-// import Navbar from '@/components/Navbar.vue';
+//import Navbar from '@/components/Navbar.vue';
+
 @Component({
   components: {
   HelloWorld, index,
@@ -137,7 +101,7 @@ export default class Home extends Vue {}
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: orange;
+    background-color: darkgray;
     color: white;
     text-align: center;
     z-index: 500;
@@ -157,11 +121,6 @@ body{
   text-align: center;
   color: #2c3e50;
 }
-
-#customfooter {
-  background-color: rgba(252, 92, 0, 0.801);
-}
-
 #navleft {
   a {
     padding-left: 10px;
