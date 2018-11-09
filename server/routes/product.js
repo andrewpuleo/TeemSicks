@@ -1,18 +1,19 @@
 const express = require('express');
-const { ToDo } = require('../models');
-
+const { Product } = require('../models');
 const router = express.Router();
 
 router.route('/')
-  // get all todos
+  // get all products
   .get((req, res) => {
-    ToDo.findAll().then((todos) => {
+    Product.findAll().then((products) => {
       res.json({
-        todos,
+        products,
       });
     });
   })
+  module.exports = router;
 
+  /*
   // create  todo
   .post((req, res) => {
     const {
@@ -59,7 +60,10 @@ router.route('/:id')
       todo.destroy().then(() => {
         res.json({ delete: true });
       });
+    }).catch(() => {
+      res.json({ delete: false });
     });
   });
 
 module.exports = router;
+*/

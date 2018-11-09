@@ -1,164 +1,217 @@
 <template>
+
   <div class="contact">
-    <div class="storeinfo">
-        <div class="borderstore">
-            <h1><span class="info"><br>Store Info</span></h1>
-            <p> <span class="pnum">Phone Number:</span> (805)FOXYCLE</p>
-            <p>
-              <span class="pnum">Address:</span> 1234 Foothill Dr, San Luis Obispo 93405</p>
-            <p>
-              <span class="pnum">Hours:</span> 8 am - 5 pm Sunday - Saturday</p>
-            <br>
+    <div class="container-fluid headerimg">
+        <div class="row">
+            <img src="../assets/sunset.png">
+            <div class="page-title">
+              <h>Contacting Foxycle</h>
+              <br>
+              <br>
+              <div class="row" style="font-size:12pt">
+                <div class="col" style="border-style:solid">
+                  <h style="font-size:20pt"> Phone </h>
+                  <p> 805 FOXYCLE <br> <br></p>
+                </div>
+                <div class="col" style="border-style: solid solid solid none">
+                  <h style="font-size:20pt"> Address </h>
+                  <p> 1234 Foothill Dr, San Luis Obispo 93405 </p>
+                </div>
+                <div class="col" style="border-style: solid solid solid none">
+                  <h style="font-size:20pt"> Hours </h>
+                  <p> 8 am - 5 pm
+                  <br>
+                  Monday - Saturday
+                  </p>
+                </div>
+              </div>
+            </div>
         </div>
     </div>
-    <h1> <br>Contacting Foxycle</h1>
-      <div class="container text-center">
+
+    <h1> <br>Contact Form</h1>
+
+      <div class="container contact-container text-center">
+
         <form action="../contact.php">
 
           <label for="fname" class="form-descriptions">Full Name</label>
+
           <br>
+
           <input type="text" id="fname" name="yourname" placeholder="Full Name">
+
           <br>
+
           <label for="subject" class="form-descriptions">Subject</label>
+
           <br>
+
           <input type="text" id="subject" name="subject" placeholder="Subject">
+
           <br>
+
           <label for="email" class="form-descriptions">Email</label>
+
           <br>
+
           <input type="text" id="email" name="email" placeholder="Email">
+
           <br>
+
           <label for="message" class="form-descriptions">Message</label>
+
           <br>
+
           <textarea id="message" name="comments" placeholder="Message"
+
              style="height:200px"></textarea>
+
           <br>
+
           <input type="submit" value="Send it!">
+
         </form>
+
       </div>
-      <br>
-      <h1> <br>Meet the Staff! </h1>
-      <br>
-      <div class="container-fluid headshots">
-      <div class="row">
-        <div class="col">
-          <img src="http://4.bp.blogspot.com/-OYbF-VMNom0/TeooKhWAU9I/AAAAAAAADNg/g7l3y-SGyyo/s1600/Sutton-38.jpg">
-          <div class="empname">
-            <p> Freddy McFarmer </p>
-            <div class="job-title">
-              Store Manager
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <img src="../assets/foxy.png"/>
-          <div class="empname">
-            <p> Kris Fox </p>
-            <div class="job-title">
-              <p> Store Owner </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <img src="http://de.web.img2.acsta.net/pictures/15/03/16/13/33/012542.jpg">
-          <div class="empname">
-            <p> Greg Gregory </p>
-            <div class="job-title">
-              <p> Sales Associate </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
+
 </template>
 
 <style lang="scss">
+
 .contact{
-    color: rgb(241, 63, 9);
+
+    color: rgba(252, 92, 0, 0.801);
+
     text-align: center;
+
     font-size: 20pt;
+
 }
 
-.container{
-  color: black;
+.contact-info{
+  border-style:solid;
+  border-color: white;
+}
+
+.headerimg img{
+  height: 600px;
+  width: 100%;
+}
+
+.page-title{
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 5rem;
+}
+
+.info-title{
   font-size: 15pt;
-}
-
-.job-title{
-  font-size: 8 pt;
-}
-
-.headshots img{
-  width: 300px;
-  height: 400px;
+  color: rgba(252, 92, 0, 0.801);
 }
 
 label.form-descriptions{
-  padding-right: 1rem;
-  vertical-align: center;
-}
 
-.borderstore{
-  border-style:solid;
-  border-color: #DCDCDC;
-  border-width: 5px;
+  padding-right: 1rem;
+
+  vertical-align: center;
+
 }
 
 /* Style inputs with type="text", select elements and textareas */
+
 input[type=text], select, textarea {
+
     width: 100%; /* Full width */
+
     padding: 12px; /* Some padding */
+
     border: 1px solid #ccc; /* Gray border */
+
     border-radius: 4px; /* Rounded borders */
+
     box-sizing: border-box; /* Make sure that padding and width stays in place */
+
     margin-top: 6px; /* Add a top margin */
+
     margin-bottom: 16px; /* Bottom margin */
+
     resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+
 }
 
 /* Style the submit button with a specific background color etc */
+
 input[type=submit] {
-    background-color: #4CAF50;
-    color: white;
+
+    //background-color: #4CAF50;
+
     padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
+
     cursor: pointer;
+
+    background-color: rgba(252, 92, 0, 0.801);
+
+    color: white;
+
+    border-radius: 4px;
+
+    transition-duration: 0.4s;
+
+    border:2px solid rgba(252, 92, 0, 0.801);
+
 }
 
 /* When moving the mouse over the submit button, add a darker green color */
+
 input[type=submit]:hover {
-    background-color: #45a049;
+
+   cursor: pointer;
+
+   color: black;
+
+   border: 2px solid rgba(252, 92, 0, 0.801);
+
+   background-color: white;
+
 }
 
 /* Add a background color and some padding around the form */
-.container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
 
-.storeinfo{
-  color: black;
-  font-size: 20px;
+.contact-container {
+
+    border-radius: 5px;
+
+    background-color: #f2f2f2;
+
+    padding: 20px;
+
 }
 
 .pnum{
+
   color: rgb(241, 63, 9);
+
   font-size: 25px;
+
 }
 
 .hours{
+
   color: rgb(241, 63, 9);
+
   font-size: 25px;
+
 }
 
 .info{
+
   color: rgb(241, 63, 9);
-}
 
-.empname{
-  color: black;
 }
-
 </style>

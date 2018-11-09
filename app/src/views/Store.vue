@@ -1,11 +1,11 @@
 <template>
   <div class="store container" style="background-color: inherit">
-    <h1>Welcome to the Store</h1>
     <div class="row">
       <div class="col-sm-2 toolbar">
       Narrow Down Your Search
       <StoreToolbar/>
       </div>
+<<<<<<< HEAD
       <div class="col-sm-10 store_container">
           <StoreItem/>
           <StoreItem/>
@@ -30,10 +30,22 @@ export default {
 };
 </script>
 
+=======
+      <div class="col store_container">
+
+        <StoreItem v-for="item in items" v-bind:key="item.id" v-bind:item="item"></StoreItem>
+
+      </div>
+    </div>
+  </div>
+
+</template>
+
+>>>>>>> demo
 <style scoped>
   .store_container {
     display: flex;
-    justify-content: space-between;
+    display: -webkit-flex;
     flex-wrap: wrap;
   }
 
@@ -46,3 +58,25 @@ export default {
     max-height: 285px;
   }
 </style>
+
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import axios from 'axios';
+import ToDo from '@/components/ToDo.vue';
+import { product } from '@/models';
+import  StoreItem  from "@/components/storeItem.vue";
+import  StoreToolbar  from "@/components/storeToolbar.vue";
+
+@Component({ components: { StoreItem, StoreToolbar, } })
+export default class Store extends Vue {
+  items: product[] = [];
+  mounted() {
+
+    axios.get('/api/Products')
+      .then((response) => {
+        this.items = response.data.products;
+        console.log(this.items);
+      });
+  }
+}
+</script>
