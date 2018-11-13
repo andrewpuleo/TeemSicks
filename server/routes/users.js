@@ -3,6 +3,7 @@ const { User } = require('../models');
 const router = express.Router();
 
 router.route('/')
+  
    // create user
   .post((req, res) => {
     const {
@@ -27,6 +28,15 @@ router.route('/')
     }).then((user) => {
       res.json(user);
     });
+  })
+
+  .get((req, res) => {
+    User.findAll().then((users) => {
+      res.json({
+        users,
+      });
+    });
   });
+  
 
 module.exports = router;

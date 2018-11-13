@@ -6,7 +6,7 @@
         <form class = "needs-validation">
           <div class = "form-row-1">
             <div class = "form-col UserName">
-              <input type="text" class = "form-control" name="username" id="validationCustom01" v-model="input.username" placeholder="Username" required/>
+              <input type="text" class = "form-control" name="username" id="validationCustom01" v-model="username" placeholder="Username" required/>
             </div>
             <div class="invalid-feedback">
               Please choose a username.
@@ -14,10 +14,10 @@
           </div>
           <div class = "form-row-1">
             <div class = "form-col PassWord">
-              <input type="password" class = "form-control" name="password" id="validationCustom02" v-model="input.password" placeholder="Password" required/>
+              <input type="password" class = "form-control" name="password" id="validationCustom02" v-model="password" placeholder="Password" required/>
             </div>
           </div>
-          <a :href = "website.forgotPass"> Forgot Your Password? </a>
+          
           <button type="submit" class = "btn btn-primary" v-on:click="login()">Login</button>
         </form>
       </div>
@@ -29,38 +29,40 @@
   
 </template>
 
- <script>
- import { required, minLength, between } from 'vuelidate/lib/validators'
-    export default {
-        name: 'Login',
-        data() {
-            return {
-                input: {
-                    username: "",
-                    password: ""
-                },
-                website: {
-                  forgotPass: "https://github.com/CSC307Fall2018/TeemSicks",
-                  signUp: "https://github.com/CSC307Fall2018/TeemSicks"
-                },
-                sample: {
-                  username: "mwuchen",
-                  password: "b"
-                },
-            };
-        },
-        validations:{
-            username: {
-              required,
-            },
-            password:{
-              required,
-            }
-        },
-        methods: {
-            login() {
-            },
-  },
+ <script lang="ts">
+ import { User } from '@/models';
+ import axios from 'axios';
+ import { Component, Prop, Vue } from 'vue-property-decorator';
+    export default class Login extends Vue{
+        username: string = '';
+        password: string = '';
+       
+        users: User[] = [];
+
+        
+
+      login() {
+        axios.get('/api/users')
+          .then((response) => {
+            this.users = response.data.users;
+            console.log(this.users);
+          });
+        // axios.post('/api/users', {
+        // username: this.username,
+        // password: this.password,
+        
+        // }).then((res) => {
+        //   this.username = '';
+        //   this.password = '';
+        // })
+      };
+
+        mounted(){
+          
+        };
+
+        
+        
 };
 </script>
  <style scoped>

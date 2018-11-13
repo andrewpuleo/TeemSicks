@@ -61,7 +61,6 @@ export default class Register extends Vue {
   newPassword: string = '';
 
   signUp() {
-    console.log(this.newFirstName);
     axios.post('/api/users', {
       firstName: this.newFirstName,
       lastName: this.newLastName,

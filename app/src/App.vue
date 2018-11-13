@@ -69,7 +69,16 @@
       </div>
       <div class="col-sm-4">
         <h3>Contact</h3>
-          <p>1400 Ramada Drive | Paso Robles, Ca, 93446 | (805)-225-5911</p>
+        <div class="row">
+          <div class="col-lg-4">
+            1400 Ramada Drive 
+          </div>
+          <div class="col-lg-4">
+            Paso Robles, Ca, 93446
+          </div>
+          <div class="col-lg-4">(805)-225-5911
+          </div>
+        </div>
       </div>
       <div class="col-sm-2">
       </div>
