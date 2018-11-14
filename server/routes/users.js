@@ -29,7 +29,7 @@ router.route('/')
       res.json(user);
     });
   })
-
+// Get all 
   .get((req, res) => {
     User.findAll().then((users) => {
       res.json({
@@ -37,6 +37,54 @@ router.route('/')
       });
     });
   });
+
+
+/* GET specific user listing. */
+router.get('/:id', function(req, res) {
+  User.findById(req.params.id).then((user) => {
+    res.json({user});
+  });
+});
+
+router.put('/login', function(req, res) {
+  const { username, password } = req.body;
+  if(!username) {
+    return res.status(422).json({
+      errors: {
+        username: 'is required',
+      },
+    });
+  }
+
+  if(!password) {
+    return res.status(422).json({
+      errors: {
+        password: 'is required',
+      },
+    });
+  }
+
+  Auth.login(username, password).then(
+    session => {
+      res.json(session.userId);
+    }, error => {
+      res.status(403).json({ error: error.message });
+    }
+  );
+});
+
+router.delete('/:id', function(req, res) {
+  const idToDelete = req.params.id;
+  //// TODO: make sure person calling is admin
+  User.findById(idToDelete).then((user) => {
+    user.destroy().then(() => {
+      res.json({ delete: true });
+    });
+  }).catch(() => {
+    res.json({ delete: false });
+  });
+});
+
   
 
 module.exports = router;
