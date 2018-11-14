@@ -75,7 +75,7 @@ router.put('/login', function(req, res) {
 
 router.delete('/:id', function(req, res) {
   const idToDelete = req.params.id;
-  //// TODO: make sure person calling is admin
+  // TODO: make sure person calling is admin
   User.findById(idToDelete).then((user) => {
     user.destroy().then(() => {
       res.json({ delete: true });
