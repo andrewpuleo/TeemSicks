@@ -13,9 +13,15 @@
 
 <style scoped>
     .tools{
-        border-top-width: 1px;
-        border-top-color: #ff6600;
+        white-space:nowrap;
     }
+
+    .sort_buttons{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      white-space: normal;
+   }
 
 </style>
 
