@@ -42,6 +42,11 @@
                       <button class="navbtn"><router-link to="/contact">Contact</router-link></button>
                    </div>
                 </li>
+                <li class="nav-item active">
+                   <div class="navlink" id="navleft">
+                      <button class="navbtn"><router-link to="/services">Services</router-link></button>
+                   </div>
+                </li>
              </ul>
 
             <!-- Right items: Login and cart -->
@@ -73,9 +78,9 @@
       </div>
       <div class="col-sm-2">
       </div>
-      
+
     </div>
-    
+
   </div>
 
 </div>
