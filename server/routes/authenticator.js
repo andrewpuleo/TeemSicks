@@ -3,8 +3,12 @@ const { Session, User } = require('../models');
 const Auth = {
   login: (username, password) =>
     User.findOne({ where: { username } }).then(user => {
+
+     
       if (user && user.password === password) {
+        
         return user.getSession().then(session => {
+          console.log('in get session');
           let foundSession = session;
           if (!foundSession) {
             foundSession = Session.build();

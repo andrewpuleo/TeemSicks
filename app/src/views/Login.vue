@@ -3,7 +3,7 @@
     <div class = "login">
         <img src = "../assets/foxycle.png" alt = "login"
           style = "width:200px; height:100px;padding:10px"/>
-        <form class = "needs-validation">
+        <div class = "needs-validation">
           <div class = "form-row-1">
             <div class = "form-col UserName">
               <input type="text" class = "form-control" name="username" id="validationCustom01" v-model="username" placeholder="Username" required/>
@@ -19,7 +19,7 @@
           </div>
           
           <button  class = "btn btn-primary" v-on:click="login()">Login</button>
-        </form>
+        </div>
       </div>
        <div class = "signUp">
           <p> Don't have an account? </p>
@@ -81,7 +81,7 @@
       //};
 
       login () {
-          axios.put(`/api/users/login`, {
+          axios.post(`/api/users/login`, {
           username: this.username,
           password: this.password
         }).then((res) => {

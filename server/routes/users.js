@@ -1,6 +1,7 @@
 const express = require('express');
 const { User } = require('../models');
 const router = express.Router();
+const Auth = require('./authenticator');
 
 router.route('/')
   
@@ -46,7 +47,8 @@ router.get('/:id', function(req, res) {
   });
 });
 
-router.put('/login', function(req, res) {
+
+router.post('/login', function(req, res) {
   const { username, password } = req.body;
   if(!username) {
     return res.status(422).json({
@@ -63,7 +65,7 @@ router.put('/login', function(req, res) {
       },
     });
   }
-
+  console.log("auth", Auth);
   Auth.login(username, password).then(
     session => {
       res.json(session.userId);
