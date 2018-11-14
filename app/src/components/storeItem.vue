@@ -8,7 +8,7 @@
 
         <!--img v-bind:for="item.id" v-bind:src="this.item.photoUrl" -->
 
-     </div>f
+     </div>
    </router-link>
 
       <div class="row bottom-info">

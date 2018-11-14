@@ -29,9 +29,9 @@
                                <td><router-link to="/store">Accessories</router-link></td>
                             </tr>
                             <tr>
-                               <td><img src="./assets/bike.jpg" height="200"></td>
-                               <td><img src="./assets/bike.jpg" height="200"></td>
-                               <td><img src="./assets/bike.jpg" height="200"></td>
+                               <td><img src="./assets/road-bike.jpg" height="200"></td>
+                               <td><img src="./assets/mountain-bike.jpg" height="200"></td>
+                               <td><img src="./assets/bike-accessories.jpg" height="200"></td>
                             </tr>
                          </table>
                       </div>
