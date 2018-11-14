@@ -18,7 +18,7 @@
             </div>
           </div>
           
-          <button type="submit" class = "btn btn-primary" v-on:click="login()">Login</button>
+          <button  class = "btn btn-primary" v-on:click="login()">Login</button>
         </form>
       </div>
        <div class = "signUp">
@@ -38,15 +38,38 @@
         password: string = '';
        
         users: User[] = [];
+        userData: User|null = null;
+        missing: string[] = [];
+
+      // login() {
+      //   axios.post('/api/users', {
+      //   username: this.username,
+      //   password: this.password,
+        
+      //   }).then((res) => {
+      //     console.log(res);
+      //     debugger
+      //   });
 
         
+        
+        // axios.get('/api/users')
+        //   .then((response) => {
+        //     this.users = response.data.users;
+        //     console.log(this.users);
+        //   });
+        //   let matches:boolean = false;
+        //   let cUser:User = null;
+        //   for ( cUser in this.users){
+        //     if(cUser.username === this.username){
+        //       if(cUser.password === this.password){
+        //         matches = true;
+        //       }
+        //     }
+        //   }
+        //   console.log(matches);
 
-      login() {
-        axios.get('/api/users')
-          .then((response) => {
-            this.users = response.data.users;
-            console.log(this.users);
-          });
+
         // axios.post('/api/users', {
         // username: this.username,
         // password: this.password,
@@ -55,7 +78,21 @@
         //   this.username = '';
         //   this.password = '';
         // })
-      };
+      //};
+
+      login () {
+          axios.put(`/api/users/login`, {
+          username: this.username,
+          password: this.password
+        }).then((res) => {
+          if(res.status == 200){
+            this.$store.commit('login', res.data.user_id)
+          }
+          console.log("Login response:" + res.status);
+        })
+      }
+      
+
 
         mounted(){
           
