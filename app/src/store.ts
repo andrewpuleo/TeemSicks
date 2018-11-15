@@ -9,6 +9,15 @@ export default new Vuex.Store({
     isLoggedIn: false,
     //cart: []
   },
+  getters: {
+    getIsLoggedIn: state => {
+      return state.isLoggedIn
+    },
+    getUID: state => {
+      return state.uid
+    }
+    
+  },
   mutations: {
     login (state, id) {
       state.uid = id,

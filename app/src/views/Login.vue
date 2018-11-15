@@ -18,7 +18,7 @@
             </div>
           </div>
           
-          <button  class = "btn btn-primary" v-on:click="login()" text="isLoggedIn()"></button>
+          <button  class = "btn btn-primary" v-on:click="login()">Login</button>
         </div>
       </div>
        <div class = "signUp">
@@ -40,14 +40,14 @@
         users: User[] = [];
         userData: User|null = null;
         missing: string[] = [];
-        isLoggedIn:string;
+        //isLoggedIn:string;
 
-        isLoggedIn () {
-          if(this.$store.state.isLoggedIn) {
-            return "Logout"
-          }
-          return "Login"
-        }
+        // isLoggedIn () {
+        //   if(this.$store.state.isLoggedIn) {
+        //     return "Logout"
+        //   }
+        //   return "Login"
+        // }
          
       // login() {
       //   axios.post('/api/users', {
@@ -90,15 +90,20 @@
 
       login () {
           axios.post(`/api/users/login`, {
+            
           username: this.username,
           password: this.password
         }).then((res) => {
           if(res.status == 200){
-            this.$store.commit('login', res.data.user_id);
-
+            this.$store.commit('login', res.data.id);
+            console.log(res.data.id);
+            
           }
           console.log("Login response:" + res.status);
-        })
+          console.log(this.$store.getters.getIsLoggedIn);
+          console.log(this.$store.getters.getUID);
+
+})
       }
       
 
