@@ -218,6 +218,7 @@ export default {
 
 .checkoutB{
       margin-top: 50px;
+      margin-bottom: 50px;
       padding: 5px 40px;
       background-color: rgba(252, 92, 0, 0.801);
       color: white;
