@@ -4,8 +4,13 @@
             <div class = "flex-container">
                 <div class = "left">
                     <h3 id = "checkOutTitle"> CheckOut </h3>
-                    <b-tabs>
-                        <b-tab active>
+                    <b-form-group>
+                        <b-form-radio-group id="radios2" v-model="data.selected" name="radioSubComponent">
+                            <b-form-radio style="margin-right: 100px; color: rgba(252, 92, 0, 0.801); font-size: 110%" value="Delivery"><strong>Delivery </strong></b-form-radio>
+                            <b-form-radio  style = "color: rgba(252, 92, 0, 0.801); font-size: 110%" value="Pickup" > <strong> Pickup </strong></b-form-radio>
+                        </b-form-radio-group>
+                    </b-form-group>
+                        <div v-show="data.selected === 'Delivery'">
                             <template slot="title">
                                 <i class = "Tab">Delivery</i>
                             </template>
@@ -17,7 +22,7 @@
                                 <form class = "needs-validation" novalidate style = "padding: 10px">
                                     <div class = "form-row-1">
                                         <div class = "form-col">
-                                            <input type="text" class="form-control" id="validationCustom01" v-model="fullName" placeholder="Full Name" required>
+                                            <input type="text" class="form-control" id="validationCustom01" v-model="data.fullName" placeholder="Full Name" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -25,7 +30,7 @@
                                     </div>
                                     <div class = "form-row-1">
                                         <div class = "form-col">
-                                            <input type="text" class="form-control" id="validationCustom01" v-model="phoneNumber" placeholder="Phone Number" required>
+                                            <input type="number" class="form-control" id="validationCustom01" v-model="data.phoneNumber" placeholder="Phone Number" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -33,7 +38,7 @@
                                     </div>
                                     <div class = "form-row-1">
                                         <div class = "form-col">
-                                            <input type="text" class="form-control" id="validationCustom02" v-model="addressLine1" placeholder="Address Line 1" required>
+                                            <input type="text" class="form-control" id="validationCustom02" v-model="data.addressLine1" placeholder="Address Line 1" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -41,7 +46,7 @@
                                     </div>
                                     <div class = "form-row-1">
                                         <div class = "form-col">
-                                            <input type="text" class="form-control" id="validationCustom03" v-model="addressLine2" placeholder="Address Line 2" required>
+                                            <input type="text" class="form-control" id="validationCustom03" v-model="data.addressLine2" placeholder="Address Line 2" required>
                                             <div class="valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -49,19 +54,19 @@
                                     </div>
                                     <div class = "form-row">
                                         <div class = "form-col" style = "margin-left: 5px; width: 45%; margin-right:10px">
-                                            <input type="text" class="form-control" id="validationCustom04" v-model="city" placeholder="City" required>
+                                            <input type="text" class="form-control" id="validationCustom04" v-model="data.city" placeholder="City" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
                                         </div>
                                         <div class = "form-col" style = "margin-left: 5px;margin-right:10px; width:30%">
-                                            <input type="text" class="form-control" id="validationCustom05" v-model="state" placeholder="State/Province" required>
+                                            <input type="text" class="form-control" id="validationCustom05" v-model="data.state" placeholder="State/Province" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
                                         </div>
                                         <div class = "form-col" style = "margin-left: 5px; width: 20%">
-                                            <input type="number" class="form-control" id="validationCustom06" v-model="zip" placeholder="Zip" required>
+                                            <input type="number" class="form-control" id="validationCustom06" v-model="data.zip" placeholder="Zip" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -69,7 +74,7 @@
                                     </div>
                                     <div class = "form-row-1" style = "margin-bottom: 10px">
                                         <div class = "form-col">
-                                            <input type="text" class="form-control" id="validationCustom07" v-model="country" placeholder="Country/Region" required>
+                                            <input type="text" class="form-control" id="validationCustom07" v-model="data.country" placeholder="Country/Region" required>
                                             <div class="valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -84,7 +89,7 @@
                                 <form class = "needs-validation" novalidate style = "padding:10px;">
                                     <div class = "form-row-1">
                                         <div class = "form-col">
-                                            <input type="text" class="form-control" id="validationCustom08" v-model="owner" placeholder="Owner" required>
+                                            <input type="text" class="form-control" id="validationCustom08" v-model="data.owner" placeholder="Owner" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -92,7 +97,7 @@
                                     </div>
                                     <div class = "form-row-1" style = "margin-bottom: 10px">
                                         <div class = "form-col">
-                                            <input type="number" class="form-control" id="validationCustom09" v-model="cardNumber" placeholder="Card Number" required>
+                                            <input type="number" class="form-control" id="validationCustom09" v-model="data.cardNumber" placeholder="Card Number" required>
                                             <div class="valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -100,7 +105,7 @@
                                     </div>
                                     <div class = "form-row">
                                         <div class = "form-col" style = "margin-left:5px;margin-right:10px; width:20%">
-                                            <input type="number" class="form-control" id="validationCustom10" v-model="cvv" placeholder="CVV" required>
+                                            <input type="number" class="form-control" id="validationCustom10" v-model="data.cvv" placeholder="CVV" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -109,7 +114,7 @@
                                             <p> Expiration Date </p>
                                         </div>
                                         <div class = "form-col" style = "margin-right:10px; width: 25%">
-                                            <input type="month" class="form-control" id="validationCustom11" v-model="expirationDate" placeholder="Expiration Date" required>
+                                            <input type="month" class="form-control" id="validationCustom11" v-model="data.expirationDate" placeholder="Expiration Date" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -124,12 +129,14 @@
                             </div>
                             <p style = "color: rgba(252, 92, 0, 0.801); text-align: left; font-size: 110%; margin-bottom: 0"> 
                                 Please Enter Your Billing Address
+                                <span> <input type="checkbox" value="" v-on:click="copy()" v-model="data.sameAddress" style = "margin-left: 20px; padding: 0"><i style= "color: grey">Same As Shipping Address</i> </span>
                             </p>
+                            
                             <div id = "container1" class = "container">
                                 <form class = "needs-validation" novaidate style = "padding:10px">
                                     <div class = "form-row-1">
                                         <div class = "form-col">
-                                            <input type="text" class="form-control" id="validationCustom02" v-model="addressLine1B" placeholder="Address Line 1" required>
+                                            <input type="text" class="form-control" id="validationCustom02" v-model="data.addressLine1B" placeholder="Address Line 1" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -137,7 +144,7 @@
                                     </div>
                                     <div class = "form-row-1">
                                         <div class = "form-col">
-                                            <input type="text" class="form-control" id="validationCustom03" v-model="addressLine2B" placeholder="Address Line 2" required>
+                                            <input type="text" class="form-control" id="validationCustom03" v-model="data.addressLine2B" placeholder="Address Line 2" required>
                                             <div class="valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -145,19 +152,19 @@
                                     </div>
                                     <div class = "form-row">
                                         <div class = "form-col" style = "margin-left: 5px; width: 45%; margin-right:10px">
-                                            <input type="text" class="form-control" id="validationCustom04" v-model="cityB" placeholder="City" required>
+                                            <input type="text" class="form-control" id="validationCustom04" v-model="data.cityB" placeholder="City" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
                                         </div>
                                         <div class = "form-col" style = "margin-left: 5px;margin-right:10px; width:30%">
-                                            <input type="text" class="form-control" id="validationCustom05" v-model="stateB" placeholder="State/Province" required>
+                                            <input type="text" class="form-control" id="validationCustom05" v-model="data.stateB" placeholder="State/Province" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
                                         </div>
                                         <div class = "form-col" style = "margin-left: 5px; width: 20%">
-                                            <input type="number" class="form-control" id="validationCustom06" v-model="zipB" placeholder="Zip" required>
+                                            <input type="number" class="form-control" id="validationCustom06" v-model="data.zipB" placeholder="Zip" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -165,7 +172,7 @@
                                     </div>
                                     <div class = "form-row-1" style = "margin-bottom: 10px">
                                         <div class = "form-col">
-                                            <input type="text" class="form-control" id="validationCustom07" v-model="countryB" placeholder="Country/Region" required>
+                                            <input type="text" class="form-control" id="validationCustom07" v-model="data.countryB" placeholder="Country/Region" required>
                                             <div class="valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -173,8 +180,8 @@
                                     </div>
                                 </form>
                             </div>
-                        </b-tab>
-                        <b-tab>
+                        </div>
+                        <div v-show="data.selected === 'Pickup'">
                             <template slot="title">
                                 <i class = "Tab">Pickup</i>
                             </template>
@@ -185,7 +192,7 @@
                             <form class = "needs-validation" novaidate style = "padding:10px; border: 2px solid rgba(199, 196, 194, 0.685); border-radius: 5px">
                                     <div class = "form-row-1" style = "margin-top:0">
                                         <div class = "form-col">
-                                            <input type="text" class="form-control" id="validationCustom01" v-model="fullNames" placeholder="Full Name" required>
+                                            <input type="text" class="form-control" id="validationCustom01" v-model="data.fullName" placeholder="Full Name" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -193,7 +200,7 @@
                                     </div>
                                     <div class = "form-row-1">
                                         <div class = "form-col">
-                                            <input type="text" class="form-control" id="validationCustom11" v-model="email" placeholder="EmailAddress" required>
+                                            <input type="text" class="form-control" id="validationCustom11" v-model="data.email" placeholder="EmailAddress" required>
                                             <div class = "valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -201,7 +208,7 @@
                                     </div>
                                     <div class = "form-row-1">
                                         <div class = "form-col">
-                                            <input type="text" class="form-control" id="validationCustom02" v-model="phoneNumber" placeholder="Phone Number" required>
+                                            <input type="number" class="form-control" id="validationCustom02" v-model="data.phoneNumber" placeholder="Phone Number" required>
                                             <div class="valid-feedback">
                                                 Looks Good!
                                             </div>
@@ -213,8 +220,7 @@
                                 We Are Open From <i style = "color:red">8 am </i> to <i style = "color:red">5 pm Sunday - Saturday!</i>
                             </p>
                             </div>
-                        </b-tab>
-                    </b-tabs>
+                        </div>
                 </div>
                 <div class = "right">
                     <h1 id = "checkOutTitle"> Your Cart </h1>
@@ -269,6 +275,7 @@ export default {
   data() {
     return {
       data: {
+        selected:'Delivery',
         email:"",
         fullName:"",
         phoneNumber:"",
@@ -288,7 +295,7 @@ export default {
             stateB:"",
             zipB:"",
             countryB:"",
-        sameAddress: true,
+        sameAddress: false,
         items: [
           {
             title: 'xyz Road Bike',
@@ -316,13 +323,22 @@ export default {
       return Dinero({ amount: Math.round(amount * factor) }).setLocale(this.language);
     },
     copy(){
-    if (!this.sameAddress)
+    if (!this.data.sameAddress)
     {
-      alert("why");
-      addressLine1B = addressLine1;
+      this.data.addressLine1B = this.data.addressLine1;
+      this.data.addressLine2B = this.data.addressLine2;
+      this.data.cityB = this.data.city;
+      this.data.stateB = this.data.state;
+      this.data.zipB = this.data.zip;
+      this.data.countryB = this.data.country;
     }
-    else {
-      alert("not Checked");
+    else{
+      this.data.addressLine1B = '';
+      this.data.addressLine2B = '';
+      this.data.cityB = '';
+      this.data.stateB = '';
+      this.data.zipB = '';
+      this.data.countryB = '';
     }
     },
     },
@@ -368,6 +384,8 @@ export default {
   height: 100%;
 }
 
+
+
 .form-row-1{
     width:100%;
     margin-top:10px;
@@ -403,23 +421,10 @@ input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
   font-weight: bold;
   color: rgba(252, 92, 0, 0.801);
 }
-
-.tabs {
-  padding: 5px 30px 30px 30px;
-}
-
 .warning {
+    display: flex;
+  text-align: left;
   color: red;
-}
-
-.Tab {
-  padding-right: 120px;
-  padding-left: 120px;
-  color: rgba(252, 92, 0, 0.801);
-}
-
-.Tab:focus{
-  color: black;
 }
 
 .confirmB {
@@ -442,6 +447,7 @@ input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
   background-color: white;
 }
 
+
 #c-cart-line {
   padding-right: 20px;
   padding-left: 20px;
@@ -452,5 +458,9 @@ input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
   margin-left: 15px;
   font-weight: bold;
   font-style: italic;
+}
+
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+    background-color:rgba(252, 92, 0, 0.801);
 }
 </style>

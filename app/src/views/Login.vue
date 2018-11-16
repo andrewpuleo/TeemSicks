@@ -8,9 +8,6 @@
             <div class = "form-col UserName">
               <input type="text" class = "form-control" name="username" id="validationCustom01" v-model="input.username" placeholder="Username" required/>
             </div>
-            <div class="invalid-feedback">
-              Please choose a username.
-            </div>
           </div>
           <div class = "form-row-1">
             <div class = "form-col PassWord">

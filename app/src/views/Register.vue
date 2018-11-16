@@ -3,39 +3,49 @@
     <div class = "register">
         <div class = "logo">
         <img src = "../assets/foxycle.png" alt = "register"
-          style = "width:200px; height:100px;padding:10px"/>
+          style = "width:200px; height:100px;padding:5px"/>
         </div>
         <div class = "container1">
-          <div class = "FirstName">
-            <input type="text" name="FirstName" v-model="newFirstName" placeholder="First Name"/>
-          </div>
-           <div class = "LastName">
-            <input type="text" name="LastName" v-model="newLastName" placeholder="Last Name"/>
-          </div>
+          <form class = "needs-validation" style = "padding: 10px">
+            <div class = "form-row">
+              <div class = "form-col" style = "width: 47.5%; margin-right: 5%">
+                <input type="text" class="form-control" id="validationCustom04" v-model="newFirstName" placeholder="First Name" required>
+              </div>
+              <div class = "form-col" style = "width: 47.5%">
+                <input type="text" class="form-control" id="validationCustom05" v-model="newLastName" placeholder="Last Name" required>
+              </div>
+            </div>
+            <div class = "form-row">
+              <div class = "form-col" style = "width: 100%">
+                <input type="text" class="form-control" id="validationCustom04" v-model="newUsername" placeholder="User Name" required>
+              </div>
+            </div>
+            <div class = "form-row">
+              <div class = "form-col" style = "width: 100%">
+                <input type="password" class="form-control" id="validationCustom04" v-model="newPassword" placeholder="Password" required>
+              </div>
+            </div>
+            <div class = "form-row">
+              <div class = "form-col" style = "width: 100%">
+                <input type="text" class="form-control" id="validationCustom04" v-model="newPhoneNumber" placeholder="Phone" required>
+              </div>
+            </div>
+            <div class = "form-row">
+              <div class = "form-col" style = "width: 100%">
+                <input type="text" class="form-control" id="validationCustom04" v-model="newEmailAddress" placeholder="Email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" v-model="status" class="custom-control-input" id="invalidCheck" required>
+                <label class="custom-control-label" for="invalidCheck"> <a href ="#" class = "link" id="termsLink" style="color:rgba(252, 92, 0, 0.801)"  v-on:click="show()">Agree to terms and conditions</a></label>
+              </div>
+            </div>
+              <button class="btn btn-primary"  v-on:click="signUp()" type="submit"> 
+              Join Now
+              </button>
+          </form> 
         </div>
-        <div class = "UserName">
-          <input type="text" name="UserName" v-model="newUsername" placeholder="Username"/>
-        </div>
-         <div class = "EmailAddress">
-          <input type="email" name="EmailAddress"
-            v-model="newEmailAddress" placeholder="Email Address"/>
-        </div>
-         <div class = "PassWord">
-          <input type="password" name="PassWord" v-model="newPassword" placeholder="Password"/>
-        </div>
-         <div class = "container2">
-          <div>
-            <label><input type="checkbox" style = "
-                width: 13px;
-                height: 13px;
-                vertical-align: bottom;
-                position: relative;
-                top: -5px;
-                *overflow: hidden"> I agree to the <a href ="#" class = "link" id="termsLink" style="color:rgba(252, 92, 0, 0.801)"  v-on:click="show()">terms of use </a></label>
-          </div>
-        </div>
-
-        <button type="button" v-on:click="signUp()">Join Now</button>
     </div>
     <modal id = "termsPage" name = "hello">
           <p>VERY BAD THINGS THAT YOU CANNOT DO</p>
@@ -57,8 +67,10 @@ export default class Register extends Vue {
   newFirstName: string = '';
   newLastName: string = '';
   newUsername: string = '';
+  newPhoneNumber: string = '';
   newEmailAddress: string = '';
   newPassword: string = '';
+  status: boolean = false;
 
   signUp() {
     console.log(this.newFirstName);
@@ -75,6 +87,26 @@ export default class Register extends Vue {
       this.newEmailAddress = '';
       this.newPassword = '';
     })
+    if(this.allFilled())
+    {
+      this.$router.push('/');
+    }
+  }
+
+  allFilled()
+  {
+    if(this.newFirstName.length!=0 &&
+       this.newLastName.length!=0 &&
+       this.newUsername.length!=0 &&
+       this.newEmailAddress.length!=0 &&
+       this.newPassword.length!=0 &&
+       this.status)
+       {
+         return true;
+       }
+      else{
+        return false;
+      }
   }
 }
 </script>
@@ -87,11 +119,6 @@ export default class Register extends Vue {
         margin-top: 30px;
         padding: 20px;
     }
-     .register *{
-      margin:auto;
-      margin-top: 10px;
-      width: 290px;
-    }
      .logo{
       margin:auto;
     }
@@ -101,9 +128,11 @@ export default class Register extends Vue {
       display:flex;
       justify-content:space-between;
     }
-     .container1 *{
-      width: 140px;
+
+    .container1 *{
+      margin-top:5px;
     }
+
      label {
       display: block;
       padding-top: 1px;
