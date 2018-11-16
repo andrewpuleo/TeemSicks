@@ -103,7 +103,7 @@
 
 .page-title{
   position: absolute;
-  top: 54%;
+  top: 33rem;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
