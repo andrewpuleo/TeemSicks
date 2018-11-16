@@ -47,6 +47,11 @@
                       <button class="navbtn"><router-link to="/services">Services</router-link></button>
                    </div>
                 </li>
+                <li class="nav-item active">
+                   <div class="navlink" id="navleft">
+                      <button class="navbtn"><router-link to="/account">Account</router-link></button>
+                   </div>
+                </li>
              </ul>
 
             <!-- Right items: Login and cart -->
@@ -76,7 +81,7 @@
         <h3>Contact</h3>
         <div class="row">
           <div class="col-lg-4">
-            1400 Ramada Drive 
+            1400 Ramada Drive
           </div>
           <div class="col-lg-4">
             Paso Robles, Ca, 93446
