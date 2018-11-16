@@ -44,6 +44,7 @@ export default class Item extends Vue {
       .then((response) => {
          this.item = response.data.product;
       });
+      console.log("our item", this.item);
    }
 
 }

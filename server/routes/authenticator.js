@@ -14,8 +14,8 @@ const Auth = {
             foundSession = Session.build();
           }
           foundSession.expiration = new Date(new Date().getTime() + 30 * 60000);
-          foundSession.save().then(updatedSession => user.setSession(updatedSession));
-          return foundSession;
+          return foundSession.save().then(updatedSession => {
+            user.setSession(updatedSession); return updatedSession;});
         });
       }
       return Promise.reject(new Error('incorrect username or password'));
