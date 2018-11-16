@@ -95,7 +95,7 @@
           password: this.password
         }).then((res) => {
           if(res.status == 200){
-            this.$store.commit('login', res.data.id);
+            this.$store.commit('login', res.data.user_id);
             console.log(res.data.id);
             
           }

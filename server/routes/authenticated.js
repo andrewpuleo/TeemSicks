@@ -9,6 +9,7 @@ function notAuthenticated(response) {
 
 function authenticated(req, res, next) {
   const userId = req.get('user_id');
+
   if (userId) {
     User.findById(userId).then(user => {
       if (user) {
