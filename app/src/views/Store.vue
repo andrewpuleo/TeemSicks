@@ -2,7 +2,7 @@
   <div class="store container" style="background-color: inherit">
     <div class="row">
       <div class="col-sm-2 toolbar">
-      Narrow Down Your Search
+      <h3 style="font-size: 20px"><b>Narrow Down Your Search</b></h3>
       <StoreToolbar/>
       </div>
 
@@ -21,7 +21,10 @@
     display: flex;
     display: -webkit-flex;
     flex-wrap: wrap;
+    padding-top: 1rem;
+    margin-top: 1rem;
   }
+
 
   .toolbar{
     background-color: inherit;
@@ -30,7 +33,9 @@
     border-radius: 20px;
     border-style: solid;
     max-height: 285px;
+    min-width: 160px;
   }
+
 </style>
 
 <script lang="ts">

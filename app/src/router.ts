@@ -85,6 +85,11 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/orderPlaced.vue'),
-    },
+    },{
+      path: '/item/:id',
+      name: "item",
+      props:true,
+      component: () => import(/* webpackChunkName: "about" */ './components/item.vue'),
+   },
   ],
 });

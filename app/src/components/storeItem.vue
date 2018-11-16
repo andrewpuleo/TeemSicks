@@ -1,6 +1,6 @@
 <template>
   <div class="item" id="item">
-     <a class="lightbox" href="#zoomed">
+     <router-link v-bind:to="'/item/'+item.id">
       <div class="row item-pic" v-bind:style="{'background-image': 'url(' + item.photoUrl + ')', 'background-size': '100%', 'background-repeat': 'no-repeat', 'background-position':'center' } ">
           <!--
               <img src="../assets/rockhopper_image.jpeg">
@@ -8,8 +8,8 @@
 
         <!--img v-bind:for="item.id" v-bind:src="this.item.photoUrl" -->
 
-      </div>
-      </a>
+     </div>
+   </router-link>
 
       <div class="row bottom-info">
          <div class="price">

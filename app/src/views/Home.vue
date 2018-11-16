@@ -7,18 +7,16 @@
    <div class="row">
      <!-- <div class="col-sm-4" id="newcolumn" style="background-color:#FFFDF4;"> -->
      <div class="col info-box" id="newcolumn" ><span class="info-headers"><h2>Our Story</h2></span>
-     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat ullamcorper leo id venenatis.
-       Fusce interdum nisi a felis tincidunt convallis. In tristique magna sit amet sem ornare venenatis.
-       Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-       Pellentesque in rutrum nunc. Nam sodales dolor sed auctor elementum. Suspendisse potenti.</div>
+     <div>Our founder, Kris Fox, has always had a passion for biking. He has been repairing the bikes of friends and colleagues for as long as he can remember.
+     It wasn't until 2003 that he knew he wanted to turn his passion into a local business. And that's when Foxycle was born!
+     The first location started in his garage, but now today we have a main location right in the heart of San Luis Obispo and a large inventory of the greatest bikes in the world.</div>
      </div>
      <div class="spacing">
      </div>
      <div class="col info-box" id="newcolumn" ><span class="info-headers"><h2>Our Mission</h2></span>
-       <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam feugiat ullamcorper leo id venenatis.
-       Fusce interdum nisi a felis tincidunt convallis. In tristique magna sit amet sem ornare venenatis.
-       Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-       Pellentesque in rutrum nunc. Nam sodales dolor sed auctor elementum. Suspendisse potenti.</div>
+       <div>Foxycle aims to put a bike in the hands of every bike-less person in the greater San Luis Obispo area.
+       It is important to us that everyone gets their dream bike, not just any bike. We will help you on every step of your bike journey and ensure the decision you make is well educated.
+    Whether you end up with one of our road bikes or mountain bikes, we are here for you and here to help with any service needs that come up in the future. Welcome to the Foxycle family.</div>
      </div>
    </div>
 </div>
@@ -30,7 +28,7 @@
  <div class="col">
     <img src="http://4.bp.blogspot.com/-OYbF-VMNom0/TeooKhWAU9I/AAAAAAAADNg/g7l3y-SGyyo/s1600/Sutton-38.jpg">
     <div class="empname">
-      <p> Freddy McFarmer </p>
+      <h3> Freddy McFarmer </h3>
       <div class="job-title">
         Store Manager
       </div>
@@ -39,7 +37,7 @@
  <div class="col">
     <img src="../assets/foxy.png"/>
     <div class="empname">
-      <p> Kris Fox </p>
+      <h3> Kris Fox </h3>
       <div class="job-title">
         <p> Store Owner </p>
       </div>
@@ -48,7 +46,7 @@
  <div class="col">
     <img src="http://de.web.img2.acsta.net/pictures/15/03/16/13/33/012542.jpg">
     <div class="empname">
-      <p> Greg Gregory </p>
+      <h3> Greg Gregory </h3>
       <div class="job-title">
         <p> Sales Associate </p>
       </div>

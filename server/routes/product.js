@@ -13,6 +13,15 @@ router.route('/')
   })
   module.exports = router;
 
+  router.route('/:id')
+
+    // get a specific todo
+    .get((req, res) => {
+      Product.findById(req.params.id).then((product) => {
+        res.json({product});
+      });
+    })
+
   /*
   // create  todo
   .post((req, res) => {

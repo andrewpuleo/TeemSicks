@@ -29,9 +29,9 @@
                                <td><router-link to="/store">Accessories</router-link></td>
                             </tr>
                             <tr>
-                               <td><img src="./assets/bike.jpg" height="200"></td>
-                               <td><img src="./assets/bike.jpg" height="200"></td>
-                               <td><img src="./assets/bike.jpg" height="200"></td>
+                               <td><img src="./assets/road-bike.jpg" height="200"></td>
+                               <td><img src="./assets/mountain-bike.jpg" height="200"></td>
+                               <td><img src="./assets/bike-accessories.jpg" height="200"></td>
                             </tr>
                          </table>
                       </div>
@@ -40,6 +40,11 @@
                 <li class="nav-item active">
                    <div class="navlink" id="navleft">
                       <button class="navbtn"><router-link to="/contact">Contact</router-link></button>
+                   </div>
+                </li>
+                <li class="nav-item active">
+                   <div class="navlink" id="navleft">
+                      <button class="navbtn"><router-link to="/services">Services</router-link></button>
                    </div>
                 </li>
              </ul>
@@ -82,9 +87,9 @@
       </div>
       <div class="col-sm-2">
       </div>
-      
+
     </div>
-    
+
   </div>
 
 </div>
