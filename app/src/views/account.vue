@@ -2,18 +2,20 @@
     <div id="account">
         <h1>Secure Area</h1>
         <p>
-            This is a secure area
+            This is a new secure area
         </p>
+        <ProductAdder></ProductAdder>
     </div>
 </template>
 
-<script>
-    export default {
-        name: 'account',
-        data() {
-            return {};
-        }
-    }
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import ProductAdder from '@/components/productAdder.vue';
+
+@Component({ components: { ProductAdder, } })
+export default class Account extends Vue {
+
+}
 </script>
 
 <style scoped>

@@ -11,9 +11,41 @@ router.route('/')
       });
     });
   })
-  module.exports = router;
 
-  router.route('/:id')
+  .post((req, res) => {
+    const {
+      productId,
+      productName,
+      Brand,
+      Price,
+      onSale,
+      salePrice,
+      productDescription,
+      inStock,
+      amountInStock,
+      color,
+      photoUrl,
+
+    } = req.body;
+    // validate potentially here
+    Product.create({
+      productId,
+      productName,
+      Brand,
+      Price,
+      onSale,
+      salePrice,
+      productDescription,
+      inStock,
+      amountInStock,
+      color,
+      photoUrl,
+   }).then((product) => {
+      res.json(product);
+    });
+});
+
+router.route('/:id')
 
     // get a specific todo
     .get((req, res) => {
@@ -23,32 +55,6 @@ router.route('/')
     })
 
   /*
-  // create  todo
-  .post((req, res) => {
-    const {
-      subject,
-      dueDate,
-      done,
-    } = req.body;
-    // validate potentially here
-    ToDo.create({
-      subject,
-      done,
-      dueDate,
-    }).then((todo) => {
-      res.json(todo);
-    });
-  });
-
-router.route('/:id')
-
-  // get a specific todo
-  .get((req, res) => {
-    ToDo.findById(req.params.id).then((todo) => {
-      res.json(todo);
-    });
-  })
-
   // update a given todo
   .put((req, res) => {
     const { subject, dueDate, done } = req.body;
@@ -73,6 +79,5 @@ router.route('/:id')
       res.json({ delete: false });
     });
   });
-
-module.exports = router;
 */
+module.exports = router;
