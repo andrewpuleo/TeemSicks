@@ -1,0 +1,30 @@
+.big-white-text{
+   color: white;
+   font-size: 5rem;
+   text-align: center;
+}
+
+.top-image{
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 600px;
+}
+
+.white{
+   color: white;
+}
+
+/* To be used for Main Headers! */
+.foxycle-redorange{
+   color: rgb(241, 63, 9);
+}
+
+/* To be used for secondary headers */
+.foxycle-orange{
+   color: rgba(252, 92, 0, 0.801);
+}
+
+.white-box-grey-border{
+   background-color: white;
+   border: 2px solid #CCCCCC;
+}

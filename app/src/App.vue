@@ -24,7 +24,7 @@
                       <div class="dropdown-content">
                          <table>
                             <tr>
-                               <td><router-link to="/store">Road</router-link></td>
+                               <td><router-link to="/store">Roaddd</router-link></td>
                                <td><router-link to="/store">Mountain</router-link></td>
                                <td><router-link to="/store">Accessories</router-link></td>
                             </tr>
@@ -116,6 +116,8 @@ export default class Home extends Vue {}
 </script>
 
 <style scoped lang="scss">
+@import '/style.css';
+
 .footer {
     left: 0;
     bottom: 0;

@@ -1,9 +1,8 @@
 <template>
   <div class="services">
-    <div class="container-fluid headerimg">
-        <div class="row">
-            <img src="../assets/bikeservices.png">
-            <div class="centered">Service and Repair</div>
+    <div class="container-fluid">
+        <div class="row top-services-image">
+            <h class="centered big-white-text">Service and Repair</h>
         </div>
     </div>
     <div class="row">
@@ -99,26 +98,25 @@
 </template>
 
 <style lang="scss">
-    .headerimg img{
-        height: 600px;
-        width: 100%;
-    }
+   @import '../style.css';
+   .top-services-image{
+      background-image: url('../assets/bikeservices.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 600px;
+   }
+
     .centered{
         position: absolute;
         top: 26rem;
         left: 50%;
         transform: translate(-50%, -50%);
-        color: white;
-        font-size: 5rem;
     }
     .text{
         font-size: 17pt;
         text-align: center;
     }
-    .col{
-        margin: auto;
-        max-width: 1000px;
-    }
+    
     .service-title{
         color:rgba(252, 92, 0, 0.801);
     }

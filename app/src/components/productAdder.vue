@@ -1,8 +1,8 @@
 <template>
    <div style="padding: 4rem;">
-      <div id="product-adder">
+      <div id="product-adder" class="white-box-grey-border">
          <br>
-         <h3> Add New Products: </h3>
+         <h3 class="foxycle-orange"> Add New Products: </h3>
          <div class="form">
            <div class="field">
              <label class="label">Product Name</label>
@@ -50,6 +50,7 @@
            <div class="field">
              <button class="button" v-on:click="submit">Submit</button>
            </div>
+           <br>
          </div>
       </div>
    </div>
@@ -63,7 +64,7 @@ import { product } from '@/models';
 @Component
 export default class ProductAdder extends Vue {
 
-   newProductId: number = null;
+   newProductId: number = 0;
    newProductName: string = '';
    newBrand: string = '';
    newPrice: number = 0;
@@ -111,11 +112,7 @@ export default class ProductAdder extends Vue {
 <style scoped>
 
 #product-adder{
-   background-color: inherit;
-   border-color: #ff6600;
-   border-width: 1px;
    border-radius: 20px;
-   border-style: solid;
 }
 
 button{
