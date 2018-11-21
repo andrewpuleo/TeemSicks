@@ -8,7 +8,6 @@ const Auth = {
       if (user && user.password === password) {
         
         return user.getSession().then(session => {
-          console.log('in get session');
           let foundSession = session;
           if (!foundSession) {
             foundSession = Session.build();

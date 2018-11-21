@@ -3,6 +3,9 @@
     <div class = "login">
         <img src = "../assets/foxycle.png" alt = "login"
           style = "width:200px; height:100px;padding:10px"/>
+        <div class="error-message" id="error-msg" v-if="this.invalidLoginErr">
+          {{this.invalidLogin}}
+        </div>
         <div class = "needs-validation">
           <div class = "form-row-1">
             <div class = "form-col UserName">
@@ -22,6 +25,8 @@
           <p> Don't have an account? </p>
           <a><router-link to="/register"> Sign Up </router-link></a>
       </div>
+
+
   </div>
   
 </template>
@@ -37,53 +42,11 @@
         users: User[] = [];
         userData: User|null = null;
         missing: string[] = [];
-        //isLoggedIn:string;
 
-        // isLoggedIn () {
-        //   if(this.$store.state.isLoggedIn) {
-        //     return "Logout"
-        //   }
-        //   return "Login"
-        // }
-         
-      // login() {
-      //   axios.post('/api/users', {
-      //   username: this.username,
-      //   password: this.password,
+        invalidLogin = '';
+        invalidLoginErr = false;
         
-      //   }).then((res) => {
-      //     console.log(res);
-      //     debugger
-      //   });
-
-        
-        
-        // axios.get('/api/users')
-        //   .then((response) => {
-        //     this.users = response.data.users;
-        //     console.log(this.users);
-        //   });
-        //   let matches:boolean = false;
-        //   let cUser:User = null;
-        //   for ( cUser in this.users){
-        //     if(cUser.username === this.username){
-        //       if(cUser.password === this.password){
-        //         matches = true;
-        //       }
-        //     }
-        //   }
-        //   console.log(matches);
-
-
-        // axios.post('/api/users', {
-        // username: this.username,
-        // password: this.password,
-        
-        // }).then((res) => {
-        //   this.username = '';
-        //   this.password = '';
-        // })
-      //};
+      
 
       login () {
           axios.post(`/api/users/login`, {
@@ -92,16 +55,19 @@
           password: this.password
         }).then((res) => {
           if(res.status == 200){
-            this.$store.commit('login', res.data.user_id);
-            console.log(res.data.user_id);
-            debugger;
-            
+            this.$store.commit('login', res.data);            
           }
-          console.log("Login response:" + res.status);
-          console.log(this.$store.getters.getIsLoggedIn);
+          console.log("res is: ", res)
+          
+          //console.log("Login response:" , res.status);
+          //console.log(this.$store.getters.getIsLoggedIn);
           //console.log(this.$store.getters.getUID);
 
-})
+        }).catch(() => {
+          this.invalidLoginErr = true;
+          this.invalidLogin = "Invalid Username and Password Combination";
+          console.log(this.invalidLogin)
+        });
       }
       
 
@@ -164,5 +130,13 @@
     }
     .signUp a{
       color: rgba(252, 92, 0, 0.801);
+    }
+
+    .error-message{
+      color:red;
+    }
+    .display-error-message{
+      display:block!important;
+      
     }
  </style>

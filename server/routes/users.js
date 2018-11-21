@@ -16,7 +16,6 @@ router.route('/')
       username,
       password,
     } = req.body;
-    console.log("user", req.body);
     // validate potentially here
     User.create({
       userId,
@@ -49,27 +48,35 @@ router.get('/:id', function(req, res) {
 
 
 router.post('/login', function(req, res) {
+  
   const { username, password } = req.body;
   if(!username) {
+    
     return res.status(422).json({
+      data: {
+        invalid: true
+      },
       errors: {
         username: 'is required',
+        
       },
     });
   }
 
   if(!password) {
     return res.status(422).json({
+      data: {
+        invalid: true
+      },
       errors: {
         password: 'is required',
       },
     });
   }
-  console.log("auth", Auth);
   Auth.login(username, password).then(
     session => {
-      console.log("session var: ", session);
-      res.json(session.UserId);
+      res.json(session.dataValues.UserId);
+      console.log(session.dataValues.UserId)
     }, error => {
       res.status(403).json({ error: error.message });
     }
