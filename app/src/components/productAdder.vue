@@ -157,7 +157,7 @@ input[type=text], select, textarea {
 /* Style the submit button with a specific background color etc */
 
 input[type=submit] {
-    //background-color: #4CAF50;
+    /*background-color: #4CAF50; */
     padding: 12px 20px;
     cursor: pointer;
     background-color: rgba(252, 92, 0, 0.801);
