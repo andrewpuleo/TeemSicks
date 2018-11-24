@@ -14,18 +14,25 @@
       </table>
       </div>
       <ul class="items">
-        <li :key="item.id" v-for="item in data.items" class="item">
-          <div class="item-preview">
-            <img :src="item.thumbnail" :alt="item.title" class="item-thumbnail">
+        <li :key="Item.id" v-for="Item in this.$store.state.itemDisplay.slice(1)" class="item">
+        <div class = "flex-container1">
+          <div class="item-preview" id = "itemContainer1">
+            
+            <img :src="Item.thumbnail" :alt="Item.title" class="item-thumbnail">
             <div>
-              <h2 class="item-title">{{ item.title }}</h2>
-              <p class="item-description">{{ item.description }}</p>
+              <h2 class="item-title">{{ Item.title }}</h2>
             </div>
           </div>
-          <div>
-            <input type="text" class="item-quantity" v-model="item.quantity">
-            <span class="item-price">{{ toPrice(item.price).toFormat() }}</span>
+          <div id = "itemContainer2">
+            <input type="number" min="1" oninput="if(this.value == 0) this.value = null;" class="item-quantity" v-model="Item.quantity">
           </div>
+          <div id = "itemContainer3">
+            <p class="item-price">{{ toPrice(Item.price).toFormat() }}</p>
+          </div>
+          <div id = "itemContainer4">
+            <button id="deleteButton" v-on:click="DeleteItem(Item), printTheCart()"> delete </button>
+          </div>
+        </div>
         </li>
       </ul>
       <h3 class="cart-line">
@@ -59,20 +66,7 @@ export default {
   data() {
     return {
       data: {
-        items: [{
-        "title": "Cart Item 1",
-        "description": "xyz Road Bike",
-        "thumbnail": "https://li2.rightinthebox.com/images/384x384/201611/ddkb1479349722841.jpg",
-        "quantity": 1,
-        "price": 899.99
-      },
-      {
-        "title": "Cart Item 2",
-        "description": "xyz Road Bike 2",
-        "thumbnail": "https://li4.rightinthebox.com/images/384x384/201605/uzgz1463321418592.jpg",
-        "quantity": 1,
-        "price": 999.99
-      },],
+
         Tax: 10
       },
     };
@@ -82,6 +76,12 @@ export default {
       return Dinero({ amount: Math.round(amount * factor) }).setLocale(
         this.language
       );
+    },
+    DeleteItem(item){
+      this.$store.commit('deleteItem', item)
+    },
+    printTheCart(){
+      this.$store.commit('printCart')
     }
   },
   computed: {
@@ -90,7 +90,7 @@ export default {
       return this.getSubtotal.percentage(this.data.Tax);
     },
     getSubtotal() {
-      return this.data.items.reduce(
+      return this.$store.state.itemDisplay.reduce(
         (a, b) => a.add(this.toPrice(b.price).multiply(b.quantity)),
         Dinero().setLocale(this.language)
       );
@@ -178,12 +178,49 @@ export default {
   padding: 15px 0;
   border-bottom: 2px solid rgba(51, 58, 69, 0.1);
 }
+
+#itemContainer1 {
+  flex: 20%;
+}
+
+#itemContainer2 {
+  flex: 70%;
+  text-align: right;
+}
+
+#itemContainer3{
+  flex:8%;
+  text-align: right;
+}
+
+#itemContainer4{
+  flex:2%;
+  text-align: right;
+  margin-top: 25px;
+  margin-left: 10px;
+}
+
+#deleteButton{
+  color: rgba(252, 92, 0, 0.801);
+  margin:0;
+  padding:0;
+  border: none;
+  background: none;
+}
+
+#deleteButton:hover{
+  color: red;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .item-preview {
   display: flex;
   align-items: center;
 }
 .item-thumbnail {
-  max-width: 100px;
+  width: 100px;
+  max-height: 75px;
   padding: 0px;
   margin-right: 20px;
   border-radius: 10px;
@@ -198,6 +235,7 @@ export default {
 }
 .item-quantity {
   max-width: 100px;
+  margin-top: 10px;
   margin-right: 20px;
   padding: 12px;
   font-size: inherit;
@@ -213,7 +251,7 @@ export default {
   border-radius: 4px;
 }
 .item-price {
-  margin-left: 20px;
+  margin-top: 25px;
 }
 
 .checkoutB{
@@ -233,6 +271,11 @@ export default {
     color: black;
     border: 2px solid rgba(252, 92, 0, 0.801);
     background-color: white;
+    }
+
+    .flex-container1{
+      display: flex;
+      width: 100%;
     }
 
 

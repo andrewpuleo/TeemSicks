@@ -18,7 +18,7 @@
                <p>{{item.Brand}}</p>
                <br>
                <p>Listed Price: ${{item.salePrice}}</p>
-               <button> Add To Cart </button>
+               <button v-on:click="AddToCart(), AddToItem()"> Add To Cart </button>
             </div>
          </div>
 
@@ -33,12 +33,13 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import axios from 'axios';
 import { product } from '@/models';
+import { mapMutations } from 'vuex';
 
 @Component
 export default class Item extends Vue {
    @Prop() id!: Number;
    item: product = new product();
-
+   
    mounted() {
       axios.get(`/api/products/${this.id}`)
       .then((response) => {
@@ -46,8 +47,15 @@ export default class Item extends Vue {
       });
       console.log("our item", this.item);
    }
-
+   AddToCart() {
+         this.$store.commit('addToCart', this.item);
+         //this.$store.commit('printCart');
+   }
+   AddToItem() {
+      this.$store.commit('addToItem', this.item);
+   }
 }
+
 </script>
 
 <style scoped>
@@ -63,7 +71,7 @@ export default class Item extends Vue {
 
 .left-item-data{
    margin-left: 0px;
-   margin.right: 0px;
+   margin-right: 0px;
    position: relative;
 }
 
