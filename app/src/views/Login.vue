@@ -3,8 +3,8 @@
     <div class = "login">
         <img src = "../assets/foxycle.png" alt = "login"
           style = "width:200px; height:100px;padding:10px"/>
-        <div class="error-message" id="error-msg" v-if="this.invalidLoginErr">
-          {{this.invalidLogin}}
+        <div class="error-message" id="error-msg" >
+          
         </div>
         <div class = "needs-validation">
           <div class = "form-row-1">
@@ -64,10 +64,15 @@
           //console.log(this.$store.getters.getUID);
 
         }).catch(() => {
+          this.loginErrFcn()
           this.invalidLoginErr = true;
           this.invalidLogin = "Invalid Username and Password Combination";
           console.log(this.invalidLogin)
         });
+      }
+
+      loginErrFcn(){
+        document.getElementById("error-msg").innerHTML = "Invalid Username and Password Combination";
       }
       
 

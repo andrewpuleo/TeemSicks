@@ -76,7 +76,6 @@ router.post('/login', function(req, res) {
   Auth.login(username, password).then(
     session => {
       res.json(session.dataValues.UserId);
-      console.log(session.dataValues.UserId)
     }, error => {
       res.status(403).json({ error: error.message });
     }
