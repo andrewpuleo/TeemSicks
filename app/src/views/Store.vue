@@ -6,7 +6,22 @@
 
       <div class="col-sm-2 toolbar white-box-grey-border">
       <h3 style="font-size: 20px"><b>Narrow Down Your Search</b></h3>
-      <StoreToolbar/>
+
+
+      <div class="tools">
+        <div class="sort">
+            
+            <div class="sort_buttons">
+                <button type="button" class="btn btn-primary" v-on:click="LowHigh()">Low $ -> High $</button>
+                <button type="button" class="btn btn-primary" v-on:click="HighLow()">High $ -> Low $</button>
+                <button type="button" class="btn btn-primary" v-on:click="Sale()">On Sale</button>
+                <button type="button" class="btn btn-primary" v-on:click="ViewAll()">View All</button>
+                <button type="button" class="btn btn-primary" v-on:click="Newest()">Newest</button>
+            </div>
+        </div>
+      </div>
+
+
       </div>
 
       <div class="col store_container">
@@ -20,6 +35,17 @@
 </template>
 
 <style scoped>
+
+  .tools{
+    white-space:nowrap;
+  }
+
+  .sort_buttons{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    white-space: normal;
+  }
   .store_container {
     display: flex;
     display: -webkit-flex;
@@ -28,10 +54,10 @@
 
 
   .toolbar{
-     padding-top: 1rem;
+    padding-top: 1rem;
     border-radius: 20px;
-    max-height: 285px;
     min-width: 160px;
+    height: fit-content;
   }
 
 </style>
@@ -42,11 +68,14 @@ import axios from 'axios';
 import ToDo from '@/components/ToDo.vue';
 import { product } from '@/models';
 import  StoreItem  from "@/components/storeItem.vue";
-import  StoreToolbar  from "@/components/storeToolbar.vue";
 
-@Component({ components: { StoreItem, StoreToolbar, } })
+@Component({ components: { StoreItem } })
 export default class Store extends Vue {
   items: product[] = [];
+  tempItems: product[] = [];
+  sortVal1: number = 0;
+  sortVal2: number = 0;
+
   mounted() {
 
     axios.get('/api/Products')
@@ -55,5 +84,88 @@ export default class Store extends Vue {
         console.log(this.items);
       });
   }
+
+  Sale(){
+    
+    this.items.forEach(element => {
+      if(element.onSale != 0){
+        this.tempItems.push(element);
+      }
+      
+    });
+    this.items=this.tempItems;
+    this.tempItems=[]
+    this.items.sort()
+  }
+
+
+  LowHigh(){
+    this.items = this.items.sort(this.compareLowHigh);
+  }
+
+  HighLow(){
+    this.items = this.items.sort(this.compareHighLow);
+  }
+
+  compareLowHigh(item1,item2){
+    this.sortVal1 = item1.Price;
+    this.sortVal2 = item2.Price;
+
+    if(item1.onSale){
+      this.sortVal1 = item1.salePrice
+    }
+
+    if(item2.onSale){
+      this.sortVal2 = item2.salePrice
+    }
+
+    if (this.sortVal1 < this.sortVal2){
+      return -1
+    }else if(this.sortVal1 > this.sortVal2){
+      return 1;
+    }
+    return 0;
+  }
+
+  compareHighLow(item1,item2){
+    this.sortVal1 = item1.Price;
+    this.sortVal2 = item2.Price;
+
+    if(item1.onSale){
+      this.sortVal1 = item1.salePrice
+    }
+
+    if(item2.onSale){
+      this.sortVal2 = item2.salePrice
+    }
+
+    if (this.sortVal1 < this.sortVal2){
+      return 1
+    }else if(this.sortVal1 > this.sortVal2){
+      return -1;
+    }
+    return 0;
+  }
+    
+  ViewAll(){
+    axios.get('/api/Products')
+      .then((response) => {
+        this.items = response.data.products;
+      });
+  }
+
+  Newest(){
+    this.items = this.items.sort(this.compareNewest);
+  }
+
+  compareNewest(item1,item2){
+    if (item1.updatedAt < item2.updatedAt){
+      return -1
+    }else if(item1.updatedAt > item2.updatedAt){
+      return 1;
+    }
+    return 0;
+  }
+
 }
 </script>

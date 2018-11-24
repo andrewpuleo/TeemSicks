@@ -17,7 +17,7 @@
       <div class="row bottom-info">
          <div class="price">
             <h5 v-if="item.onSale" style=" color:white; font-size: 25px; border-bottom: 2px solid white;}" v-bind:for="item.id"><span style="text-decoration: line-through;">${{item.Price}} </span> ${{item.salePrice}}</h5>
-            <h5 v-else style="color:white; font-size: 25px; border-bottom: 2px solid white;}" v-bind:for="item.id">${{item.salePrice}}</h5>
+            <h5 v-else style="color:white; font-size: 25px; border-bottom: 2px solid white;}" v-bind:for="item.id">${{item.Price}}</h5>
          </div>
          <div class="product-name">
             <h3 v-bind:for="item.id">{{item.productName}}</h3>
@@ -119,6 +119,8 @@ export default class StoreItem extends Vue {
     @Prop({ default: null })
     item!: product;
     URL = this.item.photoUrl;
+
+
 }
 
 </script>
