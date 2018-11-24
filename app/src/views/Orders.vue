@@ -1,19 +1,18 @@
 <template>
     <div id="account">
-        <h1>Secure Area</h1>
+        <h1>View All Orders</h1>
         <p>
-            This is a new secure area
+            Here you can view orders, and edit a given record by clicking on it in the table.
         </p>
-        <ProductAdder></ProductAdder>
+        <OrdersChart/>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import ProductAdder from '@/components/productAdder.vue';
-
-@Component({ components: { ProductAdder, } })
-export default class Account extends Vue {
+import OrdersChart from '@/components/ordersChart.vue';
+@Component({ components: { OrdersChart } })
+export default class Orders extends Vue {
 
 }
 </script>

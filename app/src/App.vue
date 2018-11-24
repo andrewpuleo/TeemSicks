@@ -24,7 +24,7 @@
                       <div class="dropdown-content">
                          <table>
                             <tr>
-                               <td><router-link to="/store">Road</router-link></td>
+                               <td><router-link to="/store">Roaddd</router-link></td>
                                <td><router-link to="/store">Mountain</router-link></td>
                                <td><router-link to="/store">Accessories</router-link></td>
                             </tr>
@@ -45,6 +45,11 @@
                 <li class="nav-item active">
                    <div class="navlink" id="navleft">
                       <button class="navbtn"><router-link to="/services">Services</router-link></button>
+                   </div>
+                </li>
+                <li class="nav-item active">
+                   <div class="navlink" id="navleft">
+                      <button class="navbtn"><router-link to="/account">Account</router-link></button>
                    </div>
                 </li>
              </ul>
@@ -76,7 +81,7 @@
         <h3>Contact</h3>
         <div class="row">
           <div class="col-lg-4">
-            1400 Ramada Drive 
+            1400 Ramada Drive
           </div>
           <div class="col-lg-4">
             Paso Robles, Ca, 93446
@@ -111,6 +116,8 @@ export default class Home extends Vue {}
 </script>
 
 <style scoped lang="scss">
+@import '/style.css';
+
 .footer {
     left: 0;
     bottom: 0;

@@ -2,6 +2,9 @@
   <div class="item" id="item">
      <router-link v-bind:to="'/item/'+item.id">
       <div class="row item-pic" v-bind:style="{'background-image': 'url(' + item.photoUrl + ')', 'background-size': '100%', 'background-repeat': 'no-repeat', 'background-position':'center' } ">
+         <div v-if="item.onSale" id="on-sale">
+            <img align="right" src="../assets/sale.png"></img>
+         </div>
           <!--
               <img src="../assets/rockhopper_image.jpeg">
         -->
@@ -13,7 +16,8 @@
 
       <div class="row bottom-info">
          <div class="price">
-            <h5 style="color:white; font-size: 25px; border-bottom: 2px solid white;}" v-bind:for="item.id">${{item.salePrice}}</h5>
+            <h5 v-if="item.onSale" style=" color:white; font-size: 25px; border-bottom: 2px solid white;}" v-bind:for="item.id"><span style="text-decoration: line-through;">${{item.Price}} </span> ${{item.salePrice}}</h5>
+            <h5 v-else style="color:white; font-size: 25px; border-bottom: 2px solid white;}" v-bind:for="item.id">${{item.salePrice}}</h5>
          </div>
          <div class="product-name">
             <h3 v-bind:for="item.id">{{item.productName}}</h3>
@@ -29,6 +33,13 @@
 
 #item:hover {opacity: 0.7;}
 
+#on-sale img{
+   position: absolute;
+    right: 0px;
+   height: 80px;
+   width: 80px;
+
+}
 .item {
    position: relative;
   background-color: white;
