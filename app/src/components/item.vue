@@ -18,7 +18,9 @@
                <p>{{item.Brand}}</p>
                <br>
                <p>Listed Price: ${{item.salePrice}}</p>
-               <button v-on:click="AddToCart(), AddToItem()"> Add To Cart </button>
+               <button v-on:click="showAddedMessage(), AddToCart(), AddToItem()"> Add To Cart </button>
+               <div id="addedMessege">Added {{item.productName}} To The Cart!</div>
+               <div id="dupItemInCart"> {{this.$store.state.cart[item.id]}}x {{item.productName}} in the Cart! </div>
             </div>
          </div>
 
@@ -53,6 +55,17 @@ export default class Item extends Vue {
    }
    AddToItem() {
       this.$store.commit('addToItem', this.item);
+   }
+
+   showAddedMessage() {
+      if(!(this.item.id in this.$store.state.cart)){
+      var x = document.getElementById("addedMessege");
+      }
+      else{
+         var x = document.getElementById("dupItemInCart");
+      }
+      x.className = "show";
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
    }
 }
 
@@ -103,6 +116,49 @@ button:hover{
 
 .right-item-data{
    padding-top: 8rem;
+}
+
+#addedMessege, #dupItemInCart {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333; 
+    color: #fff; 
+    text-align: center; 
+    border-radius: 2px; 
+    padding: 16px;
+    position: fixed; 
+    z-index: 1; 
+    left: 50%; 
+    bottom: 30px; 
+}
+
+
+#addedMessege.show, #dupItemInCart.show {
+    visibility: visible;
+   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+   animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
 }
 
 </style>

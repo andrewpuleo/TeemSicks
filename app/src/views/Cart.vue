@@ -4,27 +4,26 @@
       <h1 class="title">
         Order
       </h1>
-      <div class="table-responsive">
-      <table class = "order-table">
-        <tr>
-          <th id = "item col">item</th>
-          <th id = "quantitiy col">quantity</th>
-          <th id = "price col">price</th>
-        </tr>
-      </table>
+      <div class = "flex-container1" style="border-bottom: 2px solid #ddd; font-weight: bold">
+          <div id = "itemContainer1" style= "text-align: left; margin-left:25px">Item</div>
+          <div id = "itemContainer2" style = "margin-right:50px">Quantity</div>
+          <div id = "itemContainer3" style = "margin-right:15px">Price</div>
       </div>
       <ul class="items">
-        <li :key="Item.id" v-for="Item in this.$store.state.itemDisplay.slice(1)" class="item">
-        <div class = "flex-container1">
+        <li :key="Item.id" v-for="Item in this.$store.state.itemDisplay.slice(1)" class="item" style="display:flex; flex-wrap: wrap">
+        <div class = "flex-container1" style="flex-wrap:wrap">
           <div class="item-preview" id = "itemContainer1">
-            
+             <router-link v-bind:to="'/item/'+Item.id">
             <img :src="Item.thumbnail" :alt="Item.title" class="item-thumbnail">
+            </router-link>
             <div>
               <h2 class="item-title">{{ Item.title }}</h2>
             </div>
           </div>
           <div id = "itemContainer2">
-            <input type="number" min="1" oninput="if(this.value == 0) this.value = null;" class="item-quantity" v-model="Item.quantity">
+            <NumberInputSpinner class = "spinner" :min="1" :max="Item.amountInStock" :integerOnly="true" v-model="Item.quantity">
+              {{UpdateCartQuantity(Item)}}
+            </NumberInputSpinner>
           </div>
           <div id = "itemContainer3">
             <p class="item-price">{{ toPrice(Item.price).toFormat() }}</p>
@@ -40,7 +39,7 @@
         <span class="cart-price">{{ getSubtotal.toFormat() }}</span>
       </h3>
       <h3 class="cart-line">
-        TAX ({{ data.vatRate }}%)
+        TAX ({{ data.Tax}}%)
         <span class="cart-price">{{ getTaxAmount.toFormat() }}</span>
       </h3>
     
@@ -60,14 +59,17 @@
 
 <script>
 import Dinero from "dinero.js";
+import NumberInputSpinner from 'vue-number-input-spinner';
 
 export default {
   name: "cart",
+  components: {
+    NumberInputSpinner,
+  },
   data() {
     return {
       data: {
-
-        Tax: 10
+        Tax: 10,
       },
     };
   },
@@ -82,7 +84,10 @@ export default {
     },
     printTheCart(){
       this.$store.commit('printCart')
-    }
+    },
+    UpdateCartQuantity(item){
+      this.$store.commit('updateCartQuantity', item)
+    },
   },
   computed: {
     
@@ -113,22 +118,6 @@ export default {
   font-size: 110%;
   font-weight: bold;
   color: rgba(252, 92, 0, 0.801);
-}
-.order-table>tr>:nth-child(3){
-  padding: 0px 0px 0px 0px;
-}
-.order-table>tr>:nth-child(1){
-  padding: 0px 175px 0px 25px;
-}
-.order-table>tr>:nth-child(2){
-  padding: 0px 50px 0px 1000px;
-}
-
-.order-table>tr{
-  border-bottom: 2px solid #ddd;
-}
-.order-table{
-  width: 100%;
 }
 
 .language {
@@ -176,15 +165,16 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 15px 0;
+  width: 100%;
   border-bottom: 2px solid rgba(51, 58, 69, 0.1);
 }
 
 #itemContainer1 {
-  flex: 20%;
+  flex: 70%;
 }
 
 #itemContainer2 {
-  flex: 70%;
+  flex: 20%;
   text-align: right;
 }
 
@@ -196,7 +186,6 @@ export default {
 #itemContainer4{
   flex:2%;
   text-align: right;
-  margin-top: 25px;
   margin-left: 10px;
 }
 
@@ -255,28 +244,47 @@ export default {
 }
 
 .checkoutB{
-      margin-top: 50px;
-      margin-bottom: 50px;
-      padding: 5px 40px;
-      background-color: rgba(252, 92, 0, 0.801);
-      color: white;
-      border-radius: 4px;
-      transition-duration: 0.4s;
-      border:2px solid rgba(252, 92, 0, 0.801);
-      text-align: center;
-      float: right;
-    }
-    .checkoutB:hover{
-    cursor: pointer;
-    color: black;
-    border: 2px solid rgba(252, 92, 0, 0.801);
-    background-color: white;
-    }
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 5px 40px;
+  background-color: rgba(252, 92, 0, 0.801);
+  color: white;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  border:2px solid rgba(252, 92, 0, 0.801);
+  text-align: center;
+  float: right;
+}
 
-    .flex-container1{
-      display: flex;
-      width: 100%;
-    }
+.checkoutB:hover{
+  cursor: pointer;
+  color: black;
+  border: 2px solid rgba(252, 92, 0, 0.801);
+  background-color: white;
+}
 
+.flex-container1{
+  display: flex;
+  width: 100%;
+}
+
+.spinner{
+  margin-top: 17px;
+  width: 10rem;
+  float:right;
+}
+
+.vnis__button{
+  background-color: rgba(252, 92, 0, 0.801) !important;
+  transition: none !important;
+  outline: none !important;
+}
+
+.vnis__button:hover{
+  cursor: pointer;
+  color:black;
+  background-color: white !important;
+  border: 2px solid rgba(252, 92, 0, 0.801);
+}
 
 </style>

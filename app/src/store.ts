@@ -16,6 +16,7 @@ export default new Vuex.Store({
       quantity: 0,
       thumbnail: "",
       id:0,
+      amountInStock: 0,
     }]
   },
   getters: {
@@ -52,7 +53,6 @@ export default new Vuex.Store({
     addToItem (state, item) {
       if(state.cart[item.id]>1)
       {
-        alert("already added")
         var indexOfItem = state.itemDisplay.findIndex(Object => Object.title == item.productName);
         state.itemDisplay[indexOfItem].quantity+=1;
       }
@@ -63,15 +63,13 @@ export default new Vuex.Store({
         quantity: state.cart[item.id],
         thumbnail: item.photoUrl,
         description: item.productDescription,
-        id: item.id
+        id: item.id,
+        amountInStock: item.amountInStock
       })
     }
-      var i;
-      for(i = 0; i<state.itemDisplay.length; i++)
-      {
-        console.log(state.itemDisplay[i].title);
-        console.log(state.itemDisplay[i].quantity);
-      }
+    },
+    updateCartQuantity(state, item){
+      state.cart[item.id] = item.quantity;
     },
 
     deleteItem (state, item) {
