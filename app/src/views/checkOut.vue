@@ -444,4 +444,75 @@ input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
 .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
     background-color:rgba(252, 92, 0, 0.801);
 }
+
+.items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cart {
+  background: #fff;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  color: #333a45;
+  border-radius: 3px;
+  padding: 30px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.cart-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 0 0;
+  font-size: inherit;
+  font-weight: normal;
+  color: rgba(51, 58, 69, 0.8);
+}
+.cart-price {
+  color: #333a45;
+}
+.cart-total {
+  font-size: 130%;
+}
+
+.item-preview {
+  display: flex;
+  align-items: center;
+}
+.item-thumbnail {
+  width: 100px;
+  max-height: 75px;
+  padding: 0px;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+.item-title {
+  margin: 0 0 10px 0;
+  font-size: inherit;
+}
+.item-description {
+  margin: 0;
+  color: rgba(51, 58, 69, 0.6);
+}
+.item-quantity {
+  max-width: 100px;
+  margin-top: 10px;
+  margin-right: 20px;
+  padding: 12px;
+  font-size: inherit;
+  color: black;
+  border-radius: 4px;
+  border:2px solid rgb(190, 190, 190);
+  text-align: center;
+}
+
+.item-quantity:focus{
+  outline:none;
+  border:2px solid rgba(252, 92, 0, 0.801);
+  border-radius: 4px;
+}
+.item-price {
+  margin-top: 25px;
+}
 </style>

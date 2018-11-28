@@ -21,7 +21,7 @@
             </div>
           </div>
           <div id = "itemContainer2">
-            <NumberInputSpinner class = "spinner" :min="1" :max="Item.amountInStock" :integerOnly="true" v-model="Item.quantity">
+            <NumberInputSpinner class = "spinner1" :min="1" :step="1" :max="Item.amountInStock" :integerOnly="true" v-model="Item.quantity">
               {{UpdateCartQuantity(Item)}}
             </NumberInputSpinner>
           </div>
@@ -59,7 +59,7 @@
 
 <script>
 import Dinero from "dinero.js";
-import NumberInputSpinner from 'vue-number-input-spinner';
+import NumberInputSpinner from "@/components/NumberInputSpinner.vue";
 
 export default {
   name: "cart",
@@ -107,7 +107,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 .title {
   display: flex;
@@ -120,13 +120,6 @@ export default {
   color: rgba(252, 92, 0, 0.801);
 }
 
-.language {
-  margin: 0 2px;
-  font-size: 60%;
-  color: rgba(#333a45, 0.6);
-  text-decoration: underline;
-  cursor: pointer;
-}
 
 .items {
   margin: 0;
@@ -268,7 +261,7 @@ export default {
   width: 100%;
 }
 
-.spinner{
+.spinner1{
   margin-top: 17px;
   width: 10rem;
   float:right;
