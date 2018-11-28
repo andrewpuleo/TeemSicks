@@ -73,6 +73,7 @@
 
       loginErrFcn(){
         document.getElementById("error-msg").innerHTML = "Invalid Username and Password Combination";
+
       }
       
 
