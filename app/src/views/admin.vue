@@ -1,19 +1,25 @@
 <template>
-  <div>
-    <h1> ADMIN POWERRR </h1>
-  </div>
+    <div id="admin">
+        <h1>ADMINISTRATOR ONLY</h1>
+        <p>
+            This is a new secure area
+        </p>
+        <ProductAdder></ProductAdder>
+    </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue';
-import index from '@/components/index.vue'; // @ is an alias to /src
-
-@Component({
-  components: {
-  HelloWorld, index,
-  },
-  })
-
-export default class Admin extends Vue {}
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import ProductAdder from '@/components/productAdder.vue';
+@Component({ components: { ProductAdder, } })
+export default class Admin extends Vue {
+}
 </script>
+
+<style scoped>
+    #secure {
+        background-color: #FFFFFF;
+        padding: 20px;
+        margin-top: 10px;
+    }
+</style>
