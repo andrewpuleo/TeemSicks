@@ -92,15 +92,8 @@
           password: this.password
         }).then((res) => {
           if(res.status == 200){
-            this.$store.commit('login', res.data.user_id);
-            console.log(res.data.user_id);
-            debugger;
-            
+            this.$store.commit('login', res.data);
           }
-          console.log("Login response:" + res.status);
-          console.log(this.$store.getters.getIsLoggedIn);
-          //console.log(this.$store.getters.getUID);
-
 })
       }
       
