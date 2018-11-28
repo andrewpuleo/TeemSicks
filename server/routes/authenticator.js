@@ -4,9 +4,9 @@ const Auth = {
   login: (username, password) =>
     User.findOne({ where: { username } }).then(user => {
 
-      c
+      
       if (user && user.password === password) {
-        
+
         return user.getSession().then(session => {
           let foundSession = session;
           if (!foundSession) {

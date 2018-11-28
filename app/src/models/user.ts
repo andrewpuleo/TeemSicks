@@ -1,6 +1,6 @@
 export class User {
   userType!: string;
-  firstName!: number;
+  firstName!: string;
   lastName!: string;
   phone!: number;
   email!: string;
