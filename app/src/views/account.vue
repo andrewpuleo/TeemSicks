@@ -63,4 +63,3 @@ export default class Account extends Vue {
   }
 }
 </script>
-
