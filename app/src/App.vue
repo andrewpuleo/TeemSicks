@@ -58,7 +58,7 @@
             <!-- Right items: Login and cart -->
             <ul class="navbar-nav navbar-right" id="navright">
                <li class="nav-item active">
-                  <button v-if="this.$store.getters.getIsLoggedIn == false" class="navbtn"><router-link to="/account">Login</router-link></button>
+                  <button v-if="this.$store.getters.getIsLoggedIn == false" class="navbtn"><router-link to="/login">Login</router-link></button>
                   <button v-if="this.$store.getters.getIsLoggedIn" class="navbtn"><router-link to="/account">Account</router-link></button>
 
 
