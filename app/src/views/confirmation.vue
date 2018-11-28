@@ -149,7 +149,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 .orderPlaced{
   margin-bottom: 20px;

@@ -18,7 +18,7 @@
             </div>
           </div>
           
-          <button  class="btn btn-primary" v-on:click="login()">Login</button>
+          <button id = "loginB" class = "btn btn-primary" v-on:click="login()">Login</button>
         </div>
       </div>
        <div class = "signUp">
@@ -107,7 +107,7 @@
       margin-bottom:100px;
       color: rgba(252, 92, 0, 0.801);
     }
-    button{
+    #loginB{
       margin-top: 20px;
       padding: 5px 105px;
       background-color: rgba(252, 92, 0, 0.801);
@@ -116,7 +116,7 @@
       transition-duration: 0.4s;
       border:2px solid rgba(252, 92, 0, 0.801);
     }
-    button:hover{
+    #loginB:hover{
     cursor: pointer;
     color: black;
     border: 2px solid rgba(252, 92, 0, 0.801);

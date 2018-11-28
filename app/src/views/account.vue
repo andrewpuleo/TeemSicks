@@ -14,6 +14,7 @@
                     </div>
                     <h1 v-else>Nope</h1>
                 </div>
+
             </div>
         </div>
     </div>
@@ -32,8 +33,6 @@
         height: 600px;
         width: 100%;
     }
-
-
     .centered{
         position: absolute;
         top: 26rem;
@@ -64,3 +63,4 @@ export default class Account extends Vue {
   }
 }
 </script>
+

@@ -64,7 +64,9 @@
 
                </li>
                <li class="nav-item active">
-                  <router-link to="/cart"><img src="./assets/cart.png">Cart</router-link>
+                  <router-link to="/cart"><img src="./assets/cart.png">
+                     Cart
+                  </router-link>
                </li>
             </ul>
          </div>
