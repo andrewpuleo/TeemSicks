@@ -160,9 +160,9 @@ export default class Store extends Vue {
 
   compareNewest(item1,item2){
     if (item1.updatedAt < item2.updatedAt){
-      return -1
+      return 1
     }else if(item1.updatedAt > item2.updatedAt){
-      return 1;
+      return -1;
     }
     return 0;
   }
