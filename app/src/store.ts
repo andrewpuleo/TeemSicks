@@ -16,12 +16,13 @@ export default new Vuex.Store({
     getUID: state => {
       return state.uid
     }
-    
+
   },
   mutations: {
     login (state, id) {
       state.uid = id,
       state.isLoggedIn = true
+      console.log("is logged in")
     },
 
     logout (state) {

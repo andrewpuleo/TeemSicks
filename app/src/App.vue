@@ -24,7 +24,7 @@
                       <div class="dropdown-content">
                          <table>
                             <tr>
-                               <td><router-link to="/store">Roaddd</router-link></td>
+                               <td><router-link to="/store">Road</router-link></td>
                                <td><router-link to="/store">Mountain</router-link></td>
                                <td><router-link to="/store">Accessories</router-link></td>
                             </tr>
@@ -56,7 +56,10 @@
 
             <!-- Right items: Login and cart -->
             <ul class="navbar-nav navbar-right" id="navright">
-               <li class="nav-item active">
+               <li v-if="loginStatus" class="nav-item active">
+                  <router-link to="/account"><img src="./assets/user.png"> Account</router-link>
+               </li>
+               <li v-else class="nav-item active">
                   <router-link to="/login"><img src="./assets/user.png"> Login</router-link>
                </li>
                <li class="nav-item active">
@@ -103,6 +106,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { User } from '@/models';
 import HelloWorld from '@/components/HelloWorld.vue';
 import index from '@/components/index.vue'; // @ is an alias to /src
 //import Navbar from '@/components/Navbar.vue';
@@ -112,7 +116,9 @@ import index from '@/components/index.vue'; // @ is an alias to /src
   HelloWorld, index,
   },
   })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+   loginStatus: boolean = false;
+}
 </script>
 
 <style scoped lang="scss">

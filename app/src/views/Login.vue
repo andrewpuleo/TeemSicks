@@ -14,7 +14,7 @@
               <input type="password" class = "form-control" name="password" id="validationCustom02" v-model="password" placeholder="Password" required/>
             </div>
           </div>
-          
+
           <button  class = "btn btn-primary" v-on:click="login()">Login</button>
         </div>
       </div>
@@ -23,17 +23,18 @@
           <a><router-link to="/register"> Sign Up </router-link></a>
       </div>
   </div>
-  
+
 </template>
 
  <script lang="ts">
  import { User } from '@/models';
  import axios from 'axios';
+ import Home from '../App.vue';
  import { Component, Prop, Vue } from 'vue-property-decorator';
     export default class Login extends Vue{
         username: string = '';
         password: string = '';
-       
+
         users: User[] = [];
         userData: User|null = null;
         missing: string[] = [];
@@ -45,19 +46,19 @@
         //   }
         //   return "Login"
         // }
-         
+
       // login() {
       //   axios.post('/api/users', {
       //   username: this.username,
       //   password: this.password,
-        
+
       //   }).then((res) => {
       //     console.log(res);
       //     debugger
       //   });
 
-        
-        
+
+
         // axios.get('/api/users')
         //   .then((response) => {
         //     this.users = response.data.users;
@@ -78,7 +79,7 @@
         // axios.post('/api/users', {
         // username: this.username,
         // password: this.password,
-        
+
         // }).then((res) => {
         //   this.username = '';
         //   this.password = '';
@@ -87,31 +88,32 @@
 
       login () {
           axios.post(`/api/users/login`, {
-            
+
           username: this.username,
           password: this.password
         }).then((res) => {
           if(res.status == 200){
             this.$store.commit('login', res.data.user_id);
             console.log(res.data.user_id);
-            debugger;
-            
+
           }
           console.log("Login response:" + res.status);
           console.log(this.$store.getters.getIsLoggedIn);
+          Home.loginStatus = true;
+          console.log("Login status from Home:");
           //console.log(this.$store.getters.getUID);
 
 })
       }
-      
+
 
 
         mounted(){
-          
+
         };
 
-        
-        
+
+
 };
 </script>
  <style scoped>
