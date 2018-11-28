@@ -49,6 +49,7 @@
                 </li>
                 <li class="nav-item active">
                    <div class="navlink" id="navleft">
+                     
                       <button class="navbtn"><router-link to="/account">Account</router-link></button>
                    </div>
                 </li>
@@ -57,7 +58,10 @@
             <!-- Right items: Login and cart -->
             <ul class="navbar-nav navbar-right" id="navright">
                <li class="nav-item active">
-                  <router-link to="/login"><img src="./assets/user.png"> Login</router-link>
+                  <button v-if="this.$store.getters.getIsLoggedIn == false" class="navbtn"><router-link to="/account">Login</router-link></button>
+                  <button v-if="this.$store.getters.getIsLoggedIn" class="navbtn"><router-link to="/account">Account</router-link></button>
+
+
                </li>
                <li class="nav-item active">
                   <router-link to="/cart"><img src="./assets/cart.png">Cart</router-link>
