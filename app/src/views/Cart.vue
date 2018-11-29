@@ -47,12 +47,13 @@
         Total
         <span class="cart-price cart-total">{{ getTotal.toFormat() }}</span>
       </h3>
-
+      <div id = "itemContainer4">
       <a>
         <router-link to="/checkOut">
           <button class = "checkoutB" type="button">Checkout!</button>
         </router-link>
       </a>
+      </div>
     </div>
   </div>
 </template>
@@ -238,7 +239,6 @@ export default {
 
 .checkoutB{
   margin-top: 50px;
-  margin-bottom: 50px;
   padding: 5px 40px;
   background-color: rgba(252, 92, 0, 0.801);
   color: white;
@@ -246,7 +246,6 @@ export default {
   transition-duration: 0.4s;
   border:2px solid rgba(252, 92, 0, 0.801);
   text-align: center;
-  float: right;
 }
 
 .checkoutB:hover{

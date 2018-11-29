@@ -225,7 +225,7 @@
                 <div class = "right">
                     <h1 id = "checkOutTitle"> Your Cart </h1>
                     <ul class="items" style = "padding-left:20px; padding-right:20px">
-                        <li :key="Item.id" v-for="Item in this.$store.state.itemDisplay.slice(1)" class="item">
+                        <li :key="Item.id" v-for="Item in this.$store.state.itemDisplay.slice(1)" class="checkoutItem">
                         <div class="item-preview" style = "text-align: left" >
                             <img :src="Item.thumbnail" :alt="Item.title" class="item-thumbnail">
                             <div>
@@ -256,11 +256,13 @@
                 </div>
             </div>
             <form>
+                <div id = "itemContainer4">
             <a>
                 <router-link to="/confirmation">
                     <button class = "confirmB" type="submit">Confirm!</button>
                 </router-link>
             </a>
+                </div>
             </form>
         </div>
     </div>
@@ -409,7 +411,6 @@ input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
 }
 
 .confirmB {
-  margin-bottom: 20px;
   margin-right: 50px;
   margin-top: 10px;
   padding: 5px 40px;
@@ -419,7 +420,6 @@ input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
   transition-duration: 0.4s;
   border: 2px solid rgba(252, 92, 0, 0.801);
   text-align: center;
-  float: right;
 }
 .confirmB:hover {
   cursor: pointer;
@@ -443,6 +443,15 @@ input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
 
 .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
     background-color:rgba(252, 92, 0, 0.801);
+}
+
+.checkoutItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  width: 100%;
+  border-bottom: 2px solid rgba(51, 58, 69, 0.1);
 }
 
 .items {
@@ -514,5 +523,11 @@ input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
 }
 .item-price {
   margin-top: 25px;
+}
+
+#itemContainer4{
+  flex:2%;
+  text-align: right;
+  margin-left: 10px;
 }
 </style>
