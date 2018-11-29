@@ -18,7 +18,7 @@
                      <button class="navbtn"><router-link to="/">Home</router-link></button>
                   </div>
                </li>
-               <li class="nav-item active">
+               <!--li class="nav-item active">
                    <div class="dropdown" id="navleft">
                       <button class="dropbtn"><router-link to="/store">Store</router-link></button>
                       <div class="dropdown-content">
@@ -35,6 +35,11 @@
                             </tr>
                          </table>
                       </div>
+                   </div>
+                </li-->
+                <li class="nav-item active">
+                   <div class="navlink" id="navleft">
+                      <button class="navbtn"><router-link to="/store">Store</router-link></button>
                    </div>
                 </li>
                 <li class="nav-item active">

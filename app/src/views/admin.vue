@@ -2,7 +2,7 @@
     <div id="admin">
         <h1>ADMINISTRATOR ONLY</h1>
         <p>
-            This is a new secure area
+            This is a secure area
         </p>
         <ProductAdder></ProductAdder>
     </div>
