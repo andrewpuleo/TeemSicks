@@ -21,6 +21,7 @@
                <button v-on:click="showAddedMessage(), AddToCart(), AddToItem()"> Add To Cart </button>
                <div id="addedMessege">Added {{item.productName}} To The Cart!</div>
                <div id="dupItemInCart"> {{this.$store.state.cart[item.id]}}x {{item.productName}} in the Cart! </div>
+               <div id="reachedLimit"> We do not have enough in stock! </div>
             </div>
          </div>
 
@@ -51,6 +52,7 @@ export default class Item extends Vue {
    }
    AddToCart() {
          this.$store.commit('addToCart', this.item);
+         console.log(this.$store.state.cart[this.item.id]);
          //this.$store.commit('printCart');
    }
    AddToItem() {
@@ -62,7 +64,13 @@ export default class Item extends Vue {
       var x = document.getElementById("addedMessege");
       }
       else{
-         var x = document.getElementById("dupItemInCart");
+         if(this.$store.state.cart[this.item.id] === this.item.amountInStock)
+         {
+            var x = document.getElementById("reachedLimit");
+         }
+         else{
+            var x = document.getElementById("dupItemInCart");
+         }
       }
       x.className = "show";
       setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
@@ -118,7 +126,7 @@ button:hover{
    padding-top: 8rem;
 }
 
-#addedMessege, #dupItemInCart {
+#addedMessege, #dupItemInCart, #reachedLimit {
     visibility: hidden;
     min-width: 250px;
     margin-left: -125px;
@@ -134,7 +142,7 @@ button:hover{
 }
 
 
-#addedMessege.show, #dupItemInCart.show {
+#addedMessege.show, #dupItemInCart.show, #reachedLimit.show {
     visibility: visible;
    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
    animation: fadein 0.5s, fadeout 0.5s 2.5s;

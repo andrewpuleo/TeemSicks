@@ -46,7 +46,10 @@ export default new Vuex.Store({
       Vue.set(state.cart, item.id, 1)
       }
       else{
-        state.cart[item.id]+=1
+          if(state.cart[item.id] === item.amountInStock){}
+          else{
+            state.cart[item.id]+=1
+          }
       }
     },
 
@@ -54,7 +57,12 @@ export default new Vuex.Store({
       if(state.cart[item.id]>1)
       {
         var indexOfItem = state.itemDisplay.findIndex(Object => Object.title == item.productName);
-        state.itemDisplay[indexOfItem].quantity+=1;
+        if(state.cart[item.id] === item.amountInStock){
+          state.itemDisplay[indexOfItem].quantity = item.amountInStock;
+        }
+        else{
+          state.itemDisplay[indexOfItem].quantity+=1;
+        }
       }
       else{
       state.itemDisplay.push({
