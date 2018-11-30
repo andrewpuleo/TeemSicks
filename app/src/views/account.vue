@@ -1,11 +1,9 @@
 <template>
     <div id="account">
 
-        <div class="container-fluid headerimg">
-            <div class="row">
-                <img src="../assets/AccountBike.png">
-                <div class="centered"> My Account
-                </div>
+        <div class="container-fluid">
+            <div class="row top-account-image">
+                <h1 class="centered big-white-text">My Account</h1>
             </div>
             <div class="row">
                 <div class="col">
@@ -22,6 +20,7 @@
 
 
 <style scoped>
+    @import '../style.css';
     #secure {
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
@@ -32,7 +31,14 @@
     .headerimg img{
         height: 600px;
         width: 100%;
+}
+    .top-account-image{
+        background-image: url('../assets/AccountBike.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 500px;
     }
+    
     .centered{
         position: absolute;
         top: 26rem;
