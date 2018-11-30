@@ -4,15 +4,16 @@ const app = require('../../app');
 const truncate = require('../truncate');
 
 describe('users', () => {
-  beforeAll(() => truncate());
+  // beforeAll(() => truncate());
   afterAll(() => User.Sequelize.close());
   it('should give back a user_id for a correct login', done => {
     User.create({ username: `test${new Date().getTime()}`, password: 'test' }).then(user =>
       request(app)
-        .post('/users')
+        .post('/users/login')
         .send({ username: user.username, password: user.password })
+        .expect(200)
         .then(res => {
-          expect(res.body.id).toEqual({ id: user.id});
+          expect(res.body).toEqual(user.id);
           done();
         })
     );

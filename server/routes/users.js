@@ -69,7 +69,7 @@ router.post('/login', function(req, res) {
   }
   Auth.login(username, password).then(
     session => {
-      res.json(session.dataValues.UserId);
+      res.json(session.userId);
     }, error => {
       res.status(403).json({ error: error.message });
     }
