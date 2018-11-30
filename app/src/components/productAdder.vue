@@ -9,6 +9,14 @@
              <input class="input" type="text" v-model="newProductName"/>
            </div>
            <div class="field">
+             <label class="label">Product Type</label>
+             <br>
+             <input type="radio" name="productType" value=0 checked v-model="newProductId"> Accessory
+             <input type="radio" name="productType" value=1 v-model="newProductId"> Road Bike
+             <input type="radio" name="productType" value=2 v-model="newProductId"> Mountain Bike<br>
+           </div>
+           <br>
+           <div class="field">
              <label class="label">Brand</label>
              <input class="input" type="text" v-model="newBrand"/>
            </div>

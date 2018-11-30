@@ -7,6 +7,10 @@
             <div class="col left-item-data">
                <h3 class="item-page-title" v-bind:for="item.id">{{item.productName}}</h3>
                <p> Reference product id: {{item.id}}</p>
+               <p v-if="item.productId == 0"> Reference product category: Accessory</p>
+               <p v-if="item.productId == 1"> Reference product category: Road Bike</p>
+               <p v-if="item.productId == 2"> Reference product category: Mountain Bike</p>
+               <p v-if="item.productId > 2 || item.productId < 0"> Reference product Category: Unknown</p>
                <div class="image-box" v-bind:style="{'background-image': 'url(' + item.photoUrl + ')', 'background-size': '100%', 'background-repeat': 'no-repeat', 'background-position':'center' } ">
                   <!-- img v-bind:for="item.id" v-bind:src="item.photoUrl"></img -->
                </div>
@@ -42,7 +46,7 @@ import { mapMutations } from 'vuex';
 export default class Item extends Vue {
    @Prop() id!: Number;
    item: product = new product();
-   
+
    mounted() {
       axios.get(`/api/products/${this.id}`)
       .then((response) => {
@@ -130,15 +134,15 @@ button:hover{
     visibility: hidden;
     min-width: 250px;
     margin-left: -125px;
-    background-color: #333; 
-    color: #fff; 
-    text-align: center; 
-    border-radius: 2px; 
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
     padding: 16px;
-    position: fixed; 
-    z-index: 1; 
-    left: 50%; 
-    bottom: 30px; 
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
 }
 
 
@@ -150,7 +154,7 @@ button:hover{
 
 
 @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
+    from {bottom: 0; opacity: 0;}
     to {bottom: 30px; opacity: 1;}
 }
 
@@ -160,7 +164,7 @@ button:hover{
 }
 
 @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
+    from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
 }
 

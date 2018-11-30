@@ -15,18 +15,35 @@
            <br>
 
          </div>
-         <div v-else class="product-found">
-            <p class="foxycle-redorange"> Item Successfully Found! <p>
-            <div class="row">
-               <div class="col">
+         <div v-else class="container-fluid">
+            <br>
+            <div class="row product-found">
+               <div class="col-sm-4">
                   <StoreItem v-bind:key="item.id" v-bind:item="item"></StoreItem>
+
                </div>
                <div class="col">
                   <br>
                   <p> <b>Reference product id: </b>{{item.id}}</p>
+                  <p v-if="item.productId == 0"> <b>Reference product Category:</b> Accessory</p>
+                  <p v-if="item.productId == 1"> <b>Reference product Category:</b> Road Bike</p>
+                  <p v-if="item.productId == 2"> <b>Reference product Category:</b> Mountain Bike</p>
                   <p><b>Product Brand: </b>{{item.Brand}}</p>
                   <p><b>Listed Price: </b>${{item.salePrice}}</p>
+                  <p v-if="item.onSale"><b>Price before sale: </b>${{item.Price}}</p>
+                  <button class="button" v-on:click="removeFound">Find new product</button>
+
                </div>
+            </div>
+            <div class="changes">
+               <br>
+               <p><b> Enter changes to make </b></p>
+               <!--div v-if="item.onSale == false"-->
+               <div>
+                  <button class="button" v-on:click="updateSale">Change sale status</button>
+                  <!--input type="checkbox" class="checkbox" v-bind:checked="item.onSale" v-on:click="updateSale"/> Item is on sale -->
+               </div>
+               <h2> test </h2>
             </div>
          </div>
 
@@ -54,6 +71,17 @@ export default class ProductUpdater extends Vue {
       });
       console.log("our item", this.item);
    }
+
+   removeFound(){
+      this.item = null;
+   }
+
+   updateSale(event: any) {
+      let status = true;
+      axios.put(`/api/products/${this.item.id}`, {Price: this.item.Price, onSale: true, salePrice: this.item.salePrice, inStock: this.item.inStock, amountInStock: this.item.amountInStock, color: this.item.color}).then((res) => {
+        this.item = res.data;
+      })
+   }
 }
 
 </script>
@@ -66,8 +94,7 @@ export default class ProductUpdater extends Vue {
 }
 
 button{
-  margin-top: 20px;
-  padding: 5px 105px;
+  padding: 2px 2rem;
   background-color: rgba(252, 92, 0, 0.801);
   color: white;
   border-radius: 4px;
@@ -128,6 +155,8 @@ input[type=submit]:hover {
 }
 
 .product-found{
+   padding-left: 2rem;
+   padding-right: 2rem;
    background-color: #f1f1f1;
    border-color: red;
    border-width: 1px;

@@ -56,18 +56,22 @@ router.route('/:id')
     })
 
     // update a given product
-      // .put((req, res) => {
-      //   const { subject, dueDate, done } = req.body;
-      //   ToDo.findById(req.params.id).then((todo) => {
-      //     const todoToUpdate = todo;
-      //     todoToUpdate.subject = subject;
-      //     todoToUpdate.dueDate = dueDate;
-      //     todoToUpdate.done = done;
-      //     todoToUpdate.save().then((updatedTodo) => {
-      //       res.json(updatedTodo);
-      //     });
-      //   });
-      // })
+      .put((req, res) => {
+        const { Price, onSale, salePrice, inStock, amountInStock, color} = req.body;
+        Product.findById(req.params.id).then((product) => {
+          const productToUpdate = product;
+          productToUpdate.Price = Price;
+          productToUpdate.onSale = onSale;
+          productToUpdate.salePrice = salePrice;
+          productToUpdate.inStock = inStock;
+          productToUpdate.amountInStock = amountInStock;
+          productToUpdate.color = color;
+          productToUpdate.save().then((updatedProduct) => {
+            res.json(updatedProduct);
+          });
+        });
+      })
+
       .delete((req, res) => {
         const idToDelete = req.params.id;
         Product.findById(idToDelete).then((product) => {
