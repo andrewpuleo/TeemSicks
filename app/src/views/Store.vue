@@ -17,6 +17,9 @@
                 <button type="button" class="btn btn-primary" v-on:click="Sale()">On Sale</button>
                 <button type="button" class="btn btn-primary" v-on:click="ViewAll()">View All</button>
                 <button type="button" class="btn btn-primary" v-on:click="Newest()">Newest</button>
+                <button type="button" class="btn btn-primary" v-on:click="Road()">Road Bikes</button>
+                <button type="button" class="btn btn-primary" v-on:click="Mountain()">Mountain Bikes</button>
+                <button type="button" class="btn btn-primary" v-on:click="Accessories()">Accessories</button>
             </div>
         </div>
       </div>
@@ -72,6 +75,7 @@ import  StoreItem  from "@/components/storeItem.vue";
 @Component({ components: { StoreItem } })
 export default class Store extends Vue {
   items: product[] = [];
+  allItems: product[] = [];
   tempItems: product[] = [];
   sortVal1: number = 0;
   sortVal2: number = 0;
@@ -81,14 +85,54 @@ export default class Store extends Vue {
     axios.get('/api/Products')
       .then((response) => {
         this.items = response.data.products;
+        this.allItems = response.data.products;
         console.log(this.items);
       });
   }
 
   Sale(){
     
-    this.items.forEach(element => {
+    this.allItems.forEach(element => {
       if(element.onSale != 0){
+        this.tempItems.push(element);
+      }
+      
+    });
+    this.items=this.tempItems;
+    this.tempItems=[]
+    this.items.sort()
+  }
+
+  Road(){
+    
+    this.allItems.forEach(element => {
+      if(element.productId == 1){
+        this.tempItems.push(element);
+      }
+      
+    });
+    this.items=this.tempItems;
+    this.tempItems=[]
+    this.items.sort()
+  }
+
+  Mountain(){
+    
+    this.allItems.forEach(element => {
+      if(element.productId == 2){
+        this.tempItems.push(element);
+      }
+      
+    });
+    this.items=this.tempItems;
+    this.tempItems=[]
+    this.items.sort()
+  }
+
+  Accessories(){
+    
+    this.allItems.forEach(element => {
+      if(element.productId == 0){
         this.tempItems.push(element);
       }
       
@@ -100,11 +144,11 @@ export default class Store extends Vue {
 
 
   LowHigh(){
-    this.items = this.items.sort(this.compareLowHigh);
+    this.items = this.allItems.sort(this.compareLowHigh);
   }
 
   HighLow(){
-    this.items = this.items.sort(this.compareHighLow);
+    this.items = this.allItems.sort(this.compareHighLow);
   }
 
   compareLowHigh(item1,item2){
@@ -155,7 +199,7 @@ export default class Store extends Vue {
   }
 
   Newest(){
-    this.items = this.items.sort(this.compareNewest);
+    this.items = this.allItems.sort(this.compareNewest);
   }
 
   compareNewest(item1,item2){
