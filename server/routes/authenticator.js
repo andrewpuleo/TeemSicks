@@ -4,7 +4,11 @@ const Auth = {
   login: (username, password) =>
     User.findOne({ where: { username } }).then(user => {
 
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 5c61d6af0b2bedf235c6d27125a04777e72a1b3d
       if (user && user.password === password) {
 
         return user.getSession().then(session => {

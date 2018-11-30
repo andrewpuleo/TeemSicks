@@ -225,20 +225,19 @@
                 <div class = "right">
                     <h1 id = "checkOutTitle"> Your Cart </h1>
                     <ul class="items" style = "padding-left:20px; padding-right:20px">
-                        <li :key="item.id" v-for="item in data.items" class="item">
+                        <li :key="Item.id" v-for="Item in this.$store.state.itemDisplay.slice(1)" class="checkoutItem">
                         <div class="item-preview" style = "text-align: left" >
-                            <img :src="item.thumbnail" :alt="item.title" class="item-thumbnail">
+                            <img :src="Item.thumbnail" :alt="Item.title" class="item-thumbnail">
                             <div>
-                                <h2 class="item-title">{{ item.title }}</h2>
-                                <p class="item-description">{{ item.description }}</p>
+                                <h2 class="item-title">{{ Item.title }}</h2>
                                 <p class="Total-quantity" style = "margin-bottom: 0rem">
-                                    {{ toPrice(item.price).toFormat() }}</p>
-                                <p>Qty: <i>{{item.quantity}} </i> </p>
+                                    {{ toPrice(Item.price).toFormat() }}</p>
+                                <p>Qty: <i>{{Item.quantity}} </i> </p>
                             </div>
                         </div>
                         <div>
                             <span class="item-price">
-                                {{ toPrice(item.price).multiply(item.quantity).toFormat() }}</span>
+                                {{ toPrice(Item.price).multiply(Item.quantity).toFormat() }}</span>
                         </div>
                         </li>
                     </ul>
@@ -257,11 +256,13 @@
                 </div>
             </div>
             <form>
+                <div id = "itemContainer4">
             <a>
                 <router-link to="/confirmation">
                     <button class = "confirmB" type="submit">Confirm!</button>
                 </router-link>
             </a>
+                </div>
             </form>
         </div>
     </div>
@@ -296,24 +297,6 @@ export default {
             zipB:"",
             countryB:"",
         sameAddress: false,
-        items: [
-          {
-            title: 'xyz Road Bike',
-            description: 'A very nice bike',
-            thumbnail:
-              'https://li2.rightinthebox.com/images/384x384/201611/ddkb1479349722841.jpg',
-            quantity: 2,
-            price: 899.99,
-          },
-          {
-            title: 'xyz Road Bike 2',
-            description: 'Another very nice bike',
-            thumbnail:
-              'https://li4.rightinthebox.com/images/384x384/201605/uzgz1463321418592.jpg',
-            quantity: 1,
-            price: 999.99,
-          },
-        ],
         Tax: 10,
       },
     };
@@ -347,7 +330,7 @@ export default {
       return this.getSubtotal.percentage(this.data.Tax);
     },
     getSubtotal() {
-      return this.data.items.reduce(
+      return this.$store.state.itemDisplay.reduce(
         (a, b) => a.add(this.toPrice(b.price).multiply(b.quantity)),
         Dinero().setLocale(this.language),
       );
@@ -428,7 +411,6 @@ input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
 }
 
 .confirmB {
-  margin-bottom: 20px;
   margin-right: 50px;
   margin-top: 10px;
   padding: 5px 40px;
@@ -438,7 +420,6 @@ input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
   transition-duration: 0.4s;
   border: 2px solid rgba(252, 92, 0, 0.801);
   text-align: center;
-  float: right;
 }
 .confirmB:hover {
   cursor: pointer;
@@ -462,5 +443,91 @@ input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
 
 .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
     background-color:rgba(252, 92, 0, 0.801);
+}
+
+.checkoutItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  width: 100%;
+  border-bottom: 2px solid rgba(51, 58, 69, 0.1);
+}
+
+.items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cart {
+  background: #fff;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  color: #333a45;
+  border-radius: 3px;
+  padding: 30px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.cart-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 0 0;
+  font-size: inherit;
+  font-weight: normal;
+  color: rgba(51, 58, 69, 0.8);
+}
+.cart-price {
+  color: #333a45;
+}
+.cart-total {
+  font-size: 130%;
+}
+
+.item-preview {
+  display: flex;
+  align-items: center;
+}
+.item-thumbnail {
+  width: 100px;
+  max-height: 75px;
+  padding: 0px;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+.item-title {
+  margin: 0 0 10px 0;
+  font-size: inherit;
+}
+.item-description {
+  margin: 0;
+  color: rgba(51, 58, 69, 0.6);
+}
+.item-quantity {
+  max-width: 100px;
+  margin-top: 10px;
+  margin-right: 20px;
+  padding: 12px;
+  font-size: inherit;
+  color: black;
+  border-radius: 4px;
+  border:2px solid rgb(190, 190, 190);
+  text-align: center;
+}
+
+.item-quantity:focus{
+  outline:none;
+  border:2px solid rgba(252, 92, 0, 0.801);
+  border-radius: 4px;
+}
+.item-price {
+  margin-top: 25px;
+}
+
+#itemContainer4{
+  flex:2%;
+  text-align: right;
+  margin-left: 10px;
 }
 </style>

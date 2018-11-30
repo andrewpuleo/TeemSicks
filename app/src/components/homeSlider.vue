@@ -16,7 +16,7 @@
         <!-- Slides with img slot -->
         <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
         <b-carousel-slide caption="On Sale Now!"
-                            text="Click here to find out what Foxycle has on sale">
+                            text="Check the store to find out what Foxycle has on sale">
             <img slot="img" class="d-block img-fluid w-100" width="1024" height="480"
                 src="../assets/slider1.jpg" alt="image slot">
         </b-carousel-slide>
@@ -56,6 +56,6 @@ export default class HomeSlider extends Vue {
     }}
 
 
-    
-    
+
+
 </script>

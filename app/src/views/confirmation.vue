@@ -36,20 +36,19 @@
                 <div class = "right">
                     <h1 id = "checkOutTitle"> Your Cart </h1>
                     <ul class="items" style = "padding-left:20px; padding-right:20px">
-                        <li :key="item.id" v-for="item in data.items" class="item">
+                        <li :key="Item.id" v-for="Item in this.$store.state.itemDisplay.slice(1)" class="checkoutItem">
                         <div class="item-preview" style = "text-align: left" >
-                            <img :src="item.thumbnail" :alt="item.title" class="item-thumbnail">
+                            <img :src="Item.thumbnail" :alt="Item.title" class="item-thumbnail">
                             <div>
-                                <h2 class="item-title">{{ item.title }}</h2>
-                                <p class="item-description">{{ item.description }}</p>
+                                <h2 class="item-title">{{ Item.title }}</h2>
                                 <p class="Total-quantity" style = "margin-bottom: 0rem">
-                                    {{ toPrice(item.price).toFormat() }}</p>
-                                <p>Qty: <i>{{item.quantity}} </i> </p>
+                                    {{ toPrice(Item.price).toFormat() }}</p>
+                                <p>Qty: <i>{{Item.quantity}} </i> </p>
                             </div>
                         </div>
                         <div>
                             <span class="item-price">
-                                {{ toPrice(item.price).multiply(item.quantity).toFormat() }}</span>
+                                {{ toPrice(Item.price).multiply(Item.quantity).toFormat() }}</span>
                         </div>
                         </li>
                     </ul>
@@ -101,22 +100,6 @@ export default {
             countryB:"United States",
         sameAddress: true,
         items: [
-          {
-            title: 'xyz Road Bike',
-            description: 'A very nice bike',
-            thumbnail:
-              'https://li2.rightinthebox.com/images/384x384/201611/ddkb1479349722841.jpg',
-            quantity: 2,
-            price: 899.99,
-          },
-          {
-            title: 'xyz Road Bike 2',
-            description: 'Another very nice bike',
-            thumbnail:
-              'https://li4.rightinthebox.com/images/384x384/201605/uzgz1463321418592.jpg',
-            quantity: 1,
-            price: 999.99,
-          },
         ],
         Tax: 10,
       },
@@ -137,7 +120,7 @@ export default {
       return this.getSubtotal.percentage(this.data.Tax);
     },
     getSubtotal() {
-      return this.data.items.reduce(
+      return this.$store.state.itemDisplay.reduce(
         (a, b) => a.add(this.toPrice(b.price).multiply(b.quantity)),
         Dinero().setLocale(this.language),
       );
@@ -149,7 +132,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 .orderPlaced{
   margin-bottom: 20px;

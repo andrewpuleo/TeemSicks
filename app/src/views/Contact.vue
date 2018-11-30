@@ -4,22 +4,22 @@
      <div class="top-contact-image">
         <br>
         <br>
-        <h class="big-white-text"> Contacting Foxycle </h>
+        <h1 class="big-white-text"> Contacting Foxycle </h1>
 
         <div class="row white contact-table" style="font-size:12pt">
             <div class="col" style="border-style:solid; border-color: white;">
-               <h style="font-size:20pt"> Phone </h>
-               <p> 805 FOXYCLE <br> <br></p>
+               <h1 style="font-size:20pt"> Address </h1>
+               <p> 1400 Ramada Dr <br>Paso Robles, CA 93446 </p>
             </div>
             <div class="col" style="border-style: solid solid solid none; border-color: white">
-               <h style="font-size:20pt"> Address </h>
-               <p> 1234 Foothill Dr, San Luis Obispo 93405 </p>
+               <h1 style="font-size:20pt"> Phone </h1>
+               <p> 805 225 5911 <br> <br></p>
             </div>
             <div class="col" style="border-style: solid solid solid none; border-color: white">
-               <h style="font-size:20pt"> Hours </h>
-               <p> 8 am - 5 pm
+               <h1 style="font-size:20pt"> Hours </h1>
+               <p> M-F: 8am - 5pm
                <br>
-               Monday - Saturday
+               Sat: 10am - 4pm
                </p>
             </div>
         </div>
@@ -60,7 +60,7 @@
    background-image: url('../assets/sunset.png');
    background-repeat: no-repeat;
    background-size: cover;
-   height: 600px;
+   height: 500px;
 }
 
 .contact{

@@ -3,7 +3,7 @@ const { Product } = require('../models');
 const router = express.Router();
 
 router.route('/')
-  
+
   // get all products
   .get((req, res) => {
     Product.findAll().then((products) => {
@@ -48,37 +48,32 @@ router.route('/')
 
 router.route('/:id')
 
-    // get a specific todo
+    // get a specific product using an id
     .get((req, res) => {
       Product.findById(req.params.id).then((product) => {
         res.json({product});
       });
     })
 
-  /*
-  // update a given todo
-  .put((req, res) => {
-    const { subject, dueDate, done } = req.body;
-    ToDo.findById(req.params.id).then((todo) => {
-      const todoToUpdate = todo;
-      todoToUpdate.subject = subject;
-      todoToUpdate.dueDate = dueDate;
-      todoToUpdate.done = done;
-      todoToUpdate.save().then((updatedTodo) => {
-        res.json(updatedTodo);
+    // update a given product
+      // .put((req, res) => {
+      //   const { subject, dueDate, done } = req.body;
+      //   ToDo.findById(req.params.id).then((todo) => {
+      //     const todoToUpdate = todo;
+      //     todoToUpdate.subject = subject;
+      //     todoToUpdate.dueDate = dueDate;
+      //     todoToUpdate.done = done;
+      //     todoToUpdate.save().then((updatedTodo) => {
+      //       res.json(updatedTodo);
+      //     });
+      //   });
+      // })
+      .delete((req, res) => {
+        const idToDelete = req.params.id;
+        Product.findById(idToDelete).then((product) => {
+          product.destroy().then(() => {
+            res.json({ delete: true });
+          });
+        });
       });
-    });
-  })
-
-  .delete((req, res) => {
-    const idToDelete = req.params.id;
-    ToDo.findById(idToDelete).then((todo) => {
-      todo.destroy().then(() => {
-        res.json({ delete: true });
-      });
-    }).catch(() => {
-      res.json({ delete: false });
-    });
-  });
-*/
 module.exports = router;
