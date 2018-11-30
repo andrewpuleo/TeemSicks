@@ -25,10 +25,10 @@
                <div class="col">
                   <br>
                   <p> <b>Reference product id: </b>{{item.id}}</p>
-                  <p v-if="item.productId == 0"> <b>Reference product Category:</b> Accessory</p>
-                  <p v-if="item.productId == 1"> <b>Reference product Category:</b> Road Bike</p>
+                  <p v-if="item.inStock"> <b>Is it in stock?</b> yes</p>
+                  <p v-else> <b>Is it in stock?</b> no</p>
                   <p v-if="item.productId == 2"> <b>Reference product Category:</b> Mountain Bike</p>
-                  <p><b>Product Brand: </b>{{item.Brand}}</p>
+                  <p><b>Amount in stock: </b>{{item.amountInStock}}</p>
                   <p><b>Listed Price: </b>${{item.salePrice}}</p>
                   <p v-if="item.onSale"><b>Price before sale: </b>${{item.Price}}</p>
                   <button class="button" v-on:click="removeFound">Find new product</button>
@@ -41,9 +41,30 @@
                <!--div v-if="item.onSale == false"-->
                <div>
                   <button class="button" v-on:click="updateSale">Change sale status</button>
-                  <!--input type="checkbox" class="checkbox" v-bind:checked="item.onSale" v-on:click="updateSale"/> Item is on sale -->
+                  <br>
+                  <div class ="row">
+                     <div class="col">
+                        <p>Change how much customers can buy it for: </p>
+                     </div>
+                     <div class="col-sm-2">
+                        <input class="input" type="text" v-model="updatedSalePrice"/>
+                     </div>
+                     <div class ="col button-col">
+                        <button class="button" v-on:click="updateSalePrice" style="float: left;">Enter</button>
+                     </div>
+                  </div>
+                  <div class ="row" v-if="this.item.onSale">
+                     <div class="col">
+                        <p>Change original price before the sale: </p>
+                     </div>
+                     <div class="col-sm-2">
+                        <input class="input" type="text" v-model="updatedPrice"/>
+                     </div>
+                     <div class ="col button-col">
+                        <button class="button" v-on:click="updatePrice" style="float: left;">Enter</button>
+                     </div>
+                  </div>
                </div>
-               <h2> test </h2>
             </div>
          </div>
 
@@ -63,6 +84,8 @@ export default class ProductUpdater extends Vue {
 
    updateId!: number = null;
    item!: product = null;
+   updatedSalePrice: number = 0;
+   updatedPrice: number = 0;
 
    findProduct() {
       axios.get(`/api/products/${this.updateId}`)
@@ -78,9 +101,26 @@ export default class ProductUpdater extends Vue {
 
    updateSale(event: any) {
       let status = true;
-      axios.put(`/api/products/${this.item.id}`, {Price: this.item.Price, onSale: true, salePrice: this.item.salePrice, inStock: this.item.inStock, amountInStock: this.item.amountInStock, color: this.item.color}).then((res) => {
+      axios.put(`/api/products/${this.item.id}`, {...this.item, onSale: !this.item.onSale}).then((res) => {
         this.item = res.data;
       })
+   }
+
+   updateSalePrice(event: any) {
+      let status = true;
+      axios.put(`/api/products/${this.item.id}`, {...this.item, salePrice: this.updatedSalePrice}).then((res) => {
+        this.item = res.data;
+      }).then((res) => {
+        this.updatedSalePrice = 0;
+     })
+   }
+   updatePrice(event: any) {
+      let status = true;
+      axios.put(`/api/products/${this.item.id}`, {...this.item, Price: this.updatedPrice}).then((res) => {
+        this.item = res.data;
+      }).then((res) => {
+        this.updatedPrice = 0;
+     })
    }
 }
 
@@ -122,7 +162,7 @@ label.form-descriptions{
 }
 input[type=text], select, textarea {
     width: 100%; /* Full width */
-    padding: 12px; /* Some padding */
+    padding: 2px; /* Some padding */
     border: 1px solid #ccc; /* Gray border */
     border-radius: 4px; /* Rounded borders */
     box-sizing: border-box; /* Make sure that padding and width stays in place */
