@@ -101,8 +101,7 @@
       </div>
       <div class="col-sm-4">
         <h3>Hours:</h3>
-          <p>M-F: 8am - 5pm</p>
-          <p>Sat: 10am - 4pm</p>
+          <storeHours></storeHours>
       </div>
       <div class="col-sm-4">
         <h3>Contact</h3>
@@ -132,14 +131,17 @@
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue';
 import index from '@/components/index.vue'; // @ is an alias to /src
+import  storeHours  from "@/components/storeHours.vue";
+
 //import Navbar from '@/components/Navbar.vue';
 
 @Component({
   components: {
-  HelloWorld, index,
+  HelloWorld, index, storeHours
   },
   })
 export default class Home extends Vue {
+
 
   logout(){
     this.$store.commit('logout');  
