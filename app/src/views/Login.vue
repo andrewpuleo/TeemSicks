@@ -17,8 +17,7 @@
               <input type="password" class = "form-control" name="password" id="validationCustom02" v-model="password" placeholder="Password" required/>
             </div>
           </div>
-          
-          <button  class="btn btn-primary" v-on:click="login()">Login</button>
+          <router-link to="/"><button  class="btn btn-primary" v-on:click="login()">Login</button></router-link>
         </div>
       </div>
        <div class = "signUp">

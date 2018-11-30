@@ -103,7 +103,7 @@
       background-image: url('../assets/bikeservices.png');
       background-repeat: no-repeat;
       background-size: cover;
-      height: 600px;
+      height: 500px;
    }
 
     .centered{
