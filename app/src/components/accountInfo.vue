@@ -5,6 +5,7 @@
             <div class="col">
                 <h1 class="accInfoTitle"> <br><br>Account Info </h1>
                 <p class="accInfo"> 
+
                     First Name: {{visitor.firstName}} <br>
                     Last Name: {{visitor.lastName}} <br>
                     Username: {{visitor.username}} <br>
@@ -35,7 +36,6 @@
         margin: auto;
         max-width: 1000px;
     }
-
 </style>
 
 
@@ -48,6 +48,5 @@ export default class AccountInfo extends Vue{
     @Prop()
     visitor!: User;
 };
-
 
 </script>

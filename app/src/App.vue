@@ -18,13 +18,13 @@
                      <button class="navbtn"><router-link to="/">Home</router-link></button>
                   </div>
                </li>
-               <li class="nav-item active">
+               <!--li class="nav-item active">
                    <div class="dropdown" id="navleft">
                       <button class="dropbtn"><router-link to="/store">Store</router-link></button>
                       <div class="dropdown-content">
                          <table>
                             <tr>
-                               <td><router-link to="/store">Roaddd</router-link></td>
+                               <td><router-link to="/store">Road</router-link></td>
                                <td><router-link to="/store">Mountain</router-link></td>
                                <td><router-link to="/store">Accessories</router-link></td>
                             </tr>
@@ -35,6 +35,11 @@
                             </tr>
                          </table>
                       </div>
+                   </div>
+                </li-->
+                <li class="nav-item active">
+                   <div class="navlink" id="navleft">
+                      <button class="navbtn"><router-link to="/store">Store</router-link></button>
                    </div>
                 </li>
                 <li class="nav-item active">
@@ -47,22 +52,38 @@
                       <button class="navbtn"><router-link to="/services">Services</router-link></button>
                    </div>
                 </li>
-                <li class="nav-item active">
-                   <div class="navlink" id="navleft">
-                     
-                      <button class="navbtn"><router-link to="/account">Account</router-link></button>
-                   </div>
-                </li>
              </ul>
 
             <!-- Right items: Login and cart -->
             <ul class="navbar-nav navbar-right" id="navright">
-               <li class="nav-item active">
-                  <button v-if="this.$store.getters.getIsLoggedIn == false" class="navbtn"><router-link to="/login">Login</router-link></button>
-                  <button v-if="this.$store.getters.getIsLoggedIn" class="navbtn"><router-link to="/account">Account</router-link></button>
 
-
+               <li v-if="this.$store.getters.getIsLoggedIn" class="nav-item active">
+                  <div class="dropdown" id="navleft">
+                     <button class="dropbtn"><router-link to="/account"><img src="./assets/user.png">Account</router-link></button>
+                     <div class="dropdown-content">
+                         <table>
+                            <tr>
+                               <td><router-link to="/account"> Account summary</router-link></td>
+                            </tr>
+                            <tr>
+                               <td><router-link to="/orders">Orders Placed</router-link></td>
+                            </tr>
+                            <tr>
+                               <td><router-link to="/admin">Administrator</router-link></td>
+                            </tr>
+                            <tr>
+                               <td><router-link to="/"><button v-on:click="logout()">Logout</button></router-link></td>
+                            </tr>
+                            <br>
+                         </table>
+                     </div>
+                  </div>
                </li>
+
+               <li v-if="this.$store.getters.getIsLoggedIn == false" class="nav-item active">
+                  <router-link to="/login"><img src="./assets/user.png">Login</router-link>
+               </li>
+
                <li class="nav-item active">
                   <router-link to="/cart"><img src="./assets/cart.png">
                      Cart
@@ -118,7 +139,13 @@ import index from '@/components/index.vue'; // @ is an alias to /src
   HelloWorld, index,
   },
   })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+
+  logout(){
+    this.$store.commit('logout');  
+    console.log(this.$store.getters.getIsLoggedIn)
+  }
+}
 </script>
 
 <style scoped lang="scss">

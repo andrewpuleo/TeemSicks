@@ -6,7 +6,7 @@ const Auth = {
 
       
       if (user && user.password === password) {
-        
+
         return user.getSession().then(session => {
           let foundSession = session;
           if (!foundSession) {
