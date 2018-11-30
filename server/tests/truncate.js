@@ -1,6 +1,6 @@
-const { User, Session, ToDo } = require('../models');
+const { User } = require('../models');
 
-const models = [ToDo, Session, User];
+const models = [User];
 
 // Prof Fox says this will need to be edited due to associations
 // that is removing them in a certain order
