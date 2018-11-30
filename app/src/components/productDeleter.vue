@@ -62,9 +62,9 @@ button{
 }
 button:hover{
 cursor: pointer;
-color: black;
-border: 2px solid rgba(252, 92, 0, 0.801);
-background-color: white;
+color: white;
+border: 5px solid black;
+background-color: red;
 }
 
 label.form-descriptions{
