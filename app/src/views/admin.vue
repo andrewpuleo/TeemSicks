@@ -5,13 +5,15 @@
             This is a secure area
         </p>
         <ProductAdder></ProductAdder>
+        <ProductDeleter></ProductDeleter>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import ProductAdder from '@/components/productAdder.vue';
-@Component({ components: { ProductAdder, } })
+import ProductDeleter from '@/components/productDeleter.vue';
+@Component({ components: { ProductAdder, ProductDeleter} })
 export default class Admin extends Vue {
 }
 </script>
