@@ -58,8 +58,8 @@
             <ul class="navbar-nav navbar-right" id="navright">
 
                <li v-if="this.$store.getters.getIsLoggedIn" class="nav-item active">
-                  <div class="dropdown" id="navleft">
-                     <button class="dropbtn"><router-link to="/account"><img src="./assets/user.png">Account</router-link></button>
+                  <div class="dropdown">
+                     <button class="dropbtn navbtn"><router-link to="/account"><img src="./assets/user.png">Account</router-link></button>
                      <div class="dropdown-content">
                          <table>
                             <tr>
@@ -235,6 +235,8 @@ body{
 }
 
 .dropdown-content {
+   padding: 1rem;
+   text-align: center;
     display: none;
     position: absolute;
     background-color: #f1f1f1;
@@ -243,6 +245,7 @@ body{
     z-index: 1;
 }
 .dropdown-content a {
+   text-align: center;
     color: black;
     padding: 12px 16px;
     text-decoration: none;
