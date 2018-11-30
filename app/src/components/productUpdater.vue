@@ -15,14 +15,17 @@
            <br>
 
          </div>
-         <div v-else>
+         <div v-else class="product-found">
             <p class="foxycle-redorange"> Item Successfully Found! <p>
             <div class="row">
                <div class="col">
                   <StoreItem v-bind:key="item.id" v-bind:item="item"></StoreItem>
                </div>
                <div class="col">
-                  <h3> Test </h3>
+                  <br>
+                  <p> <b>Reference product id: </b>{{item.id}}</p>
+                  <p><b>Product Brand: </b>{{item.Brand}}</p>
+                  <p><b>Listed Price: </b>${{item.salePrice}}</p>
                </div>
             </div>
          </div>
@@ -122,6 +125,12 @@ input[type=submit]:hover {
    color: black;
    border: 2px solid rgba(252, 92, 0, 0.801);
    background-color: white;
+}
+
+.product-found{
+   background-color: #f1f1f1;
+   border-color: red;
+   border-width: 1px;
 }
 
 </style>
