@@ -64,6 +64,18 @@
                         <button class="button" v-on:click="updatePrice" style="float: left;">Enter</button>
                      </div>
                   </div>
+                  <button class="button" v-on:click="updateInStock">Change "In Stock" status</button>
+                  <div class ="row" v-if="this.item.inStock">
+                     <div class="col">
+                        <p>Change the amount in stock: </p>
+                     </div>
+                     <div class="col-sm-2">
+                        <input class="input" type="text" v-model="updatedAmountInStock"/>
+                     </div>
+                     <div class ="col button-col">
+                        <button class="button" v-on:click="updateAmountInStock" style="float: left;">Enter</button>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
@@ -86,6 +98,7 @@ export default class ProductUpdater extends Vue {
    item!: product = null;
    updatedSalePrice: number = 0;
    updatedPrice: number = 0;
+   updatedAmountInStock: number = 0;
 
    findProduct() {
       axios.get(`/api/products/${this.updateId}`)
@@ -114,12 +127,29 @@ export default class ProductUpdater extends Vue {
         this.updatedSalePrice = 0;
      })
    }
+
    updatePrice(event: any) {
       let status = true;
       axios.put(`/api/products/${this.item.id}`, {...this.item, Price: this.updatedPrice}).then((res) => {
         this.item = res.data;
       }).then((res) => {
         this.updatedPrice = 0;
+     })
+   }
+
+   updateInStock(event: any) {
+      let status = true;
+      axios.put(`/api/products/${this.item.id}`, {...this.item, inStock: !this.item.inStock}).then((res) => {
+        this.item = res.data;
+      })
+   }
+
+   updateAmountInStock(event: any) {
+      let status = true;
+      axios.put(`/api/products/${this.item.id}`, {...this.item, amountInStock: this.updatedAmountInStock}).then((res) => {
+        this.item = res.data;
+      }).then((res) => {
+        this.updatedAmountInStock = 0;
      })
    }
 }
