@@ -8,13 +8,13 @@
                     <p class="modal-card-title"> Edit Last Name </p>
                 </header>
                 <section class="modal-card-body">
-                    <input class="input" type="text" placeholder="New Last Name"><br>
+                    <input class="input" type="text" placeholder="New Last Name" v-model="input1"><br>
                     <br>
-                    <input class="input" type="text" placeholder="Confirm New Last Name"><br>
+                    <input class="input" type="text" placeholder="Confirm New Last Name" v-model="input2"><br>
                 </section>
                 <footer class="modal-card-foot">
                     <div class="button-positions">
-                        <button class="button-save-changes"> Save changes </button>
+                        <button class="button-save-changes" v-on:click="checkInputs()"> Save changes </button>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <button class="button-cancel-changes" data-dismiss="modal-window" v-on:click="$emit('close')">Cancel </button>
                     </div>
@@ -85,8 +85,20 @@ import axios from 'axios';
 @Component
 export default class ChangeLastName extends Vue{
     oldLastName = new String();
+    input1 = String();
+    input2 = String();
+
     mounted(){
         console.log(this.oldLastName);
+    }
+
+    checkInputs(){
+         if(this.input1 == this.input2){
+             console.log("good");
+         }
+         else{
+             console.log("bad");
+         }
     }
 }
 
