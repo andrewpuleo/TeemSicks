@@ -1,9 +1,12 @@
 <template>
     <div id="admin">
-        <h1>ADMINISTRATOR ONLY</h1>
+        <h1>EMPLOYEES ONLY</h1>
         <p>
             This is a secure area
         </p>
+        <ProductAdder></ProductAdder>
+        <ProductUpdater></ProductUpdater>
+        <ProductDeleter></ProductDeleter>
     </div>
 </template>
 
@@ -13,7 +16,7 @@ import ProductAdder from '@/components/productAdder.vue';
 import ProductDeleter from '@/components/productDeleter.vue';
 import ProductUpdater from '@/components/productUpdater.vue';
 @Component({ components: { ProductAdder, ProductDeleter, ProductUpdater} })
-export default class Admin extends Vue {
+export default class Employee extends Vue {
 }
 </script>
 

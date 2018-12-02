@@ -59,7 +59,7 @@
 
                <li v-if="this.$store.getters.getIsLoggedIn" class="nav-item active">
                   <div class="dropdown">
-                     <button class="dropbtn navbtn"><router-link to="/account"><img src="./assets/user.png">Account</router-link></button>
+                     <button class="dropbtn navbtn" v-on:click="getUser"><router-link to="/account"><img src="./assets/user.png">Account</router-link></button>
                      <div class="dropdown-content">
                          <table>
                             <tr>
@@ -70,6 +70,9 @@
                             </tr>
                             <tr>
                                <td><router-link to="/admin">Administrator</router-link></td>
+                            </tr>
+                            <tr>
+                               <td><router-link to="/employee">Employee Panel</router-link></td>
                             </tr>
                             <tr>
                                <td><router-link to="/"><button v-on:click="logout()">Logout</button></router-link></td>
@@ -129,10 +132,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue';
 import index from '@/components/index.vue'; // @ is an alias to /src
-//import Navbar from '@/components/Navbar.vue';
+import axios from 'axios';
+import { user } from '@/models';
 
 @Component({
   components: {
@@ -141,10 +145,23 @@ import index from '@/components/index.vue'; // @ is an alias to /src
   })
 export default class Home extends Vue {
 
+   visitor: User = new User();
+
+   getUser() {
+     if(this.$store.getters.getIsLoggedIn){
+         axios.get(`/api/users/${this.$store.getters.getUID}`)
+         .then((response) => {
+             this.visitor = response.data.user;
+         });
+         console.log("NEW USER FOUND: ", this.User.userType)
+     }
+   }
+
   logout(){
-    this.$store.commit('logout');  
+    this.$store.commit('logout');
     console.log(this.$store.getters.getIsLoggedIn)
   }
+
 }
 </script>
 

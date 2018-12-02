@@ -4,7 +4,7 @@
         <img src = "../assets/foxycle.png" alt = "login"
           style = "width:200px; height:100px;padding:10px"/>
         <div class="error-message" id="error-msg" >
-          
+
         </div>
         <div class = "needs-validation">
           <div class = "form-row-1">
@@ -28,7 +28,7 @@
 
 
   </div>
-  
+
 </template>
 
  <script lang="ts">
@@ -38,27 +38,27 @@
     export default class Login extends Vue{
         username: string = '';
         password: string = '';
-       
+
         users: User[] = [];
         userData: User|null = null;
         missing: string[] = [];
 
         invalidLogin = '';
         invalidLoginErr = false;
-        
-      
+
+
 
       login () {
           axios.post(`/api/users/login`, {
-            
+
           username: this.username,
           password: this.password
         }).then((res) => {
           if(res.status == 200){
-            this.$store.commit('login', res.data);            
+            this.$store.commit('login', res.data);
           }
           console.log("res is: ", res)
-          
+
           //console.log("Login response:" , res.status);
           //console.log(this.$store.getters.getIsLoggedIn);
           //console.log(this.$store.getters.getUID);
@@ -75,15 +75,15 @@
         document.getElementById("error-msg").innerHTML = "Invalid Username and Password Combination";
 
       }
-      
+
 
 
         mounted(){
-          
+
         };
 
-        
-        
+
+
 };
 </script>
  <style scoped>
@@ -143,6 +143,6 @@
     }
     .display-error-message{
       display:block!important;
-      
+
     }
  </style>

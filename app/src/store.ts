@@ -12,7 +12,7 @@ export default new Vuex.Store({
     itemDisplay: [{
       title: "",
       description: "",
-      price: 0, 
+      price: 0,
       quantity: 0,
       thumbnail: "",
       id:0,
@@ -25,7 +25,7 @@ export default new Vuex.Store({
     },
     getUID: state => {
       return state.uid
-    }, 
+    },
     getCart: state => {
       return state.cart
     }
@@ -34,6 +34,8 @@ export default new Vuex.Store({
     login (state, id) {
       state.uid = id,
       state.isLoggedIn = true
+      console.log("id is: ", id)
+
     },
 
     logout (state) {
@@ -42,7 +44,7 @@ export default new Vuex.Store({
     },
 
     addToCart (state, item) {
-      if(!(item.id in state.cart)){ 
+      if(!(item.id in state.cart)){
       Vue.set(state.cart, item.id, 1)
       }
       else{

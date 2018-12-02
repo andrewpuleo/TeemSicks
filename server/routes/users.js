@@ -4,7 +4,7 @@ const router = express.Router();
 const Auth = require('./authenticator');
 
 router.route('/')
-  
+
    // create user
   .post((req, res) => {
     const {
@@ -29,7 +29,7 @@ router.route('/')
       res.json(user);
     });
   })
-// Get all 
+// Get all
   .get((req, res) => {
     User.findAll().then((users) => {
       res.json({
@@ -48,17 +48,17 @@ router.get('/:id', function(req, res) {
 
 
 router.post('/login', function(req, res) {
-  
+
   const { username, password } = req.body;
   if(!username) {
-    
+
     return res.status(422).json({
       data: {
         invalid: true
       },
       errors: {
         username: 'is required',
-        
+
       },
     });
   }
@@ -94,6 +94,6 @@ router.delete('/:id', function(req, res) {
   });
 });
 
-  
+
 
 module.exports = router;

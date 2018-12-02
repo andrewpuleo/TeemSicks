@@ -40,7 +40,7 @@
                <p><b> Enter changes to make </b></p>
                <!--div v-if="item.onSale == false"-->
                <div>
-                  <button class="button" v-on:click="updateSale">Change sale status</button>
+                  <button class="button" style="" v-on:click="updateSale">Change sale status</button>
                   <br>
                   <div class ="row">
                      <div class="col">
