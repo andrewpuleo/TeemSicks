@@ -69,10 +69,10 @@
                                <td><router-link to="/orders">Orders Placed</router-link></td>
                             </tr>
                             <tr>
-                               <td><router-link to="/admin">Administrator</router-link></td>
+                               <td><div v-if="this.visitorType == 0"><router-link to="/admin">Administrator</router-link></div></td>
                             </tr>
                             <tr>
-                               <td><router-link to="/employee">Employee Panel</router-link></td>
+                               <td><div v-if="this.visitorType == 0 || this.visitorType == 1"><router-link to="/employee">Employee Panel</router-link></div></td>
                             </tr>
                             <tr>
                                <td><router-link to="/"><button v-on:click="logout()">Logout</button></router-link></td>
@@ -145,15 +145,18 @@ import { user } from '@/models';
   })
 export default class Home extends Vue {
 
-   visitor: User = new User();
+   visitor!: User;
+   visitorType: number = 2;
 
    getUser() {
      if(this.$store.getters.getIsLoggedIn){
          axios.get(`/api/users/${this.$store.getters.getUID}`)
          .then((response) => {
              this.visitor = response.data.user;
+             console.log("NEW USER FOUND: ", this.visitor.userType)
+             this.visitorType = this.visitor.userType;
+             console.log("VisitorType: ", this.visitorType);
          });
-         console.log("NEW USER FOUND: ", this.User.userType)
      }
    }
 

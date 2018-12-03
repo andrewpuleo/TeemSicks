@@ -41,10 +41,10 @@
                 <label class="custom-control-label" for="invalidCheck"> <a href ="#" class = "link" id="termsLink" style="color:rgba(252, 92, 0, 0.801)"  v-on:click="show()">Agree to terms and conditions</a></label>
               </div>
             </div>
-              <button class="btn btn-primary"  v-on:click="signUp()" type="submit"> 
+              <button class="btn btn-primary"  v-on:click="signUp()" type="submit">
               Join Now
               </button>
-          </form> 
+          </form>
         </div>
     </div>
     <modal id = "termsPage" name = "hello">
@@ -74,6 +74,7 @@ export default class Register extends Vue {
 
   signUp() {
     axios.post('/api/users', {
+      userType: 2,
       firstName: this.newFirstName,
       lastName: this.newLastName,
       username: this.newUsername,

@@ -8,7 +8,7 @@ router.route('/')
    // create user
   .post((req, res) => {
     const {
-      userId,
+      userType,
       firstName,
       lastName,
       phone,
@@ -18,7 +18,7 @@ router.route('/')
     } = req.body;
     // validate potentially here
     User.create({
-      userId,
+      userType,
       firstName,
       lastName,
       phone,
