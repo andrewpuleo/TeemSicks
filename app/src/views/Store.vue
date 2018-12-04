@@ -10,7 +10,7 @@
 
       <div class="tools">
         <div class="sort">
-            
+
             <div class="sort_buttons">
                 <button type="button" class="btn btn-primary" v-on:click="LowHigh()">Low $ -> High $</button>
                 <button type="button" class="btn btn-primary" v-on:click="HighLow()">High $ -> Low $</button>
@@ -26,7 +26,7 @@
 
       <div class="col store_container">
 
-        <StoreItem v-for="item in items" v-bind:key="item.id" v-bind:item="item"></StoreItem>
+        <StoreItem v-for="item in items" v-bind:key="item.id" v-bind:item="item" v-if="item.onSale && item.amountInStock > 0"></StoreItem>
 
       </div>
     </div>
@@ -86,12 +86,12 @@ export default class Store extends Vue {
   }
 
   Sale(){
-    
+
     this.items.forEach(element => {
       if(element.onSale != 0){
         this.tempItems.push(element);
       }
-      
+
     });
     this.items=this.tempItems;
     this.tempItems=[]
@@ -146,7 +146,7 @@ export default class Store extends Vue {
     }
     return 0;
   }
-    
+
   ViewAll(){
     axios.get('/api/Products')
       .then((response) => {
