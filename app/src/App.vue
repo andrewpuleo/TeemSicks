@@ -69,10 +69,10 @@
                                <td><router-link to="/orders">Orders Placed</router-link></td>
                             </tr>
                             <tr>
-                               <td><div v-if="this.visitorType == 0"><router-link to="/admin">Administrator</router-link></div></td>
+                               <td><div v-if="this.$store.getters.getPrivledges == 0"><router-link to="/admin">Administrator</router-link></div></td>
                             </tr>
                             <tr>
-                               <td><div v-if="this.visitorType == 0 || this.visitorType == 1"><router-link to="/employee">Employee Panel</router-link></div></td>
+                               <td><div v-if="this.$store.getters.getPrivledges == 0 || this.$store.getters.getPrivledges == 1"><router-link to="/employee">Employee Panel</router-link></div></td>
                             </tr>
                             <tr>
                                <td><router-link to="/"><button v-on:click="logout()">Logout</button></router-link></td>

@@ -56,6 +56,7 @@
         }).then((res) => {
           if(res.status == 200){
             this.$store.commit('login', res.data);
+            this.$store.commit('setPrivledges');
           }
           console.log("res is: ", res)
 

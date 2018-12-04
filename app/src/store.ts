@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
 
 Vue.use(Vuex);
 
@@ -7,6 +8,7 @@ export default new Vuex.Store({
   state: {
     uid: -1,
     isLoggedIn: false,
+    privledges: -1,
     //cart: []
     cart: Object(),
     itemDisplay: [{
@@ -28,7 +30,12 @@ export default new Vuex.Store({
     },
     getCart: state => {
       return state.cart
-    }
+    },
+
+    getPrivledges: state => {
+     return state.privledges
+   }
+
   },
   mutations: {
     login (state, id) {
@@ -97,6 +104,16 @@ export default new Vuex.Store({
         console.log(state.cart[key])
       }
     },
+
+    setPrivledges(state) {
+      console.log("Setting provledges...")
+     if(state.isLoggedIn){
+         axios.get(`/api/users/${state.uid}`)
+         .then((response) => {
+             state.privledges = response.data.user.userType;
+         });
+     }
+   }
 
   },
   actions: {
