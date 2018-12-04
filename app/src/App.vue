@@ -69,7 +69,10 @@
                                <td><router-link to="/orders">Orders Placed</router-link></td>
                             </tr>
                             <tr>
-                               <td><router-link to="/admin">Administrator</router-link></td>
+                               <td><div v-if="this.$store.getters.getPrivledges == 0"><router-link to="/admin">Administrator</router-link></div></td>
+                            </tr>
+                            <tr>
+                               <td><div v-if="this.$store.getters.getPrivledges == 0 || this.$store.getters.getPrivledges == 1"><router-link to="/employee">Employee Panel</router-link></div></td>
                             </tr>
                             <tr>
                                <td><router-link to="/"><button v-on:click="logout()">Logout</button></router-link></td>
@@ -129,10 +132,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue';
 import index from '@/components/index.vue'; // @ is an alias to /src
-//import Navbar from '@/components/Navbar.vue';
 
 @Component({
   components: {
@@ -141,10 +143,14 @@ import index from '@/components/index.vue'; // @ is an alias to /src
   })
 export default class Home extends Vue {
 
+   visitor!: User;
+   visitorType: number = 2;
+
   logout(){
-    this.$store.commit('logout');  
+    this.$store.commit('logout');
     console.log(this.$store.getters.getIsLoggedIn)
   }
+
 }
 </script>
 

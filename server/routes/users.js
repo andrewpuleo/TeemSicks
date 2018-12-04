@@ -8,7 +8,7 @@ router.route('/')
    // create user
   .post((req, res) => {
     const {
-      userId,
+      userType,
       firstName,
       lastName,
       phone,
@@ -18,7 +18,7 @@ router.route('/')
     } = req.body;
     // validate potentially here
     User.create({
-      userId,
+      userType,
       firstName,
       lastName,
       phone,
@@ -29,7 +29,7 @@ router.route('/')
       res.json(user);
     });
   })
-  // Get all
+//get all
   .get((req, res) => {
     User.findAll().then((users) => {
       res.json({
@@ -66,14 +66,17 @@ router.get('/:id', function(req, res) {
 });
 
 router.post('/login', function(req, res) {
+
   const { username, password } = req.body;
   if(!username) {
+
     return res.status(422).json({
       data: {
         invalid: true
       },
       errors: {
         username: 'is required',
+
       },
     });
   }

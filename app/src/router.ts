@@ -113,5 +113,10 @@ export default new Router({
       name: "admin",
       component: () => import(/* webpackChunkName: "about" */ './views/admin.vue'),
     },
+    {
+      path: '/employee',
+      name: "employee",
+      component: () => import(/* webpackChunkName: "about" */ './views/employee.vue'),
+    },
   ],
 });

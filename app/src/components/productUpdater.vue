@@ -15,17 +15,67 @@
            <br>
 
          </div>
-         <div v-else class="product-found">
-            <p class="foxycle-redorange"> Item Successfully Found! <p>
-            <div class="row">
-               <div class="col">
+         <div v-else class="container-fluid">
+            <br>
+            <div class="row product-found">
+               <div class="col-sm-4">
                   <StoreItem v-bind:key="item.id" v-bind:item="item"></StoreItem>
+
                </div>
                <div class="col">
                   <br>
                   <p> <b>Reference product id: </b>{{item.id}}</p>
-                  <p><b>Product Brand: </b>{{item.Brand}}</p>
+                  <p v-if="item.inStock"> <b>Is it in stock?</b> yes</p>
+                  <p v-else> <b>Is it in stock?</b> no</p>
+                  <p v-if="item.productId == 2"> <b>Reference product Category:</b> Mountain Bike</p>
+                  <p><b>Amount in stock: </b>{{item.amountInStock}}</p>
                   <p><b>Listed Price: </b>${{item.salePrice}}</p>
+                  <p v-if="item.onSale"><b>Price before sale: </b>${{item.Price}}</p>
+                  <button class="button" v-on:click="removeFound">Find new product</button>
+
+               </div>
+            </div>
+            <div class="changes">
+               <br>
+               <p><b> Enter changes to make </b></p>
+               <!--div v-if="item.onSale == false"-->
+               <div>
+                  <button class="button" style="" v-on:click="updateSale">Change sale status</button>
+                  <br>
+                  <div class ="row">
+                     <div class="col">
+                        <p>Change how much customers can buy it for: </p>
+                     </div>
+                     <div class="col-sm-2">
+                        <input class="input" type="text" v-model="updatedSalePrice"/>
+                     </div>
+                     <div class ="col button-col">
+                        <button class="button" v-on:click="updateSalePrice" style="float: left;">Enter</button>
+                     </div>
+                  </div>
+                  <div class ="row" v-if="this.item.onSale">
+                     <div class="col">
+                        <p>Change original price before the sale: </p>
+                     </div>
+                     <div class="col-sm-2">
+                        <input class="input" type="text" v-model="updatedPrice"/>
+                     </div>
+                     <div class ="col button-col">
+                        <button class="button" v-on:click="updatePrice" style="float: left;">Enter</button>
+                     </div>
+                  </div>
+                  <button class="button" v-on:click="updateInStock">Change "In Stock" status</button>
+                  <div class ="row" v-if="this.item.inStock">
+                     <div class="col">
+                        <p>Change the amount in stock: </p>
+                     </div>
+                     <div class="col-sm-2">
+                        <input class="input" type="text" v-model="updatedAmountInStock"/>
+                     </div>
+                     <div class ="col button-col">
+                        <button class="button" v-on:click="updateAmountInStock" style="float: left;">Enter</button>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
@@ -46,6 +96,9 @@ export default class ProductUpdater extends Vue {
 
    updateId!: number = null;
    item!: product = null;
+   updatedSalePrice: number = 0;
+   updatedPrice: number = 0;
+   updatedAmountInStock: number = 0;
 
    findProduct() {
       axios.get(`/api/products/${this.updateId}`)
@@ -53,6 +106,51 @@ export default class ProductUpdater extends Vue {
          this.item = response.data.product;
       });
       console.log("our item", this.item);
+   }
+
+   removeFound(){
+      this.item = null;
+   }
+
+   updateSale(event: any) {
+      let status = true;
+      axios.put(`/api/products/${this.item.id}`, {...this.item, onSale: !this.item.onSale}).then((res) => {
+        this.item = res.data;
+      })
+   }
+
+   updateSalePrice(event: any) {
+      let status = true;
+      axios.put(`/api/products/${this.item.id}`, {...this.item, salePrice: this.updatedSalePrice}).then((res) => {
+        this.item = res.data;
+      }).then((res) => {
+        this.updatedSalePrice = 0;
+     })
+   }
+
+   updatePrice(event: any) {
+      let status = true;
+      axios.put(`/api/products/${this.item.id}`, {...this.item, Price: this.updatedPrice}).then((res) => {
+        this.item = res.data;
+      }).then((res) => {
+        this.updatedPrice = 0;
+     })
+   }
+
+   updateInStock(event: any) {
+      let status = true;
+      axios.put(`/api/products/${this.item.id}`, {...this.item, inStock: !this.item.inStock}).then((res) => {
+        this.item = res.data;
+      })
+   }
+
+   updateAmountInStock(event: any) {
+      let status = true;
+      axios.put(`/api/products/${this.item.id}`, {...this.item, amountInStock: this.updatedAmountInStock}).then((res) => {
+        this.item = res.data;
+      }).then((res) => {
+        this.updatedAmountInStock = 0;
+     })
    }
 }
 
@@ -66,8 +164,7 @@ export default class ProductUpdater extends Vue {
 }
 
 button{
-  margin-top: 20px;
-  padding: 5px 105px;
+  padding: 2px 2rem;
   background-color: rgba(252, 92, 0, 0.801);
   color: white;
   border-radius: 4px;
@@ -95,7 +192,7 @@ label.form-descriptions{
 }
 input[type=text], select, textarea {
     width: 100%; /* Full width */
-    padding: 12px; /* Some padding */
+    padding: 2px; /* Some padding */
     border: 1px solid #ccc; /* Gray border */
     border-radius: 4px; /* Rounded borders */
     box-sizing: border-box; /* Make sure that padding and width stays in place */
@@ -128,6 +225,8 @@ input[type=submit]:hover {
 }
 
 .product-found{
+   padding-left: 2rem;
+   padding-right: 2rem;
    background-color: #f1f1f1;
    border-color: red;
    border-width: 1px;

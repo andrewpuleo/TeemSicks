@@ -42,6 +42,7 @@
               </div>
             </div>
               <button class="btn btn-primary" id="signUp"  v-on:click="signUp()" type="submit">
+
               Join Now
               </button>
           </form>
@@ -74,6 +75,7 @@ export default class Register extends Vue {
 
   signUp() {
     axios.post('/api/users', {
+      userType: 2,
       firstName: this.newFirstName,
       lastName: this.newLastName,
       username: this.newUsername,
