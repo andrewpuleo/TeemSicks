@@ -42,7 +42,7 @@
           <br>
           <input type="text" id="email" name="email" placeholder="Email">
           <br>
-          <label for="message" class="form-descriptions">Message</label>
+          <label for="message" class="form-descriptions">Messege</label>
           <br>
           <textarea id="message" name="comments" placeholder="Message"
              style="height:200px"></textarea>
@@ -129,6 +129,16 @@ input[type=submit]:hover {
 .pnum{
   color: rgb(241, 63, 9);
   font-size: 25px;
+}
+
+input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
+    input[type = password]:focus, input[type = email]:focus, 
+    textarea:focus {
+  outline:none !important;
+  border-radius: 4px;
+  border:2px solid rgba(252, 92, 0, 0.801);
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 </style>
