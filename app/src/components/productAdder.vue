@@ -6,11 +6,11 @@
          <div class="form">
            <div class="field">
              <label class="label">Product Name</label>
-             <input class="input" type="text" v-model="newProductName"/>
+             <input class="input" id="productname" type="text" v-model="newProductName"/>
            </div>
            <div class="field">
              <label class="label">Brand</label>
-             <input class="input" type="text" v-model="newBrand"/>
+             <input class="input" id="brand" type="text" v-model="newBrand"/>
            </div>
            <div class="field">
              <input type="checkbox" v-model="newOnSale" class="custom-control-input" id="onSaleCheck">
@@ -19,15 +19,15 @@
            <br>
            <div class="field">
              <label class="label">Price</label>
-             <input class="input" type="text" v-model="newSalePrice"/>
+             <input class="input" id="price" type="number" v-model="newSalePrice"/>
            </div>
            <div v-if="newOnSale" class="field">
              <label class="label">Enter Original Pre-Sale Price</label>
-             <input class="input" type="text" v-model="newPrice"/>
+             <input class="input" id="presaleprice" type="number" v-model="newPrice"/>
            </div>
            <div class="field">
              <label class="label">Product Description</label>
-             <input class="input" type="text" v-model="newProductDescription"/>
+             <input class="input" id="productdescription" type="text" v-model="newProductDescription"/>
            </div>
            <div class="field">
              <input type="checkbox" v-model="newInStock" class="custom-control-input" id="inStockCheck">
@@ -36,19 +36,19 @@
          <br>
            <div v-if="newInStock" class="field">
              <label class="label">Enter How how many are in stock</label>
-             <input class="input" type="text" v-model="newAmountInStock"/>
+             <input class="input" id="stockamount" type="number" v-model="newAmountInStock"/>
            </div>
            <div class="field">
              <label class="label">Color (optional)</label>
-             <input class="input" type="text" v-model="newColor"/>
+             <input class="input" id="color" type="text" v-model="newColor"/>
            </div>
            <div class="field">
              <label class="label">Photo Url</label>
-             <input class="input" type="text" v-model="newPhotoUrl"/>
+             <input class="input" id="photourl" type="text" v-model="newPhotoUrl"/>
            </div>
 
            <div class="field">
-             <button class="button" v-on:click="submit">Submit</button>
+             <button class="button" id="add" v-on:click="submit">Submit</button>
            </div>
            <br>
          </div>

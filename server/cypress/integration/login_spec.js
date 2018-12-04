@@ -50,8 +50,6 @@ describe('Login as hworld', function() {
     cy.contains('Login')
     .click()
 
-    // cy.reload()
-
     cy.get('.UserName')
       .find('.form-control')
       .type('hworld')
