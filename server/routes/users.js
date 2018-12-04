@@ -38,6 +38,23 @@ router.route('/')
     });
   });
 
+router.route('/:id')
+  .put((req, res) => {
+    const{firstName, lastName, phone, email, password, username } = req.body;
+    User.findById(req.params.id).then((user)=> {
+      const userToUpdate = user;
+      userToUpdate.firstName = firstName;
+      userToUpdate.lastName = lastName;
+      userToUpdate.username = username;
+      userToUpdate.phone = phone;
+      userToUpdate.email = email;
+      userToUpdate.password = password;
+      userToUpdate.save().then((updatedUser)=>{
+        res.json(updatedUser);
+      });
+    });
+  });
+
 
 /* GET specific user listing. */
 router.get('/:id', function(req, res) {
@@ -45,6 +62,7 @@ router.get('/:id', function(req, res) {
     res.json({user});
   });
 });
+
 
 
 router.post('/login', function(req, res) {
@@ -93,7 +111,6 @@ router.delete('/:id', function(req, res) {
     res.json({ delete: false });
   });
 });
-
   
 
 module.exports = router;

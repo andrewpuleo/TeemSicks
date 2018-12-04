@@ -3,26 +3,32 @@
     <ChangeFirstName
     v-if="firstNameChanged"
     v-bind:oldFirstName="visitor.firstName"
+    @onSuccessFirstName="onSuccessFirstName"
     v-on:close="firstNameChanged = false"/>
     <ChangeLastName
     v-if="lastNameChanged"
     v-bind:oldLastName="visitor.lastName"
+    @onSuccessLastName="onSuccessLastName"
     v-on:close="lastNameChanged = false"/>
     <ChangeUserName
     v-if="userNameChanged"
     v-bind:oldUserName="visitor.username"
+    @onSuccessUserName="onSuccessUserName"
     v-on:close="userNameChanged = false"/>
     <ChangePassword
     v-if="passwordChanged"
     v-bind:oldPassword="visitor.password"
+    @onSuccessPassword="onSuccessPassword"
     v-on:close="passwordChanged = false"/>
     <ChangePhoneNumber
     v-if="phoneNumberChanged"
     v-bind:oldPhoneNumber="visitor.phone"
+    @onSuccessPhone="onSuccessPhone"
     v-on:close="phoneNumberChanged = false"/>
     <ChangeEmail
     v-if="emailChanged"
     v-bind:oldEmail="visitor.email"
+    @onSuccessEmail="onSuccessEmail"
     v-on:close="emailChanged = false"/>
       <div class="accInfo">
         <div class="row">
@@ -56,7 +62,7 @@
                             </td>
                             <td></td><td></td><td></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                             <td>
-                                <button class="btn-account-info" v-on:click="changeUserName()"> Edit Username </button><br>
+                                <button class="btn-account-info" v-on:click="changeUserName()" > Edit Username </button><br>
                             </td>
                         <tr>
                         <tr>
@@ -145,6 +151,8 @@ import axios from 'axios';
 
 @Component({ components: {ChangeLastName, ChangeFirstName, ChangeUserName, ChangePassword, ChangePhoneNumber, ChangeEmail}})
 export default class AccountInfo extends Vue{
+    
+    
     @Prop()
     visitor!: User;
 
@@ -159,12 +167,46 @@ export default class AccountInfo extends Vue{
     @Watch('visitor.password')
     onPropertyChanged(value: string, oldvalue: string){
         if(this.visitor.password){
+            this.passwordencry = new String();
             for(let i = 0; i < this.visitor.password.length; i+=1){
             this.passwordencry = this.passwordencry + "*"
             }
         }
         console.log(this.passwordencry);
     }
+    
+    onSuccessFirstName(data){
+        this.visitor.firstName = data;
+        console.log(this.visitor.firstName);
+    } 
+
+    onSuccessLastName(data){
+        this.visitor.lastName = data;
+        console.log(this.visitor.lastName);
+    } 
+
+    onSuccessUserName(data){
+        this.visitor.username = data;
+        console.log(this.visitor.username);
+    } 
+
+    onSuccessPassword(data){
+        this.visitor.password = data;
+        this.passwordencry = new String();
+        console.log(this.visitor.password.length)
+        for(let i = 0; i < this.visitor.password.length; i+=1){
+            this.passwordencry = this.passwordencry + "*"
+        }
+        console.log(this.visitor.password);
+    } 
+    onSuccessPhone(data){
+        this.visitor.phone = data;
+        console.log(this.visitor.phone);
+    } 
+    onSuccessEmail(data){
+        this.visitor.email = data;
+        console.log(this.visitor.email);
+    } 
 
     changeFirstName(){
         this.firstNameChanged = true;
