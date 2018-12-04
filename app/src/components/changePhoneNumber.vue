@@ -8,13 +8,14 @@
                     <p class="modal-card-title"> Edit Phone Number </p>
                 </header>
                 <section class="modal-card-body">
+                    <p class="error-message-this" v-if="!same"> Inputs must be the same! <br></p>
                     <input class="input" type="text" placeholder="New Phone Number" v-model="input1"><br>
                     <br>
                     <input class="input" type="text" placeholder="Confirm New Phone Number" v-model="input2"><br>
                 </section>
                 <footer class="modal-card-foot">
                     <div class="button-positions">
-                        <button class="button-save-changes" v-on:click="checkInputs()"> Save changes </button>
+                        <button class="button-save-changes" v-on:click="checkInputs(), changePhone()"> Save changes </button>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <button class="button-cancel-changes" data-dismiss="modal-window" v-on:click="$emit('close')">Cancel </button>
                     </div>
@@ -73,7 +74,9 @@
     margin-right: 10%;
 }
 
-
+.error-message-this{
+    color: red;
+}
 
 </style>
 
@@ -87,22 +90,33 @@ export default class ChangePhoneNumber extends Vue{
     oldPhoneNumber = new String();
     input1 = String();
     input2 = String();
+    same=true;
+    visitor!:User;
 
     mounted(){
         console.log(this.oldPhoneNumber);
     }
 
-    closeModal(){
-        this.$modal.hide;
-    }
-
     checkInputs(){
-         if(this.input1 == this.input2){
-             console.log("good");
+         if(this.input1 === this.input2){
+             this.same = true;
+             console.log(this.same)
          }
          else{
-             console.log("bad");
+             this.same = false;
          }
+    }
+
+    changePhone(){
+        let status = true;
+        if(this.same){
+            axios.put(`/api/users/${this.$store.getters.getUID}`, {...this.visitor,  phone: this.input1}).then((res) => {
+                this.visitor = res.data;
+                this.$emit('onSuccessPhone', res.data.phone);
+                this.$emit('close', res.data.phone);
+                console.log(res.data.phone)
+            })
+        }
     }
 }
 

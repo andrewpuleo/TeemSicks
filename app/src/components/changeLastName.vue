@@ -8,13 +8,14 @@
                     <p class="modal-card-title"> Edit Last Name </p>
                 </header>
                 <section class="modal-card-body">
+                    <p class="error-message-this" v-if="!same"> Inputs must be the same! <br></p>
                     <input class="input" type="text" placeholder="New Last Name" v-model="input1"><br>
                     <br>
                     <input class="input" type="text" placeholder="Confirm New Last Name" v-model="input2"><br>
                 </section>
                 <footer class="modal-card-foot">
                     <div class="button-positions">
-                        <button class="button-save-changes" v-on:click="checkInputs()"> Save changes </button>
+                        <button class="button-save-changes" v-on:click="checkInputs(), changeLastName()"> Save changes </button>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <button class="button-cancel-changes" data-dismiss="modal-window" v-on:click="$emit('close')">Cancel </button>
                     </div>
@@ -30,6 +31,11 @@
 .fname-title{
     color: rgb(99, 95, 95)
 }
+
+.error-message-this{
+    color: red;
+}
+
 .modal{
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -87,18 +93,33 @@ export default class ChangeLastName extends Vue{
     oldLastName = new String();
     input1 = String();
     input2 = String();
+    visitor!: User;
+    same=true;
 
     mounted(){
         console.log(this.oldLastName);
     }
 
     checkInputs(){
-         if(this.input1 == this.input2){
-             console.log("good");
+         if(this.input1 === this.input2){
+             this.same = true;
+             console.log(this.same)
          }
          else{
-             console.log("bad");
+             this.same = false;
          }
+    }
+
+    changeLastName(){
+        let status = true;
+        if(this.same){
+            axios.put(`/api/users/${this.$store.getters.getUID}`, {...this.visitor,  lastName: this.input1}).then((res) => {
+                this.visitor = res.data;
+                this.$emit('onSuccessLastName', res.data.lastName);
+                this.$emit('close', res.data.lastName);
+                console.log(res.data.lastName)
+            })
+        }
     }
 }
 

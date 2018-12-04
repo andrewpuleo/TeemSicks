@@ -8,13 +8,14 @@
                     <p class="modal-card-title"> Edit Username </p>
                 </header>
                 <section class="modal-card-body">
+                    <p class="error-message-this" v-if="!same"> Inputs must be the same! <br></p>
                     <input class="input" type="text" placeholder="New Username" v-model="input1"><br>
                     <br>
                     <input class="input" type="text" placeholder="Confirm New Username" v-model="input2"><br>
                 </section>
                 <footer class="modal-card-foot">
                     <div class="button-positions">
-                        <button class="button-save-changes" v-on:click="checkInputs()"> Save changes </button>
+                        <button class="button-save-changes" v-on:click="checkInputs(), changeUserName()"> Save changes </button>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <button class="button-cancel-changes" data-dismiss="modal-window" v-on:click="$emit('close')">Cancel </button>
                     </div>
@@ -46,6 +47,11 @@
     margin: 15% auto; /* 15% from the top and centered */
     width: 80%; /* Could be more or less, depending on screen size */
 }
+
+.error-message-this{
+    color: red;
+}
+
 .button-cancel-changes{
     background-color: rgba(136, 131, 128, 0.801);
     color: white;
@@ -87,21 +93,33 @@ export default class ChangeUserName extends Vue{
     oldUserName = new String();
     input1 = String();
     input2 = String();
+    same=true;
+    visitor!:User;
 
     mounted(){
         console.log(this.oldUserName);
     }
 
-    closeModal(){
-        this.$modal.hide;
-    }
     checkInputs(){
-         if(this.input1 == this.input2){
-             console.log("good");
+         if(this.input1 === this.input2){
+             this.same = true;
+             console.log(this.same)
          }
          else{
-             console.log("bad");
+             this.same = false;
          }
+    }
+
+    changeUserName(){
+        let status = true;
+        if(this.same){
+            axios.put(`/api/users/${this.$store.getters.getUID}`, {...this.visitor,  username: this.input1}).then((res) => {
+                this.visitor = res.data;
+                this.$emit('onSuccessUserName', res.data.username);
+                this.$emit('close', res.data.username);
+                console.log(res.data.username)
+            })
+        }
     }
 }
 
