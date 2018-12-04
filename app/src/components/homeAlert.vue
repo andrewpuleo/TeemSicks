@@ -1,5 +1,5 @@
 <template>
-    <div class="alert" v-if="alertDescription != ''">
+    <div class="alert" v-if="alertDescription != null">
         <h1 style="color:rgba(252, 92, 0, 0.801)">New Update:</h1>
         <p> {{alertDescription}}</p>
     </div>
@@ -21,12 +21,22 @@ export default class homeAlert extends Vue {
     alertDescription!: misc;
 
     mounted() {
+        this.$root.$on('alertUpdaterEmit', (data, response) => {
+            
+            this.updateAlert(data)
+        });
 
         axios.get('/api/Misc')
         .then((response) => {
             this.alertDescription = response.data.miscs[0].description;
-            console.log(response.data.miscs[1]);
+            console.log(response.data.miscs[0]);
         });
+
+        
+    }
+
+    updateAlert(data){
+        this.alertDescription = data;
     }
     
     

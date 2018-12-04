@@ -4,7 +4,7 @@ const { Order } = require('../models');
 const router = express.Router();
 router.route('/')
 
-  // get all products
+  // get all orders
   .get((req, res) => {
     Order.findAll().then((orders) => {
       res.json({
