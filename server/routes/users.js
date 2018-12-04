@@ -40,6 +40,7 @@ router.route('/')
 
 
 router.route('/:id')
+
   .put((req, res) => {
     const{firstName, lastName, phone, email, password, username } = req.body;
     User.findById(req.params.id).then((user)=> {

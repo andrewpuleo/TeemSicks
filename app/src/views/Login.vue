@@ -23,7 +23,7 @@
       </div>
        <div class = "signUp">
           <p> Don't have an account? </p>
-          <a><router-link to="/register"> Sign Up </router-link></a>
+          <a href="/register"> Sign Up </a>
       </div>
 
 
