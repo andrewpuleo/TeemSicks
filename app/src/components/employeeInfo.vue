@@ -4,19 +4,11 @@
         <div class="row">
             <div class="col account-info-col">
                 <div class="accText">
-                   <br>
-                    <h3 style="font-size: 20px;"class="accInfoTitle"> Employee id number: {{visitor.id}}<br><br></h3>
                     <table class="table is-fullwidth">
                         <div class="accInfo">
                         <tr>
                             <td>
-                                First Name: {{visitor.firstName}}&nbsp;&nbsp;&nbsp;&nbsp;
-                            </td>
-                            <td></td><td></td><td></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Last Name: {{visitor.lastName}}&nbsp;&nbsp;&nbsp;&nbsp;
+                                Name: {{visitor.firstName}} {{visitor.lastName}}&nbsp;&nbsp;&nbsp;&nbsp;
                             </td>
                             <td></td><td></td><td></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         </tr>
@@ -26,12 +18,6 @@
                             </td>
                             <td></td><td></td><td></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <tr>
-                        <tr>
-                            <td>
-                                Password: {{passwordencry}}&nbsp;&nbsp;&nbsp;&nbsp;
-                            </td>
-                            <td></td><td></td><td></td><td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        </tr>
                         <tr>
                             <td>
                                 Phone Number: {{visitor.phone}}&nbsp;&nbsp;&nbsp;&nbsp;
