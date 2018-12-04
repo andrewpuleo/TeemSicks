@@ -100,6 +100,7 @@ export default class UserItem extends Vue {
       var x = document.getElementById("myMessage");
      x.className = "show";
      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+     this.$router.push('/admin');
 
   }
 }
