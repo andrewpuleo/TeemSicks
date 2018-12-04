@@ -2,7 +2,7 @@
 <template>
   <div id="app">
     <div id="logo">
-      <router-link to="/"><img align="left" src="./assets/foxycle.png"></router-link>
+      <router-link to="/" class = "logoImg"><img align="left" src="./assets/foxycle.png"></router-link>
    </div>
    <nav class="navbar navbar-inverse navbar-expand-sm navcontainer">
       <div class="container navcontainer">

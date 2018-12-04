@@ -18,7 +18,7 @@
             </div>
           </div>
 
-          <button  class="btn btn-primary" v-on:click="login()">Login</button>
+          <button id = "loginB" class="btn btn-primary" v-on:click="login()">Login</button>
         </div>
       </div>
        <div class = "signUp">
@@ -55,7 +55,8 @@
           password: this.password
         }).then((res) => {
           if(res.status == 200){
-            this.$store.commit('login', res.data);            
+            this.$store.commit('login', res.data);
+            this.$router.push('/');            
           }
           console.log("res is: ", res)
           
@@ -145,4 +146,12 @@
       display:block!important;
       
     }
+    input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
+    input[type = password]:focus, input[type = email]:focus {
+    outline:none !important;
+    border-radius: 4px;
+    border:2px solid rgba(252, 92, 0, 0.801);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
  </style>

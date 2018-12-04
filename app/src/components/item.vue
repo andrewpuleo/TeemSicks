@@ -18,7 +18,7 @@
                <p>{{item.Brand}}</p>
                <br>
                <p>Listed Price: ${{item.salePrice}}</p>
-               <button v-on:click="showAddedMessage(), AddToCart(), AddToItem()"> Add To Cart </button>
+               <button id = "addToCartB" v-on:click="showAddedMessage(), AddToCart(), AddToItem()"> Add To Cart </button>
                <div id="addedMessege">Added {{item.productName}} To The Cart!</div>
                <div id="dupItemInCart"> {{this.$store.state.cart[item.id]}}x {{item.productName}} in the Cart! </div>
                <div id="reachedLimit"> We do not have enough in stock! </div>

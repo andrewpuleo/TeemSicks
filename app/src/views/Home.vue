@@ -30,7 +30,7 @@
     <div class="empname">
       <h3 class="foxycle-orange"> Freddy McFarmer </h3>
       <div class="job-title">
-        Store Manager
+        <p> Store Manager </p>
       </div>
     </div>
  </div>
