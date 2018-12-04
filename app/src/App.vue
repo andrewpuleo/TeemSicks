@@ -59,7 +59,7 @@
 
                <li v-if="this.$store.getters.getIsLoggedIn" class="nav-item active">
                   <div class="dropdown">
-                     <button class="dropbtn navbtn" v-on:click="getUser"><router-link to="/account"><img src="./assets/user.png">Account</router-link></button>
+                     <button class="dropbtn navbtn"><router-link to="/account"><img src="./assets/user.png">Account</router-link></button>
                      <div class="dropdown-content">
                          <table>
                             <tr>
@@ -135,8 +135,6 @@
 import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue';
 import index from '@/components/index.vue'; // @ is an alias to /src
-import axios from 'axios';
-import { user } from '@/models';
 
 @Component({
   components: {
@@ -147,18 +145,6 @@ export default class Home extends Vue {
 
    visitor!: User;
    visitorType: number = 2;
-
-   getUser() {
-     if(this.$store.getters.getIsLoggedIn){
-         axios.get(`/api/users/${this.$store.getters.getUID}`)
-         .then((response) => {
-             this.visitor = response.data.user;
-             console.log("NEW USER FOUND: ", this.visitor.userType)
-             this.visitorType = this.visitor.userType;
-             console.log("VisitorType: ", this.visitorType);
-         });
-     }
-   }
 
   logout(){
     this.$store.commit('logout');
