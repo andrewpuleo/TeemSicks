@@ -26,7 +26,7 @@
 
       <div class="col store_container">
 
-        <StoreItem v-for="item in items" v-bind:key="item.id" v-bind:item="item" v-if="item.onSale && item.amountInStock > 0"></StoreItem>
+        <StoreItem v-for="item in items" v-bind:key="item.id" v-bind:item="item" v-if="item.inStock && item.amountInStock > 0"></StoreItem>
 
       </div>
     </div>
