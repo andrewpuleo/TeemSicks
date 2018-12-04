@@ -9,30 +9,30 @@
           <form class = "needs-validation" style = "padding: 10px">
             <div class = "form-row">
               <div class = "form-col" style = "width: 47.5%; margin-right: 5%">
-                <input type="text" class="form-control" id="validationCustom04" v-model="newFirstName" placeholder="First Name" required>
+                <input type="text" class="form-control" id="firstname" v-model="newFirstName" placeholder="First Name" required>
               </div>
               <div class = "form-col" style = "width: 47.5%">
-                <input type="text" class="form-control" id="validationCustom05" v-model="newLastName" placeholder="Last Name" required>
+                <input type="text" class="form-control" id="lastname" v-model="newLastName" placeholder="Last Name" required>
               </div>
             </div>
             <div class = "form-row">
               <div class = "form-col" style = "width: 100%">
-                <input type="text" class="form-control" id="validationCustom04" v-model="newUsername" placeholder="User Name" required>
+                <input type="text" class="form-control" id="username" v-model="newUsername" placeholder="User Name" required>
               </div>
             </div>
             <div class = "form-row">
               <div class = "form-col" style = "width: 100%">
-                <input type="password" class="form-control" id="validationCustom04" v-model="newPassword" placeholder="Password" required>
+                <input type="password" class="form-control" id="password" v-model="newPassword" placeholder="Password" required>
               </div>
             </div>
             <div class = "form-row">
               <div class = "form-col" style = "width: 100%">
-                <input type="text" class="form-control" id="validationCustom04" v-model="newPhoneNumber" placeholder="Phone" required>
+                <input type="text" class="form-control" id="phonenumber" v-model="newPhoneNumber" placeholder="Phone" required>
               </div>
             </div>
             <div class = "form-row">
               <div class = "form-col" style = "width: 100%">
-                <input type="text" class="form-control" id="validationCustom04" v-model="newEmailAddress" placeholder="Email" required>
+                <input type="text" class="form-control" id="email" v-model="newEmailAddress" placeholder="Email" required>
               </div>
             </div>
             <div class="form-group">
@@ -41,10 +41,10 @@
                 <label class="custom-control-label" for="invalidCheck"> <a href ="#" class = "link" id="termsLink" style="color:rgba(252, 92, 0, 0.801)"  v-on:click="show()">Agree to terms and conditions</a></label>
               </div>
             </div>
-              <button class="btn btn-primary"  v-on:click="signUp()" type="submit"> 
+              <button class="btn btn-primary" id="signUp"  v-on:click="signUp()" type="submit">
               Join Now
               </button>
-          </form> 
+          </form>
         </div>
     </div>
     <modal id = "termsPage" name = "hello">
