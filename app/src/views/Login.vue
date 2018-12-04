@@ -23,10 +23,10 @@
       </div>
        <div class = "signUp">
           <p> Don't have an account? </p>
-          <a><router-link to="/register"> Sign Up </router-link></a>
-      </div>
-
-
+          <a>
+            <router-link to="/register" id = "registerLink"> Sign Up </router-link>
+          </a>
+        </div>
   </div>
   
 </template>
