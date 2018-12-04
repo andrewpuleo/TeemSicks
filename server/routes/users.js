@@ -4,7 +4,7 @@ const router = express.Router();
 const Auth = require('./authenticator');
 
 router.route('/')
-  
+
    // create user
   .post((req, res) => {
     const {
@@ -29,7 +29,7 @@ router.route('/')
       res.json(user);
     });
   })
-// Get all 
+  // Get all
   .get((req, res) => {
     User.findAll().then((users) => {
       res.json({
@@ -38,7 +38,6 @@ router.route('/')
     });
   });
 
-
 /* GET specific user listing. */
 router.get('/:id', function(req, res) {
   User.findById(req.params.id).then((user) => {
@@ -46,23 +45,18 @@ router.get('/:id', function(req, res) {
   });
 });
 
-
 router.post('/login', function(req, res) {
-  
   const { username, password } = req.body;
   if(!username) {
-    
     return res.status(422).json({
       data: {
         invalid: true
       },
       errors: {
         username: 'is required',
-        
       },
     });
   }
-
   if(!password) {
     return res.status(422).json({
       data: {
@@ -75,7 +69,7 @@ router.post('/login', function(req, res) {
   }
   Auth.login(username, password).then(
     session => {
-      res.json(session.dataValues.UserId);
+      res.json(session.userId);
     }, error => {
       res.status(403).json({ error: error.message });
     }
@@ -93,7 +87,5 @@ router.delete('/:id', function(req, res) {
     res.json({ delete: false });
   });
 });
-
-  
 
 module.exports = router;

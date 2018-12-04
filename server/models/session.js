@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     expiration: DataTypes.DATE
   }, {});
   Session.associate = function(models) {
-    Session.belongsTo(models.User);
+    Session.belongsTo(models.User, {foreignKey: 'userId'});
   };
   return Session;
 };
