@@ -24,6 +24,12 @@ That should include running the commands:
   3. Follow the instructions in [How to Add Dummy Data to MySql](#how-to-add-dummy-data-to-mySql) to create the test database and its tables/data.
 3. **Run `npm run test` from the server directory.**
 
+## How to Run Cypress Tests
+  1. `npm run serve` from the app directory,
+  2. `npm run start` from the server directory,
+  3. `npx cypress open` from either the app directory and the server directory,
+  4.  Click on any of the tests to run e2e test
+
 ## How to Add Dummy Data to MySql
 1. Run MySql inside a *Docker* container: `docker-compose up`
 2. Create your database: `node_modules/.bin/sequelize db:create`
