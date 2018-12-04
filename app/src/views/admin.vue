@@ -63,6 +63,7 @@
 
        </div>
 
+
     </div>
 </template>
 
@@ -74,6 +75,7 @@ import  UserItem  from "@/components/userItem.vue";
 
 
 @Component({ components: {UserItem,} })
+
 export default class Admin extends Vue {
    users: User[] = [];
    tempUsers: User[] = [];

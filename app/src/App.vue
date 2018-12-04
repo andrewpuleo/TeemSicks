@@ -104,8 +104,7 @@
       </div>
       <div class="col-sm-4">
         <h3>Hours:</h3>
-          <p>M-F: 8am - 5pm</p>
-          <p>Sat: 10am - 4pm</p>
+          <storeHours></storeHours>
       </div>
       <div class="col-sm-4">
         <h3>Contact</h3>
@@ -135,16 +134,17 @@
 import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue';
 import index from '@/components/index.vue'; // @ is an alias to /src
-
+import storeHours from '@/components/storeHours.vue';
 @Component({
   components: {
-  HelloWorld, index,
+  HelloWorld, index,storeHours
   },
   })
 export default class Home extends Vue {
 
    visitor!: User;
    visitorType: number = 2;
+
 
   logout(){
     this.$store.commit('logout');

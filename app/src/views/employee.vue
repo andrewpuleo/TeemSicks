@@ -7,6 +7,9 @@
         <ProductAdder></ProductAdder>
         <ProductUpdater></ProductUpdater>
         <ProductDeleter></ProductDeleter>
+        <homeAlertUpdater></homeAlertUpdater>
+        <hoursUpdater> </hoursUpdater>
+
     </div>
 </template>
 
@@ -15,11 +18,14 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import ProductAdder from '@/components/productAdder.vue';
 import ProductDeleter from '@/components/productDeleter.vue';
 import ProductUpdater from '@/components/productUpdater.vue';
+import homeAlertUpdater from '@/components/homeAlertUpdater.vue';
+import hoursUpdater from '@/components/hoursUpdater.vue';
+
 import axios from 'axios';
 import { User } from '@/models';
 
 
-@Component({ components: { ProductAdder, ProductDeleter, ProductUpdater} })
+@Component({ components: { ProductAdder, ProductDeleter, ProductUpdater,homeAlertUpdater,hoursUpdater} })
 export default class Employee extends Vue {
    visitor: User = new User();
 

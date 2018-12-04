@@ -17,10 +17,7 @@
             </div>
             <div class="col" style="border-style: solid solid solid none; border-color: white">
                <h1 style="font-size:20pt"> Hours </h1>
-               <p> M-F: 8am - 5pm
-               <br>
-               Sat: 10am - 4pm
-               </p>
+               <storeHours></storeHours>
             </div>
         </div>
 
@@ -52,6 +49,26 @@
       </div>
   </div>
 </template>
+
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+import  storeHours  from "@/components/storeHours.vue";
+
+//import Navbar from '@/components/Navbar.vue';
+
+@Component({
+  components: {
+  storeHours
+  },
+  })
+export default class Contact extends Vue {}
+</script>
+
+
+
+
 
 <style lang="scss">
 @import '../style.css';

@@ -2,6 +2,7 @@
 
   <div class="container-fluid">
     <HomeSlider/>
+    <homeAlert/>
 
    <div class="home-info">
    <div class="row">
@@ -64,8 +65,10 @@
 <script>
 
 import  HomeSlider  from "@/components/homeSlider";
+import homeAlert from "@/components/homeAlert"
+
 export default {
-  components: {HomeSlider},
+  components: {HomeSlider,homeAlert},
   }
 </script>
 
