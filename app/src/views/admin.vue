@@ -1,10 +1,11 @@
 <template>
-    <div id="admin">
+    <div id="admin" v-if="this.visitor.userType == 0">
         <h1>ADMINISTRATOR ONLY</h1>
         <br>
 
         <div class="col admin_container">
            <h2> List of employees: </h2>
+           <p> (New employees can be added at the bottom) </p>
             <UserItem v-for="employee in users" v-bind:key="employee.id" v-bind:employee="employee" v-if="employee.userType == 1"></UserItem>
             <br>
             <h2> Add new employees: </h2>
@@ -76,6 +77,8 @@ import  UserItem  from "@/components/userItem.vue";
 export default class Admin extends Vue {
    users: User[] = [];
    tempUsers: User[] = [];
+   visitor: User = new User();
+
 
    //optional: use later?
    sortVal1: number = 0;
@@ -90,6 +93,10 @@ export default class Admin extends Vue {
    status: boolean = true;
 
    mounted() {
+      axios.get(`/api/users/${this.$store.getters.getUID}`)
+     .then((response) => {
+         this.visitor = response.data.user;
+     });
 
      axios.get('/api/Users')
        .then((response) => {
