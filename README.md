@@ -18,6 +18,15 @@ QA: Mario
 3. [How to Add Dummy Data to MySql](#how-to-add-dummy-data-to-mySql)
 4. [Database UML Diagram](#database-uml-diagram)
 
+## How to Run the application
+1. From the terminal, change to the app directory (`cd app`) and run `npm run serve`.
+2. Open a new tab, change into the server directory (`cd server`), and run `npm run start`.
+3. Open a new tab, change into the server directory (`cd server`), and run `docker-compose up`.
+4. Using your browser of choice, navigate to [localhost:8080](http://localhost:8080) and you will see the app.   
+
+*[Back to top](#teem-sicks)*
+
+
 ## How to Run Route Tests
 1. **Start up the application, server, and database.**
 That should include running the commands:   
