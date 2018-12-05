@@ -1,5 +1,3 @@
-
-
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -11,6 +9,8 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const orderRouter = require('./routes/orders');
 const miscRouter = require('./routes/misc');
+const orderItemRouter = require('./routes/orderitem');
+const addressRouter = require('./routes/address');
 
 const app = express();
 
@@ -30,6 +30,8 @@ app.use('/users', usersRouter);
 app.use('/products', productRouter);
 app.use('/orders', orderRouter);
 app.use('/misc', miscRouter);
+app.use('/orderitem', orderItemRouter);
+app.use('/address', addressRouter);
 
 
 // catch 404 and forward to error handler

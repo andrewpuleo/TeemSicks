@@ -270,6 +270,8 @@
 
 <script>
 import Dinero from 'dinero.js';
+import { address } from '@/models';
+import { order } from '@/models';
 
 export default {
   name: 'checkOut',
@@ -301,6 +303,39 @@ export default {
       },
     };
   },
+
+
+
+    userid: number = this.$store.getters.getUID,
+    addressId: number = 0,
+   
+
+   submit() {
+
+    axios.post('/api/order', {
+      userId: this.userid,
+      addressId: this.addressId,
+    }).then((res) => {
+      this.newProductName = "";
+      this.newBrand = "";
+      this.newPrice = 0;
+      this.newOnSale = false;
+      this.newSalePrice = 0;
+      this.newProductDescription = '';
+      this.newInStock = false;
+      this.newAmountInStock = 0;
+      this.newColor = '';
+      this.newPhotoUrl = '';
+    })
+    .catch(error => {
+      console.log(error.response)
+   });
+  }
+
+
+
+
+
   methods: {
     toPrice(amount, factor = Math.pow(10, 2)) {
       return Dinero({ amount: Math.round(amount * factor) }).setLocale(this.language);
