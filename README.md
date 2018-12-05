@@ -48,7 +48,7 @@ That should include running the commands:
 3. Run migrations to add tables to the database: `node_modules/.bin/sequelize db:migrate`
 ![Migrate command](/gifs/migrate.gif)
 4. Seed your tables with the dummy data I created: `node_modules/.bin/sequelize db:seed:all`
-![Seed command](/gifs/seeds.gif)   
+![Seed command](/gifs/seed.gif)   
 
 *[Back to top](#teem-sicks)*
 
