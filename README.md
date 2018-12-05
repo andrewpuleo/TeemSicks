@@ -32,9 +32,13 @@ That should include running the commands:
 
 ## How to Add Dummy Data to MySql
 1. Run MySql inside a *Docker* container: `docker-compose up`
+![Docker command](/gifs/compose.gif)
 2. Create your database: `node_modules/.bin/sequelize db:create`
+![Create command](/gifs/create.gif)
 3. Run migrations to add tables to the database: `node_modules/.bin/sequelize db:migrate`
+![Migrate command](/gifs/migrate.gif)
 4. Seed your tables with the dummy data I created: `node_modules/.bin/sequelize db:seed:all`
+![Seed command](/gifs/seeds.gif)
 
 ## Database UML Diagram
 ![Database UML](/foxycle_database.png)
