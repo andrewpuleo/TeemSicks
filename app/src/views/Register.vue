@@ -90,7 +90,7 @@ export default class Register extends Vue {
     })
     if(this.allFilled())
     {
-      this.$router.push('/');
+      this.$router.push('/login');
     }
   }
 
