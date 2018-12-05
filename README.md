@@ -21,13 +21,13 @@ QA: Mario
 ## How to Run Route Tests
 1. **Start up the application, server, and database.**
 That should include running the commands:   
-  1. `npm run serve` from the app directory,
-  2. `npm run start` from the server directory,
-  3. And `docker-compose up` from the server directory.
+   1. `npm run serve` from the app directory,
+   2. `npm run start` from the server directory,
+   3. And `docker-compose up` from the server directory.
 2. **Ensure that you have a test database setup.** If you already have *database_test*, you can skip this section.
-  1. Navigate to the application you use to manage your databases. Check if you have a *database_test* database. If you do not, you will need to continue in this section of instructions.
-  2. On a *Unix* variant, set your node environment to test by running the command `export NODE_ENV=test`. If you are using *Windows* run `set NODE_ENV=test`.
-  3. Follow the instructions in [How to Add Dummy Data to MySql](#how-to-add-dummy-data-to-mySql) to create the test database and its tables/data.
+   1. Navigate to the application you use to manage your databases. Check if you have a *database_test* database. If you do not, you will need to continue in this section of instructions.
+   2. On a *Unix* variant, set your node environment to test by running the command `export NODE_ENV=test`. If you are using *Windows* run `set NODE_ENV=test`.
+   3. Follow the instructions in [How to Add Dummy Data to MySql](#how-to-add-dummy-data-to-mySql) to create the test database and its tables/data.
 3. **Run `npm run test` from the server directory.**   
 
 *[Back to top](#teem-sicks)*
