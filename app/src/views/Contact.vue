@@ -39,7 +39,7 @@
           <br>
           <input type="text" id="email" name="email" placeholder="Email">
           <br>
-          <label for="message" class="form-descriptions">Messege</label>
+          <label for="message" class="form-descriptions">Message</label>
           <br>
           <textarea id="message" name="comments" placeholder="Message"
              style="height:200px"></textarea>
@@ -149,7 +149,7 @@ input[type=submit]:hover {
 }
 
 input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
-    input[type = password]:focus, input[type = email]:focus, 
+    input[type = password]:focus, input[type = email]:focus,
     textarea:focus {
   outline:none !important;
   border-radius: 4px;

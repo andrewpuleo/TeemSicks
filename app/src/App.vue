@@ -66,7 +66,7 @@
                                <td><router-link to="/account"> Account summary</router-link></td>
                             </tr>
                             <tr>
-                               <td><router-link to="/orders">Orders Placed</router-link></td>
+                               <td><div v-if="this.$store.getters.getPrivledges == 0 || this.$store.getters.getPrivledges == 1"><router-link to="/orders">Orders Placed</router-link></div></td>
                             </tr>
                             <tr>
                                <td><div v-if="this.$store.getters.getPrivledges == 0"><router-link to="/admin">Administrator</router-link></div></td>
