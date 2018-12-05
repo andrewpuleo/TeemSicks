@@ -35,6 +35,7 @@
  import { User } from '@/models';
  import axios from 'axios';
  import { Component, Prop, Vue } from 'vue-property-decorator';
+ import VueRouter from 'vue-router';
     export default class Login extends Vue{
         username: string = '';
         password: string = '';
@@ -45,6 +46,8 @@
 
         invalidLogin = '';
         invalidLoginErr = false;
+        router = new VueRouter();
+        success = false;
 
 
 
@@ -56,10 +59,8 @@
         }).then((res) => {
           if(res.status == 200){
             this.$store.commit('login', res.data);
-
             this.$store.commit('setPrivledges');
-
-          }
+            this.router.back();          }
           console.log("res is: ", res)
 
           //console.log("Login response:" , res.status);
@@ -79,14 +80,9 @@
 
       }
 
-
-
         mounted(){
 
         };
-
-
-
 };
 </script>
  <style scoped>
