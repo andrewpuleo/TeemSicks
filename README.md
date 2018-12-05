@@ -12,6 +12,13 @@ Architect: Sean
 UI: James  
 QA: Mario  
 
+### README Table of Contents
+1. [How to Run Route Tests](#how-to-run-route-tests)
+2. [How to Run Cypress Tests](#how-to-run-cypress-tests)
+3. [How to Add Dummy Data to MySql](#how-to-add-dummy-data-to-mySql)
+4. [Database UML Diagram](#database-uml-diagram)
+
+
 ## How to Run Route Tests
 1. **Start up the application, server, and database.**
 That should include running the commands:   
