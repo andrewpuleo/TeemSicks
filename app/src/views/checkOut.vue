@@ -216,8 +216,8 @@
                                     </div>
                             </form>
                             <p style = "color: rgba(252, 92, 0, 0.801); margin-bottom: 0; margin-left: 10px; margin-top: 10px"> 
-                                <i style = "color:red">1234 Foothill Dr, San Luis Obispo 93405</i> Is The Address You Want To Jot Down!! <br>
-                                We Are Open From <i style = "color:red">8 am </i> to <i style = "color:red">5 pm Sunday - Saturday!</i>
+                                <i style = "color:red">1400 Ramada Dr, Paso Robles 93446</i> Is The Address You Want To Jot Down!! <br>
+                                
                             </p>
                             </div>
                         </div>

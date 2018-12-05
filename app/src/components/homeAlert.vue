@@ -1,5 +1,5 @@
 <template>
-    <div class="alert" v-if="alertDescription != null">
+    <div class="alert" v-if="alertDescription">
         <h1 style="color:rgba(252, 92, 0, 0.801)">New Update:</h1>
         <p> {{alertDescription}}</p>
     </div>
@@ -18,7 +18,7 @@ import axios from 'axios';
 export default class homeAlert extends Vue {
    @Prop({ default: null })
 
-    alertDescription!: misc;
+    alertDescription!: string;
 
     mounted() {
         this.$root.$on('alertUpdaterEmit', (data, response) => {
@@ -29,6 +29,9 @@ export default class homeAlert extends Vue {
         axios.get('/api/Misc')
         .then((response) => {
             this.alertDescription = response.data.miscs[0].description;
+            if(this.alertDescription == ""){
+                this.alertDescription = null;
+            }
             console.log(response.data.miscs[0]);
         });
 
