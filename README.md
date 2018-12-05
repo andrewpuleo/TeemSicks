@@ -20,12 +20,29 @@ QA: Mario
 
 ## How to Run the application
 1. From the terminal, change to the app directory (`cd app`) and run `npm run serve`.
+![Serve App](/gifs/serve_app.gif)
 2. Open a new tab, change into the server directory (`cd server`), and run `npm run start`.
+![Start Server](/gifs/start_server.gif)
 3. Open a new tab, change into the server directory (`cd server`), and run `docker-compose up`.
-4. Using your browser of choice, navigate to [localhost:8080](http://localhost:8080) and you will see the app.   
+![Start Database](/gifs/docker_compose.gif)
+4. Using your browser of choice, navigate to [localhost:8080](http://localhost:8080) and you will see the app.
+![Go to Localhost](/gifs/navigate_to_localhost.gif)
+5. Notice that the store is empty. In the next section you will see how to seed the database with items, users, etc.
+
 
 *[Back to top](#teem-sicks)*
 
+## How to Add Dummy Data to MySql
+1. Run MySql inside a *Docker* container: `docker-compose up`
+![Docker command](/gifs/compose.gif)
+2. Create your database: `node_modules/.bin/sequelize db:create`
+![Create command](/gifs/create.gif)
+3. Run migrations to add tables to the database: `node_modules/.bin/sequelize db:migrate`
+![Migrate command](/gifs/migrate.gif)
+4. Seed your tables with the dummy data I created: `node_modules/.bin/sequelize db:seed:all`
+![Seed command](/gifs/seed.gif)   
+
+*[Back to top](#teem-sicks)*
 
 ## How to Run Route Tests
 1. **Start up the application, server, and database.**
@@ -46,18 +63,6 @@ That should include running the commands:
   2. `npm run start` from the server directory,
   3. `npx cypress open` from either the app directory and the server directory,
   4.  Click on any of the tests to run e2e test    
-
-*[Back to top](#teem-sicks)*
-
-## How to Add Dummy Data to MySql
-1. Run MySql inside a *Docker* container: `docker-compose up`
-![Docker command](/gifs/compose.gif)
-2. Create your database: `node_modules/.bin/sequelize db:create`
-![Create command](/gifs/create.gif)
-3. Run migrations to add tables to the database: `node_modules/.bin/sequelize db:migrate`
-![Migrate command](/gifs/migrate.gif)
-4. Seed your tables with the dummy data I created: `node_modules/.bin/sequelize db:seed:all`
-![Seed command](/gifs/seed.gif)   
 
 *[Back to top](#teem-sicks)*
 
