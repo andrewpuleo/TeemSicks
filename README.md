@@ -13,10 +13,11 @@ UI: James
 QA: Mario  
 
 ### README Table of Contents
-1. [How to Run Route Tests](#how-to-run-route-tests)
-2. [How to Run Cypress Tests](#how-to-run-cypress-tests)
-3. [How to Add Dummy Data to MySql](#how-to-add-dummy-data-to-mySql)
-4. [Database UML Diagram](#database-uml-diagram)
+1. [How to Run the Application](#how-to-run-the-application)
+2. [How to Run Route Tests](#how-to-run-route-tests)
+3. [How to Run Cypress Tests](#how-to-run-cypress-tests)
+4. [How to Add Dummy Data to MySql](#how-to-add-dummy-data-to-mysql)
+5. [Database UML Diagram](#database-uml-diagram)
 
 ## How to Run the application
 1. From the terminal, change to the app directory (`cd app`) and run `npm run serve`.
