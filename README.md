@@ -49,7 +49,6 @@ That should include running the commands:
 ![Migrate command](/gifs/migrate.gif)
 4. Seed your tables with the dummy data I created: `node_modules/.bin/sequelize db:seed:all`
 ![Seed command](/gifs/seeds.gif)   
-[Back to top](#teem-sicks)   
 
 *[Back to top](#teem-sicks)*
 
