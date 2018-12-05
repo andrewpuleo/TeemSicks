@@ -14,9 +14,9 @@ QA: Mario
 
 ### README Table of Contents
 1. [How to Run the Application](#how-to-run-the-application)
-2. [How to Run Route Tests](#how-to-run-route-tests)
-3. [How to Run Cypress Tests](#how-to-run-cypress-tests)
-4. [How to Add Dummy Data to MySql](#how-to-add-dummy-data-to-mysql)
+2. [How to Add Dummy Data to MySql](#how-to-add-dummy-data-to-mysql)
+3. [How to Run Route Tests](#how-to-run-route-tests)
+4. [How to Run Cypress Tests](#how-to-run-cypress-tests)
 5. [Database UML Diagram](#database-uml-diagram)
 
 ## How to Run the application
