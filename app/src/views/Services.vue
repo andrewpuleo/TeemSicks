@@ -5,7 +5,7 @@
             <h class="centered big-white-text">Service and Repair</h>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="padding-left: 3rem; padding-right: 3rem;">
         <div class="col">
             <div class="text">
                 <br>
@@ -116,7 +116,7 @@
         font-size: 17pt;
         text-align: center;
     }
-    
+
     .service-title{
         color:rgba(252, 92, 0, 0.801);
     }
