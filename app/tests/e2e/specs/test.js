@@ -3,6 +3,7 @@
 describe('Test that visits each page as a guest', () => {
   it('Visits the app root url', () => {
     cy.visit('localhost:8080');
+    cy.get("#carousel1").should("be.visible");
     cy.contains('div', 'Our founder, Kris Fox, has always had a passion for biking. He has been repairing the bikes of friends and colleagues for as long as he can remember.');
     cy.contains('div', 'It is important to us that everyone gets their dream bike, not just any bike. We will help you on every step of your bike journey and ensure the decision you make is well educated.');
     cy.contains('h1', 'Meet the Staff!');

@@ -6,7 +6,7 @@
         <div class="col admin_container">
            <h2> List of employees: </h2>
            <p> (New employees can be added at the bottom) </p>
-            <UserItem v-for="employee in users" v-bind:key="employee.id" v-bind:employee="employee" v-if="employee.userType == 1"></UserItem>
+            <UserItem class = "employees" v-for="employee in users" v-bind:key="employee.id" v-bind:employee="employee" v-if="employee.userType == 1"></UserItem>
             <br>
             <h2> Add new employees: </h2>
 

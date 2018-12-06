@@ -7,12 +7,12 @@
          <div class="form" >
            <div class="field">
             <label>Weekdays:</label>
-            <input class="input" type="text" v-model="updateDesc1" :placeholder="this.desc1.description" />
+            <input class="input" type="text" id = "weekdaysHours" v-model="updateDesc1" :placeholder="this.desc1.description" />
             <label>Weekends:</label>
-            <input class="input" type="text" v-model="updateDesc2" :placeholder="this.desc2.description" />
+            <input class="input" type="text" id = "weekendsHours" v-model="updateDesc2" :placeholder="this.desc2.description" />
            </div>
            <div class="field">
-             <button class="button" v-on:click="updateMisc">Save</button>
+             <button class="button" id = "hoursUpdaterButton" v-on:click="updateMisc">Save</button>
            </div>
            <br>
 
