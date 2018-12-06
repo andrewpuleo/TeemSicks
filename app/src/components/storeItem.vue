@@ -3,7 +3,7 @@
      <router-link v-bind:to="'/item/'+item.id">
       <div class="row item-pic" v-bind:style="{'background-image': 'url(' + item.photoUrl + ')', 'background-size': '100%', 'background-repeat': 'no-repeat', 'background-position':'center' } ">
          <div v-if="item.onSale" id="on-sale">
-            <img align="right" src="../assets/sale.png"></img>
+            <img align="right" src="../assets/sale.png">
          </div>
           <!--
               <img src="../assets/rockhopper_image.jpeg">

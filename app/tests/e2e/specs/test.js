@@ -32,8 +32,6 @@ describe('Test that visits each page as a guest', () => {
     cy.contains('h1', 'Phone');
     cy.contains('p', '805 225 5911');
     cy.contains('h1', 'Hours');
-    cy.contains('p', ' M-F: 8am - 5pm');
-    cy.contains('p', 'Sat: 10am - 4pm');
     cy.contains('h1', 'Contact Form');
     cy.contains('label', 'Full Name');
     cy.contains('label', 'Subject');

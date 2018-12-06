@@ -58,6 +58,7 @@
             this.$store.commit('login', res.data);
 
             this.$store.commit('setPrivledges');
+            this.$router.push('/');
 
           }
           console.log("res is: ", res)
