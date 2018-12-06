@@ -12,13 +12,18 @@
         <div class="sort">
 
             <div class="sort_buttons">
-                <button type="button" class="btn btn-primary" v-on:click="LowHigh()">Low $ -> High $</button>
-                <button type="button" class="btn btn-primary" v-on:click="HighLow()">High $ -> Low $</button>
-                <button type="button" class="btn btn-primary" v-on:click="Sale()">On Sale</button>
-                <button type="button" class="btn btn-primary" v-on:click="ViewAll()">View All</button>
-                <button type="button" class="btn btn-primary" v-on:click="Newest()">Newest</button>
+               <button type="button" class="btn btn-primary" v-on:click="ViewAll()" style ="color: black;"><b>View All</b></button><br>
+                  <br>Filters
+                <button type="button" class="btn btn-primary" v-on:click="LowHigh()">Price: low -> high</button>
+                <button type="button" class="btn btn-primary" v-on:click="HighLow()">Price: high -> low</button>
+                <button type="button" class="btn btn-primary" v-on:click="Sale()">On Sale</button><br>
+                <button type="button" class="btn btn-primary" v-on:click="Newest()">Newest</button><br>
+
+                <br>Categories
                 <button type="button" class="btn btn-primary" v-on:click="Road()">Road Bikes</button>
                 <button type="button" class="btn btn-primary" v-on:click="Mountain()">Mountain Bikes</button>
+                <button type="button" class="btn btn-primary" v-on:click="Cruiser()">Cruiser Bikes</button>
+                <button type="button" class="btn btn-primary" v-on:click="Bmx()">BMX Bikes</button>
                 <button type="button" class="btn btn-primary" v-on:click="Accessories()">Accessories</button>
             </div>
         </div>
@@ -59,9 +64,13 @@
   .toolbar{
     padding-top: 1rem;
     border-radius: 20px;
-    min-width: 160px;
+    min-width: 190px;
     height: fit-content;
   }
+
+  button{
+     width: 10rem;
+ }
 
 </style>
 
@@ -90,7 +99,7 @@ export default class Store extends Vue {
   }
 
   Sale(){
-    
+
     this.allItems.forEach(element => {
 
       if(element.onSale != 0){
@@ -104,12 +113,12 @@ export default class Store extends Vue {
   }
 
   Road(){
-    
+
     this.allItems.forEach(element => {
       if(element.productId == 1){
         this.tempItems.push(element);
       }
-      
+
     });
     this.items=this.tempItems;
     this.tempItems=[]
@@ -117,12 +126,12 @@ export default class Store extends Vue {
   }
 
   Mountain(){
-    
+
     this.allItems.forEach(element => {
       if(element.productId == 2){
         this.tempItems.push(element);
       }
-      
+
     });
     this.items=this.tempItems;
     this.tempItems=[]
@@ -130,12 +139,38 @@ export default class Store extends Vue {
   }
 
   Accessories(){
-    
+
     this.allItems.forEach(element => {
       if(element.productId == 0){
         this.tempItems.push(element);
       }
-      
+
+    });
+    this.items=this.tempItems;
+    this.tempItems=[]
+    this.items.sort()
+  }
+
+  Cruiser(){
+
+    this.allItems.forEach(element => {
+      if(element.productId == 3){
+        this.tempItems.push(element);
+      }
+
+    });
+    this.items=this.tempItems;
+    this.tempItems=[]
+    this.items.sort()
+  }
+
+  Bmx(){
+
+    this.allItems.forEach(element => {
+      if(element.productId == 4){
+        this.tempItems.push(element);
+      }
+
     });
     this.items=this.tempItems;
     this.tempItems=[]

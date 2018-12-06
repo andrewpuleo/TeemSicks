@@ -42,16 +42,18 @@
         TAX ({{ data.Tax}}%)
         <span class="cart-price">{{ getTaxAmount.toFormat() }}</span>
       </h3>
-    
+
       <h3 class="cart-line">
         Total
         <span class="cart-price cart-total">{{ getTotal.toFormat() }}</span>
       </h3>
       <div id = "itemContainer4">
       <a>
-        <router-link to="/checkOut">
-          <button class = "checkoutB" type="button">Checkout!</button>
-        </router-link>
+
+          <div v-if="this.$store.getters.getIsLoggedIn"><router-link to="/checkOut"><button class = "checkoutB" type="button">Checkout!</button></router-link></div>
+          <div v-else><button disabled class = "checkoutB" type="button">[Checkout!]</button></div>
+
+        <div v-if="!(this.$store.getters.getIsLoggedIn)"><p>You must be logged in to check out.</p></div>
       </a>
       </div>
     </div>
@@ -91,7 +93,7 @@ export default {
     },
   },
   computed: {
-    
+
     getTaxAmount() {
       return this.getSubtotal.percentage(this.data.Tax);
     },
@@ -161,6 +163,19 @@ export default {
   padding: 15px 0;
   width: 100%;
   border-bottom: 2px solid rgba(51, 58, 69, 0.1);
+}
+
+button:disabled,
+button[disabled]{
+   border-color: darkgrey;
+  background-color: grey;
+  color: darkgrey;
+}
+button:disabled:hover,
+button[disabled]{
+   border-color:darkgrey;
+  background-color: grey;
+  color: darkgrey;
 }
 
 #itemContainer1 {

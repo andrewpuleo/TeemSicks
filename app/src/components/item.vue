@@ -1,5 +1,7 @@
 <template>
    <div>
+      <br>
+      <div style="text-align: left; padding-left: 3rem; color: black; text-color: black;"><router-link to="/store" class="foxycle-orange">< Back to the store</router-link></div>
       <!-- div>Some text to search for {{id}}</div -->
       <br>
       <div class="container-fluid item-full-view">
@@ -10,6 +12,8 @@
                <p v-if="item.productId == 0"> Reference product category: Accessory</p>
                <p v-if="item.productId == 1"> Reference product category: Road Bike</p>
                <p v-if="item.productId == 2"> Reference product category: Mountain Bike</p>
+               <p v-if="item.productId == 3"> Reference product category: Cruiser</p>
+               <p v-if="item.productId == 4"> Reference product category: BMX</p>
                <p v-if="item.productId > 2 || item.productId < 0"> Reference product Category: Unknown</p>
                <div class="image-box" v-bind:style="{'background-image': 'url(' + item.photoUrl + ')', 'background-size': '100%', 'background-repeat': 'no-repeat', 'background-position':'center' } ">
                   <!-- img v-bind:for="item.id" v-bind:src="item.photoUrl"></img -->

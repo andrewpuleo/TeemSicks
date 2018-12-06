@@ -13,7 +13,9 @@
              <br>
              <input type="radio" name="productType" value=0 checked v-model="newProductId"> Accessory
              <input type="radio" name="productType" value=1 v-model="newProductId"> Road Bike
-             <input type="radio" name="productType" value=2 v-model="newProductId"> Mountain Bike<br>
+             <input type="radio" name="productType" value=2 v-model="newProductId"> Mountain Bike
+             <input type="radio" name="productType" value=3 v-model="newProductId"> Cruiser
+             <input type="radio" name="productType" value=4 v-model="newProductId"> BMX Bike<br>
            </div>
            <br>
            <div class="field">

@@ -12,7 +12,7 @@ import { misc } from '@/models';
 
 import axios from 'axios';
 
-  
+
 
 @Component
 export default class homeAlert extends Vue {
@@ -22,7 +22,7 @@ export default class homeAlert extends Vue {
 
     mounted() {
         this.$root.$on('alertUpdaterEmit', (data, response) => {
-            
+
             this.updateAlert(data)
         });
 
@@ -35,14 +35,14 @@ export default class homeAlert extends Vue {
             console.log(response.data.miscs[0]);
         });
 
-        
+
     }
 
     updateAlert(data){
         this.alertDescription = data;
     }
-    
-    
+
+
 }
 </script>
 
