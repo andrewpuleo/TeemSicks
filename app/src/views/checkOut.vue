@@ -268,49 +268,44 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import Dinero from 'dinero.js';
 import { address } from '@/models';
+import axios from 'axios';
+
 import { order } from '@/models';
 
-export default {
-  name: 'checkOut',
-  data() {
-    return {
-      data: {
-        selected:'Delivery',
-        email:"",
-        fullName:"",
-        phoneNumber:"",
-        addressLine1:"",
-        addressLine2:"",
-        city: "",
-        state: "",
-        zip: "",
-        country: "",
-            owner:"",
-            cardNumber:"",
-            cvv:"",
-            expirationDate:"",
-            addressLine1B:"",
-            addressLine2B:"",
-            cityB:"",
-            stateB:"",
-            zipB:"",
-            countryB:"",
-        sameAddress: false,
-        Tax: 10,
-      },
-    };
-  },
 
 
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
-    userid: number = this.$store.getters.getUID,
-    addressId: number = 0,
-   
 
-   submit() {
+@Component({ components: {  } })
+export default class checkOut extends Vue {
+  orders: order[] = [];
+  newProductName = "";
+      newBrand: string =  "";
+      newPrice: number = 0;
+      newOnSale: boolean = false;
+      newSalePrice: number =  0;
+      newProductDescription: string = '';
+      newInStock: boolean = false;
+      newAmountInStock: number = 0;
+      newColor: string = '';
+      newPhotoUrl:string = '';
+      
+
+  mounted() {
+
+    axios.get('/api/Products')
+      .then((response) => {
+        this.orders = response.data.products;
+        console.log(this.orders);
+      });
+  }
+
+
+  submit() {
 
     axios.post('/api/order', {
       userId: this.userid,
@@ -330,51 +325,22 @@ export default {
     .catch(error => {
       console.log(error.response)
    });
-  }
+  };
+
+}
 
 
 
 
 
-  methods: {
-    toPrice(amount, factor = Math.pow(10, 2)) {
-      return Dinero({ amount: Math.round(amount * factor) }).setLocale(this.language);
-    },
-    copy(){
-    if (!this.data.sameAddress)
-    {
-      this.data.addressLine1B = this.data.addressLine1;
-      this.data.addressLine2B = this.data.addressLine2;
-      this.data.cityB = this.data.city;
-      this.data.stateB = this.data.state;
-      this.data.zipB = this.data.zip;
-      this.data.countryB = this.data.country;
-    }
-    else{
-      this.data.addressLine1B = '';
-      this.data.addressLine2B = '';
-      this.data.cityB = '';
-      this.data.stateB = '';
-      this.data.zipB = '';
-      this.data.countryB = '';
-    }
-    },
-    },
-  computed: {
-    getTaxAmount() {
-      return this.getSubtotal.percentage(this.data.Tax);
-    },
-    getSubtotal() {
-      return this.$store.state.itemDisplay.reduce(
-        (a, b) => a.add(this.toPrice(b.price).multiply(b.quantity)),
-        Dinero().setLocale(this.language),
-      );
-    },
-    getTotal() {
-      return this.getSubtotal.add(this.getTaxAmount);
-    },
-  },
-};
+
+
+
+
+
+
+
+
 </script>
 
 <style>

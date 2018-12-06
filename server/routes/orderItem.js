@@ -1,4 +1,3 @@
-OrderItem
 
 const express = require('express');
 const { OrderItem } = require('../models');

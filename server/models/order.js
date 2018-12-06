@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   Order.associate = function(models) {
     // associations can be defined here
     Order.belongsTo(models.User);
-    Order.belongsTo(models.Address);
-    Order.belongsTo(models.OrderItem);
+    Order.hasOne(models.Address);
+    Order.hasMany(models.OrderItem);
   };
 
   return Order;
