@@ -68,7 +68,6 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import axios from 'axios';
-import ToDo from '@/components/ToDo.vue';
 import { product } from '@/models';
 import  StoreItem  from "@/components/storeItem.vue";
 
