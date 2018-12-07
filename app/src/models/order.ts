@@ -1,6 +1,5 @@
 export class order {
-  id!: string;
-  subject!: string;
-  done!: boolean;
-  dueDate!: number;
+  userId!: number;
+  addressId!: number;
+  
 }

@@ -15,8 +15,8 @@
                                 <i class = "Tab">Delivery</i>
                             </template>
                             <p class = "warning"> *Delivery is not available for bikes </p>
-                            <p style = "color: rgba(252, 92, 0, 0.801); text-align: left; font-size: 110%; margin-bottom: 0"> 
-                                Please Enter Your Shipping Address 
+                            <p style = "color: rgba(252, 92, 0, 0.801); text-align: left; font-size: 110%; margin-bottom: 0">
+                                Please Enter Your Shipping Address
                             </p>
                             <div id = "container1" class = "container" style = "margin-bottom: 20px">
                                 <form class = "needs-validation" novalidate style = "padding: 10px">
@@ -82,7 +82,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <p style = "color: rgba(252, 92, 0, 0.801); text-align: left; font-size: 110%; margin-bottom: 0"> 
+                            <p style = "color: rgba(252, 92, 0, 0.801); text-align: left; font-size: 110%; margin-bottom: 0">
                                 Please Enter Your Credit/Debit Card Information
                             </p>
                             <div id = "container1" class = "container" style = "margin-bottom: 20px">
@@ -127,11 +127,11 @@
                                     </div>
                                 </form>
                             </div>
-                            <p style = "color: rgba(252, 92, 0, 0.801); text-align: left; font-size: 110%; margin-bottom: 0"> 
+                            <p style = "color: rgba(252, 92, 0, 0.801); text-align: left; font-size: 110%; margin-bottom: 0">
                                 Please Enter Your Billing Address
                                 <span> <input type="checkbox" value="" v-on:click="copy()" v-model="data.sameAddress" style = "margin-left: 20px; padding: 0"><i style= "color: grey">Same As Shipping Address</i> </span>
                             </p>
-                            
+
                             <div id = "container1" class = "container">
                                 <form class = "needs-validation" novaidate style = "padding:10px">
                                     <div class = "form-row-1">
@@ -186,7 +186,7 @@
                                 <i class = "Tab">Pickup</i>
                             </template>
                             <div id = "container2" class = "container" >
-                                <p style = "color: rgba(252, 92, 0, 0.801); text-align: left;margin-bottom:0; margin-left: 10px; margin-top: 40px"> 
+                                <p style = "color: rgba(252, 92, 0, 0.801); text-align: left;margin-bottom:0; margin-left: 10px; margin-top: 40px">
                                 Please Enter Your Email Address And/Or Phone Number So We Can Notify You When Your Order Is Ready
                             </p>
                             <form class = "needs-validation" novaidate style = "padding:10px; border: 2px solid rgba(199, 196, 194, 0.685); border-radius: 5px">
@@ -215,9 +215,9 @@
                                         </div>
                                     </div>
                             </form>
-                            <p style = "color: rgba(252, 92, 0, 0.801); margin-bottom: 0; margin-left: 10px; margin-top: 10px"> 
+                            <p style = "color: rgba(252, 92, 0, 0.801); margin-bottom: 0; margin-left: 10px; margin-top: 10px">
                                 <i style = "color:red">1400 Ramada Dr, Paso Robles 93446</i> Is The Address You Want To Jot Down!! <br>
-                                
+
                             </p>
                             </div>
                         </div>
@@ -258,8 +258,8 @@
             <form>
                 <div id = "itemContainer4">
             <a>
-                <router-link to="/confirmation">
-                    <button class = "confirmB" type="submit">Confirm!</button>
+                <router-link to="/orderPlaced">
+                    <button class = "confirmB" type="submit" v-on:click="submit()">Confirm!</button>
                 </router-link>
             </a>
                 </div>
@@ -278,12 +278,18 @@ import { order } from '@/models';
 
 export default {
   name: 'checkOut',
-  
+
   data() {
-     
-      
+
+
     return {
       data: {
+        orders: null,
+        order: null,
+        address: null,
+        price: 0,
+        product: null,
+
         selected:'Delivery',
         email:"",
         fullName:"",
@@ -313,39 +319,9 @@ export default {
     axios.get('/api/Orders')
       .then((response) => {
         this.orders = response.data.orders;
-        
-        console.log(this.orders);
+
       });
   },
-
-
-
-   
-   
-
-   submit() {
-
-    axios.post('/api/order', {
-      userId: this.userid,
-      addressId: this.addressId,
-    }).then((res) => {
-      this.newProductName = "";
-      this.newBrand = "";
-      this.newPrice = 0;
-      this.newOnSale = false;
-      this.newSalePrice = 0;
-      this.newProductDescription = '';
-      this.newInStock = false;
-      this.newAmountInStock = 0;
-      this.newColor = '';
-      this.newPhotoUrl = '';
-    })
-    .catch(error => {
-      console.log(error.response)
-   });
-  },
-
-
 
 
 
@@ -353,6 +329,89 @@ export default {
     toPrice(amount, factor = Math.pow(10, 2)) {
       return Dinero({ amount: Math.round(amount * factor) }).setLocale(this.language);
     },
+    submit() {
+      //Creates an address in the database
+     axios.post('/api/address', {
+       street1: this.data.addressLine1,
+       street2: this.data.addressLine2,
+       city: this.data.city,
+       zip: this.data.zip,
+       country: this.data.country,
+     }).then((res) => {
+       this.data.address = res.data;
+       this.data.addressLine1 = "",
+       this.data.addressLine1 = "",
+       this.data.city = "",
+       this.data.zip = "",
+       this.data.country = ""
+     }).then((res) => {
+       this.createOrder();
+     }).catch(error => {
+       console.log(error.response)
+    });
+},
+
+createOrder(){
+    axios.post('/api/orders', {
+      userId: this.$store.getters.getUID,
+      addressId: this.data.address.id,
+
+
+    }).then((res) => {
+      this.data.order = res.data;
+      console.log("our order", this.data.order);
+    }).then((res) => {
+      console.log("here")
+      for (var key in this.$store.getters.getCart){
+
+        axios.get(`/api/products/${key}`).then((response) => {
+            this.data.price = response.data.product.price;
+            this.data.product = response.data.product;
+            this.createOrderItem(key, this.$store.getters.getCart[key], this.data.price);
+        });
+
+
+      }
+    }).catch(error => {
+      console.log(error.response)
+   });
+ },
+
+
+
+ createOrderItem(pId, quant, pr){
+     axios.post('/api/orderitem', {
+       productId: pId,
+       orderid: this.data.order.id,
+       quantity: quant,
+       price: pr,
+
+     }).then((res) => {
+
+
+       axios.put(`/api/products/${this.data.product.id}`, {...this.data.product, amountInStock: (this.data.product.amountInStock - quant)}).then((res) => {
+         this.data.product = res.data;
+       })
+
+
+     }).catch(error => {
+       console.log(error.response)
+    });
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     copy(){
     if (!this.data.sameAddress)
     {

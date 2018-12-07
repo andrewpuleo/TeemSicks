@@ -9,14 +9,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="order in orders" v-bind:key="order.orderId" v-bind:order="order">
-                    
-                    <td>{{order.orderId}}</td>
+                <tr v-for="order in orders" v-bind:key="order.addressId" v-bind:order="order">
+
+                    <!--<td>{{order.orderId}}</td> -->
                     <td>{{order.userId}}</td>
                     <td>{{order.addressId}}</td>
-                    
+
                 </tr>
-                
+
             </tbody>
         </table>
     </div>
@@ -32,7 +32,7 @@
  @Component
     export default class OrdersChart extends Vue{
         orders: order[] = [];
-        
+
         mounted(){
             axios.get('/api/Orders')
             .then((response) => {

@@ -1,7 +1,6 @@
 export class orderItem {
     productId!: number;
-    orderId!: number;
+    orderid!: number;
     quantity!: number;
     price!: number;
   }
-  

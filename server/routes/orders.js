@@ -16,15 +16,15 @@ router.route('/')
   //Create an order item
   .post((req, res) => {
     const {
-      orderId,
+
       userId,
       addressId,
-      
+
 
     } = req.body;
     // validate potentially here
     Order.create({
-      orderId,
+      
       userId,
       addressId,
    }).then((order) => {

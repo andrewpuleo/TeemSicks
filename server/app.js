@@ -9,7 +9,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const orderRouter = require('./routes/orders');
 const miscRouter = require('./routes/misc');
-const orderItemRouter = require('./routes/orderitem');
+const orderItemRouter = require('./routes/orderItem');
 const addressRouter = require('./routes/address');
 
 const app = express();
