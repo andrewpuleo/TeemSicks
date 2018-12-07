@@ -46,7 +46,6 @@
 
         invalidLogin = '';
         invalidLoginErr = false;
-        router = new VueRouter();
         success = false;
 
 
@@ -60,7 +59,7 @@
           if(res.status == 200){
             this.$store.commit('login', res.data);
             this.$store.commit('setPrivledges');
-            this.router.back();          }
+            this.$router.push('/');   }
           console.log("res is: ", res)
 
           //console.log("Login response:" , res.status);

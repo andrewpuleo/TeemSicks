@@ -68,7 +68,7 @@ export default class Register extends Vue {
   newFirstName: string = '';
   newLastName: string = '';
   newUsername: string = '';
-  newPhoneNumber: string = '';
+  newPhoneNumber: number;
   newEmailAddress: string = '';
   newPassword: string = '';
   status: boolean = false;
@@ -79,6 +79,7 @@ export default class Register extends Vue {
       firstName: this.newFirstName,
       lastName: this.newLastName,
       username: this.newUsername,
+      phone: this.newPhoneNumber,
       email: this.newEmailAddress,
       password: this.newPassword,
     }).then((res) => {
@@ -90,9 +91,10 @@ export default class Register extends Vue {
     })
     if(this.allFilled())
     {
-      this.$router.push('/');
+      this.$router.push('../login');
     }
   }
+
 
   allFilled()
   {
