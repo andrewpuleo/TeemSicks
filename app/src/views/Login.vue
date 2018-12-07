@@ -48,8 +48,6 @@
         invalidLoginErr = false;
         success = false;
 
-
-
       login () {
           axios.post(`/api/users/login`, {
 
@@ -59,7 +57,9 @@
           if(res.status == 200){
             this.$store.commit('login', res.data);
             this.$store.commit('setPrivledges');
-            this.$router.push('/');   }
+            this.$router.push('/');
+
+          }
           console.log("res is: ", res)
 
           //console.log("Login response:" , res.status);
@@ -82,6 +82,14 @@
         mounted(){
 
         };
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> origin/tests2
 };
 </script>
  <style scoped>
@@ -153,4 +161,3 @@
     box-shadow: none;
   }
  </style>
-

@@ -7,10 +7,10 @@
          <div class="form" >
            <div class="field">
             
-            <input class="input" type="text" v-model="updateDesc" :placeholder="this.desc.description" />
+            <input class="input" id = "homeAlertUpdater" type="text" v-model="updateDesc" :placeholder="this.desc.description" />
            </div>
            <div class="field">
-             <button class="button" v-on:click="updateMisc">Save</button>
+             <button class="button" id = "homeAlertUpdaterButton" v-on:click="updateMisc">Save</button>
            </div>
            <br>
 

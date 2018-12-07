@@ -9,7 +9,7 @@ describe('Tests Cart Functionality', () => {
         cy.url().should('include', '/store');
         cy.get('#on-sale img').first().click();
         cy.location('pathname').should('eq', '/item/9');
-        cy.get("#addToCartB").click();
+        cy.contains("Add To Cart").click();
         cy.get('li')
           .should('have.class', 'nav-item active')
           .contains('Cart')
