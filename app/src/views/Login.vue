@@ -82,14 +82,7 @@
         mounted(){
 
         };
-<<<<<<< HEAD
-=======
 
-
-
-
-
->>>>>>> origin/tests2
 };
 </script>
  <style scoped>

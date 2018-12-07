@@ -4,7 +4,7 @@
         <p>
             Here you can view orders, and edit a given record by clicking on it in the table.
         </p>
-        <OrdersChart/>
+        <OrdersChart></OrdersChart>
     </div>
 </template>
 

@@ -9,9 +9,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="order in orders" v-bind:key="order.addressId" v-bind:order="order">
+                <tr v-for="order in orders" v-bind:key="order.id" v-bind:order="order">
 
-                    <!--<td>{{order.orderId}}</td> -->
+                    <td>{{order.id}}</td>
                     <td>{{order.userId}}</td>
                     <td>{{order.addressId}}</td>
 
@@ -36,6 +36,7 @@
         mounted(){
             axios.get('/api/Orders')
             .then((response) => {
+              console.log(response)
                 this.orders = response.data.orders;
                 console.log(this.orders);
             });

@@ -7,7 +7,6 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.DOUBLE
   }, {});
   OrderItem.associate = function(models) {
-    OrderItem.hasOne(models.Order);
     // associations can be defined here
   };
   return OrderItem;
