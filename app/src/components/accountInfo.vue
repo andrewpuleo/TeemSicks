@@ -125,7 +125,7 @@
                     <td>{{order.addressId}}</td>
                     <td><button v-on:click="getOrderInfo(), viewOrderInfoModal(order.id)"> More Info </button> </td>
                     <td v-if="checkComplete(order.status)"> Done! </td>
-                    <td v-else>  </td>
+                    <td v-else> In progress </td>
 
                 </tr>
 
