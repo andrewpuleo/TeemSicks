@@ -2,8 +2,9 @@
     <div id="account">
         <h1>View All Orders</h1>
         <p>
-            Here you can view orders, and edit a given record by clicking on it in the table.
+            Here you can view orders, more details and fufill an order.
         </p>
+        <p> To confirm an order is fufilled, it will update when you go onto the page next time. </p>
         <OrdersChart></OrdersChart>
     </div>
 </template>

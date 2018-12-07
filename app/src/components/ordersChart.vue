@@ -13,16 +13,18 @@
                 <th scope="col">AddressID</th>
                 <th scope="col">Details</th>
                 <th scope="col">Finish</th>
+                <th scope="col">Completed</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="order in orders" v-bind:key="order.id" v-bind:order="order">
-
                     <td>{{order.id}}</td>
                     <td>{{order.userId}}</td>
                     <td>{{order.addressId}}</td>
                     <td><button v-on:click="getOrderInfo(), viewOrderInfoModal(order.id)"> More Info </button> </td>
                     <td><button v-on:click="fufillOrder(order)"> Fufill Order </button></td>
+                    <td v-if="checkComplete(order.status)"> Done! </td>
+                    <td v-else>  </td>
 
                 </tr>
 
@@ -36,7 +38,7 @@
  import { order } from '@/models';
  import { product } from '@/models';
  import axios from 'axios';
- import { Component, Prop, Vue } from 'vue-property-decorator';
+ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import { orderItem } from '../models/orderItem';
 import OrderInfo from '@/components/orderInfo.vue';
 
@@ -50,6 +52,7 @@ import OrderInfo from '@/components/orderInfo.vue';
         currentOrderId: number = null;
         currentProducts: product[] = [];
         orderFulls = [];
+        order: order;
 
         mounted(){
             axios.get('/api/orders')
@@ -70,9 +73,20 @@ import OrderInfo from '@/components/orderInfo.vue';
             });
         };
 
-        fufillOrder(order){
-            
 
+        fufillOrder(order){
+            //axios.put goes here to change status to "complete"
+            axios.put(`/api/orders/${order.id}`, {...this.order,  status: "Complete"}).then((res) => {
+                this.order = res.data;
+            })
+
+        }
+
+        checkComplete(status){
+            if(status === "Complete"){
+                return true;
+            }
+            return false;
         }
 
         getOrderInfo(){

@@ -355,21 +355,18 @@ createOrder(){
     axios.post('/api/orders', {
       userId: this.$store.getters.getUID,
       addressId: this.data.address.id,
-
-
+      status: "In Progress",
     }).then((res) => {
       this.data.order = res.data;
       console.log("our order", this.data.order);
     }).then((res) => {
       console.log("here")
       for (var key in this.$store.getters.getCart){
-
         axios.get(`/api/products/${key}`).then((response) => {
             this.data.price = response.data.product.price;
             this.data.product = response.data.product;
             this.createOrderItem(key, this.$store.getters.getCart[key], this.data.price);
         });
-
 
       }
     }).catch(error => {
