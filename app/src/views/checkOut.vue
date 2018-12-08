@@ -290,6 +290,10 @@ export default {
         price: 0,
         product: null,
 
+        count: -1,
+        count2: -1,
+        arr: [],
+
         selected:'Delivery',
         email:"",
         fullName:"",
@@ -359,45 +363,40 @@ createOrder(){
 
     }).then((res) => {
       this.data.order = res.data;
-      console.log("our order", this.data.order);
-    }).then((res) => {
-      console.log("here")
-      for (var key in this.$store.getters.getCart){
+    }).then ( (res) => {
+        for (var key in this.$store.getters.getCart){
+          axios.get(`/api/products/${key}`).then((response) => {
+              this.data.price = response.data.product.price;
+              this.data.product = response.data.product;
+              this.data.arr.push(this.data.product)
+          }).then((res) => {
+            this.data.count++,
+            axios.post('/api/orderitem', {
 
-        axios.get(`/api/products/${key}`).then((response) => {
-            this.data.price = response.data.product.price;
-            this.data.product = response.data.product;
-            this.createOrderItem(key, this.$store.getters.getCart[key], this.data.price);
-        });
+              productId: this.data.arr[this.data.count].id,
+              orderid: this.data.order.id,
+              quantity: this.$store.getters.getCart[this.data.arr[this.data.count].id],
+              price: this.data.price,
 
-
-      }
-    }).catch(error => {
-      console.log(error.response)
-   });
- },
-
-
-
- createOrderItem(pId, quant, pr){
-     axios.post('/api/orderitem', {
-       productId: pId,
-       orderid: this.data.order.id,
-       quantity: quant,
-       price: pr,
-
-     }).then((res) => {
+            }).then((res) => {
+              this.data.count2++,
+              axios.put(`/api/products/${this.data.arr[this.data.count2].id}`, {...this.data.arr[this.data.count2], amountInStock: (this.data.arr[this.data.count2].amountInStock - this.$store.getters.getCart[this.data.arr[this.data.count2].id])}).then((res) => {
+                this.data.product = res.data;
+              });
+            });
 
 
-       axios.put(`/api/products/${this.data.product.id}`, {...this.data.product, amountInStock: (this.data.product.amountInStock - quant)}).then((res) => {
-         this.data.product = res.data;
-       })
+            //Previous HERE
 
+          }).catch(error => {
+            console.log(error.response)
+          });
 
-     }).catch(error => {
-       console.log(error.response)
+        }
     });
   },
+
+
 
 
 
