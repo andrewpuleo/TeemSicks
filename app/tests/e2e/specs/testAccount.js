@@ -50,13 +50,9 @@ describe("tests account functionality", () => {
         cy.contains('button', "Save changes").click();
         cy.contains("********");
     });
-    it("User can see his/her order(s)", () =>{
-        cy.contains("Orders Placed").click({force:true});
-        cy.contains("View All Orders");
-    });
     it("Users can log out", () => {
         cy.contains("Logout").click({force:true});
         cy.location("pathname").should("eq", "/");
         cy.contains("Login");
-    })
-})
+    });
+});
