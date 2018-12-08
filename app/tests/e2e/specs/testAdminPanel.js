@@ -20,7 +20,6 @@ describe("tests employee panel", () => {
         cy.contains("Administrator").click({force:true});
         cy.contains("Issac Einstein");
         cy.contains("IE");
-        //cy.contains('1111111');
         cy.contains("Issac@einstein.com");
     });
 });
