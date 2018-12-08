@@ -359,8 +359,7 @@ createOrder(){
     axios.post('/api/orders', {
       userId: this.$store.getters.getUID,
       addressId: this.data.address.id,
-
-
+      status: "In Progress",
     }).then((res) => {
       this.data.order = res.data;
     }).then ( (res) => {
