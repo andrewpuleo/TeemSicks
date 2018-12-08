@@ -19,6 +19,7 @@ router.route('/')
 
       userId,
       addressId,
+      status,
 
 
     } = req.body;
@@ -27,6 +28,7 @@ router.route('/')
       
       userId,
       addressId,
+      status,
    }).then((order) => {
       res.json(order);
     });
@@ -40,5 +42,18 @@ router.route('/:id')
         res.json({order});
       });
     })
+
+  .put((req, res) => {
+    const{userId, addressId, status} = req.body;
+    Order.findById(req.params.id).then((order)=> {
+      const orderToUpdate = order;
+      orderToUpdate.userId = userId;
+      orderToUpdate.addressId = addressId;
+      orderToUpdate.status = status;
+      orderToUpdate.save().then((updatedOrder)=>{
+        res.json(updatedOrder);
+      });
+    });
+  });
 
 module.exports = router;

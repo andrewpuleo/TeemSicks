@@ -10,4 +10,4 @@ node_modules/.bin/sequelize model:generate --name User --attributes userId:integ
 
 node_modules/.bin/sequelize model:generate --name Address --attributes addressId:integer,street1:string,street2:string,city:string,zip:integer,country:string
 
-node_modules/.bin/sequelize model:generate --name Order --attributes orderId:string,userId:string,addressId:integer
+node_modules/.bin/sequelize model:generate --name Order --attributes orderId:string,userId:string,addressId:integer,status:string

@@ -37,6 +37,10 @@ module.exports = {
              model: 'Addresses',
              key: 'id',
         }
+      },
+      status: {
+        allowNull: false,
+        type: Sequelize.STRING,
       }
     });
   },
