@@ -257,11 +257,31 @@
             </div>
             <form>
                 <div id = "itemContainer4">
-            <a>
-                <router-link to="/orderPlaced">
-                    <button class = "confirmB" type="submit" v-on:click="submit()">Confirm!</button>
-                </router-link>
-            </a>
+                    <div v-if="this.data.selected === 'Delivery'">
+                        <div style = "display:none"> {{ this.data.statusD = allFilledDelivery()}} </div>
+                        <div v-if="this.data.statusD"> 
+                            <a>
+                                <router-link to="/orderPlaced">
+                                    <button class = "confirmB" type="submit" v-on:click="submit()">Confirm!</button>
+                                </router-link>
+                            </a>
+                        </div>
+                        <div v-else><button disabled class = "confirmB" type="submit">[Confirm!]</button></div>
+                        <div v-if="!this.data.statusD" style = "color:red"><p>You must fillout all the input fields.</p></div>
+                    </div>
+
+                    <div v-else-if="this.data.selected === 'Pickup'">
+                        <div style = "display:none"> {{ this.data.statusP = allFilledPickUp()}} </div>
+                        <div v-if="this.data.statusP"> 
+                            <a>
+                                <router-link to="/orderPlaced">
+                                    <button class = "confirmB" type="submit" v-on:click="submit()">Confirm!</button>
+                                </router-link>
+                            </a>
+                        </div>
+                        <div v-else><button disabled class = "confirmB" type="submit">[Confirm!]</button></div>
+                        <div v-if="!this.data.statusP" style = "color:red"><p>You must fillout all the input fields.</p></div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -315,6 +335,8 @@ export default {
             zipB:"",
             countryB:"",
         sameAddress: false,
+        statusD:false,
+        statusP: false,
         Tax: 10,
       },
     };
@@ -394,21 +416,64 @@ createOrder(){
         }
     });
   },
+  
+  allFilledDelivery()
+  {
+    if(this.data.fullName.length!=0 &&
+       this.data.phoneNumber.length!=0 &&
+       this.data.addressLine1.length!=0 &&
+       this.data.city.length!=0 &&
+       this.data.state.length!=0 &&
+       this.data.zip.length!=0 &&
+       this.data.country.length!=0 &&
+       this.data.owner.length!=0 &&
+       this.data.cardNumber.length!=0 &&
+       this.data.cvv.length!=0 &&
+       this.data.expirationDate.length!=0 &&
+       this.data.addressLine1B.length!=0 &&
+       this.data.addressLine1.length!=0 &&
+       this.data.cityB.length!=0 &&
+       this.data.stateB.length!=0 &&
+       this.data.zipB.length!=0 &&
+       this.data.countryB.length!=0)
+       {
+         return true;
+       }
+    else{
+        return false;
+    }
+  },
 
+  allFilledPickUp()
+  {
+    if(this.data.fullName.length!=0 &&
+       this.data.email.length!=0 &&
+       this.data.phoneNumber.length!=0)
+       {
+        return true;
+       }
+       else{
+           return false;
+       }
+  },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  checkStatus(){
+      if(selected === 'Delivery'){
+        this.allFilledDelivery();
+        if(!this.data.statusP)
+        {
+            alert("Please");
+        }
+    }
+    else if(selected === 'Pickup'){
+        this.allFilledPickUp();
+        if(!this.data.statusD)
+        {
+            alert("please");
+            console.log(statusD);
+        }
+    }
+  },
 
     copy(){
     if (!this.data.sameAddress)
@@ -634,5 +699,18 @@ input[type=text]:focus, input[type=number]:focus,input[type=month]:focus,
   flex:2%;
   text-align: right;
   margin-left: 10px;
+}
+
+button:disabled,
+button[disabled]{
+   border-color: darkgrey;
+  background-color: grey;
+  color: darkgrey;
+}
+button:disabled:hover,
+button[disabled]{
+   border-color:darkgrey;
+  background-color: grey;
+  color: darkgrey;
 }
 </style>
