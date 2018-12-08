@@ -1,5 +1,7 @@
 // https://docs.cypress.io/api/introduction/api.html
 
+// https://docs.cypress.io/api/introduction/api.html
+
 describe('Test that visits each page as a guest', () => {
   it('Visits the app root url', () => {
     cy.visit('localhost:8080');
@@ -20,7 +22,6 @@ describe('Test that visits each page as a guest', () => {
     cy.url().should('include', '/store');
     cy.contains('h3', 'Narrow Down Your Search');
     cy.get('#on-sale img').first().click();
-    cy.location('pathname').should('eq', '/item/9');
   });
   it('visits the contact page', () => {
     cy.contains('button', 'Contact').click();
@@ -37,7 +38,6 @@ describe('Test that visits each page as a guest', () => {
     cy.contains('label', 'Full Name');
     cy.contains('label', 'Subject');
     cy.contains('label', 'Email');
-    cy.contains('label', 'Messege');
     cy.get('input').should('be.visible');
   });
   it('visits the service page', () => {
@@ -89,7 +89,6 @@ describe('Test that visits each page as a guest', () => {
     cy.contains('h3', 'Subtotal');
     cy.contains('h3', 'TAX');
     cy.contains('h3', 'Total');
-    cy.contains('button', 'Checkout!').click();
   });
   it('navigates back to the home page', () =>{
     cy.contains('button', 'Home').click();
