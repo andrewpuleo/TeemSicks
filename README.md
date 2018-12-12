@@ -3,7 +3,7 @@
 
 ### About Us
 Motto: Pro Bono   
-Pizza Topping: Bacon and Eggs  
+Pizza Topping: It's not a bug, it's a feature.
 
 ### Team Roles
 Team Lead: Lauren  
